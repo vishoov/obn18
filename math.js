@@ -97,3 +97,4 @@ console.log(null === undefined);
 // == performs type coercion before checking
 //  === check both type and value
 
+// https://github.com/vishoov/obn18

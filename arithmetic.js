@@ -124,9 +124,12 @@ console.log(result)
 // PEMDAS
 // paranthesis
 // exponents
-// multiplication and division
-// addition and subtraction
+// multiplication and division  left-> right
+// addition and subtraction    left-> right
 
 let result1= 5 + 3 * 2
 
-let result2 = (5+3) *2
+let result2 = 5+(3 *2)
+
+
+let num = 6 ** 2 / 4 + 5 -1;
