@@ -1,5 +1,5 @@
 // if(condition){
-//     //this block will opnly run if the condition evaluates to truthy
+//     //this block will only run if the condition evaluates to truthy
 // }
 
 
@@ -58,3 +58,35 @@ console.log('' ?? 'empty');
 // ?? nullish coersion operatator
 // operand1 ?? operand2
 // it will return operand2 only and only if operand1 is null or undefined
+
+
+if ([0]) console.log('A');
+if ([0] == false) console.log('B');
+if ([1, 2] == true) console.log('C');
+if ([1] == true) console.log('D');
+
+
+
+if (0) {
+    console.log("True");
+  } else {
+    console.log("False");
+  }
+  
+
+  let a = "5";
+if (a == 5) {
+  console.log("Double equals");
+} else if (a === 5) {
+  console.log("Triple equals");
+} else {
+  console.log("None match");
+}
+
+
+let score = 70;
+if (score > 60 && score < 80 || score === 90) {
+  console.log("Passed");
+} else {
+  console.log("Failed");
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gemini API Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f4ff; display: flex; flex-direction: column; align-items: center; }
+    .container { margin-top: 60px; padding: 32px; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    input, button { padding: 10px; margin: 8px 4px; border-radius: 4px; font-size: 1rem; }
+    #response { margin-top: 20px; font-size: 1.2rem; color: #333; min-height: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Gemini API Demo</h2>
+    <input type="text" id="userInput" placeholder="Type your prompt here" />
+    <button onclick="callGemini()">Send</button>
+    <div id="response"></div>
+  </div>
+  <script>
+    async function callGemini() {
+  const apiKey = "YOUR_GEMINI_API_KEY";
+  const prompt = document.getElementById("userInput").value;
+  const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
+  const payload = {
+    contents: [{parts: [{text: prompt}]}]
+  };
+
+  document.getElementById("response").textContent = "Loading...";
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    const output = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+    document.getElementById("response").textContent = output;
+  } catch (err) {
+    document.getElementById("response").textContent = "Error: " + err.message;
+  }
+}
+
+  </script>
+</body>
+</html>
