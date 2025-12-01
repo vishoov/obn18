@@ -90,3 +90,25 @@ if (score > 60 && score < 80 || score === 90) {
 } else {
   console.log("Failed");
 }
+
+
+let user = { isAdmin: true, isActive: false, role: "editor" };
+// Only active admins get access to 'manageUsers'. Editors who are active get 'editContent', others get 'readContent'. Inactive users (any role) get 'restricted'.
+
+
+// user.isAdmin 
+
+if(user.isActive){
+    //other condition
+    if(user.isAdmin){
+        console.log("manageUser")
+    }
+    
+    if(user.role==="editor"){
+        console.log("editContent")
+    }else{
+        console.log("readContent")
+    }
+} else{
+    console.log("Restricted")
+}

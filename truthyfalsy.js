@@ -39,4 +39,5 @@ let a = 0, b = null, c = undefined;
 console.log(a || b || c || 'default');
 console.log("undefined" ?? b ?? c ?? 'default');
 console.log((a || b) ?? (c || 'default'));
+
 console.log((a ?? b) || (c ?? 'default'));
