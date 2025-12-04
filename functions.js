@@ -12,86 +12,113 @@
 // function logic
 // return statement
 // }
-function addNumbers(number1, number2){
-    let sum = number1+number2
+// function addNumbers(number1, number2){
+//     let sum = number1+number2
 
-    if(false){
-        return 
-    }
-    return sum
-}
+//     if(false){
+//         return 
+//     }
+//     return sum
+// }
 
-addNumbers(5, 4)
-//5, 4 argument
-
-
-//V8 
+// addNumbers(5, 4)
+// //5, 4 argument
 
 
-let name = "Abc"
+// //V8 
 
 
-//write a function to print the table of a number parameter -> number 
+// let name = "Abc"
+
+
+// //write a function to print the table of a number parameter -> number 
 
 
 
-function table(n){
-    for(let i=1; i<=10; i++){
-        console.log(`${n} X ${i} = ${n*i}`)
-    }
+// function table(n){
+//     for(let i=1; i<=10; i++){
+//         console.log(`${n} X ${i} = ${n*i}`)
+//     }
     
-    return "Table Completed"
-}
-console.log(table(10))
+//     return "Table Completed"
+// }
+// console.log(table(10))
 
 
 
-// Function Expressions
-// functions are 'first-class-objects' 
+// // Function Expressions
+// // functions are 'first-class-objects' 
 
-console.log(typeof table)
+// console.log(typeof table)
 
-// we are defining the function as an expression and assigning it to a variable 
-
-
-//anonymous function
-const greet = function(){
-    console.log("Hello world")
-}
-
-greet()
+// // we are defining the function as an expression and assigning it to a variable 
 
 
+// //anonymous function
+// const greet = function(){
+//     console.log("Hello world")
+// }
 
-//Arrow functions (ES6)
+// greet()
 
 
 
-const multiply = (x, y) => x*y;
-
-
-console.log(multiply(5, 10))
-
-
-// functions accept inputs in form of parameters while declaring, and product an output using the logical statements
-// Parameter-> variable listed in the functions declaration
-// Argument-> actual value that will be passed while calling the function
-// return -> value that will be sent back from the function
+// //Arrow functions (ES6)
 
 
 
-function print(a, b){
-    console.log("A")
-    console.log(a, b)
-}
+// const multiply = (x, y) => x*y;
 
 
-function print(a){
-    console.log('B')
-    console.log(a)
-}
+// console.log(multiply(5, 10))
 
 
-print(10, 20)
-print(10, 20)
-print(10, 20)
+// // functions accept inputs in form of parameters while declaring, and product an output using the logical statements
+// // Parameter-> variable listed in the functions declaration
+// // Argument-> actual value that will be passed while calling the function
+// // return -> value that will be sent back from the function
+
+
+
+// function print(a, b){
+//     console.log("A")
+//     console.log(a, b)
+// }
+
+
+// function print(a){
+//     console.log('B')
+//     console.log(a)
+// }
+
+
+// print(10, 20)
+// print(10, 20)
+// print(10, 20)
+
+
+
+
+function createCounter() {
+
+    var count = 0; 
+  
+    return function() {
+      count++;
+      console.log(count);
+    //   return count;
+    };
+  }
+
+  let myCounter = createCounter();
+  
+// console.log(count)
+  myCounter(); 
+  myCounter(); 
+  myCounter(); 
+
+
+//   3 scopes
+// global, function, block
+// let and const respect all scopes
+// var doesnt respect block scope
