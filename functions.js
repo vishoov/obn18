@@ -122,3 +122,6 @@ function createCounter() {
 // global, function, block
 // let and const respect all scopes
 // var doesnt respect block scope
+
+
+
