@@ -106,14 +106,15 @@ function createCounter() {
     return function() {
       count++;
       console.log(count);
-    //   return count;
+    //   return count;÷
     };
   }
 
-  let myCounter = createCounter();
+  let myCounter =  ();
   
 // console.log(count)
-  myCounter(); 
+const result =  myCounter(); 
+result();
   myCounter(); 
   myCounter(); 
 
@@ -125,3 +126,10 @@ function createCounter() {
 
 
 
+
+
+function abc(){
+  return "Hello"
+}
+
+console.log(abc());
