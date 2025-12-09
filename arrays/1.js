@@ -3,7 +3,7 @@
 
 const array  = [1, "Two", false, [1,2,3], {name:"ABC"}]
 
-console.log(array[4])
+console.log(array[-1])
 
 
 // Declaration Methods of arrays
@@ -71,7 +71,7 @@ colors[1]="line"
 console.log(colors)
 
 // Best practices
-// 1. for positive indices, use literals and for cleaner negatove indices use at 
+// 1. for positive indices, use literals and for cleaner negative indices use at 
 // 2. always check the index before using it 
 //  3. in some methods -1 index is considered as a 'not found' flag 
 
@@ -108,3 +108,10 @@ function Arrayat(array, index){
 const veggies = ["tomato", "potato", "onion", "carrot"]
 
 console.log(Arrayat(veggies, -10))
+
+
+const sample = [1,2,3,4,5]
+
+console.log(sample.length)
+
+
