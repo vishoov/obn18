@@ -105,3 +105,10 @@ const numss = [10, 20, 30, 40, 50]
 const index = numss.findIndex(num => num > 125)
 
 console.log(index)
+
+
+
+
+const empty = [];
+const result = empty.reduce((acc, curr) => acc + curr);
+console.log(result);
