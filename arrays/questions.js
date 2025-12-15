@@ -100,3 +100,6 @@ const newitems = items.map((item, index, array)=>{
 console.log(newitems)
 
 
+
+
+

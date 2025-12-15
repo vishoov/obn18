@@ -109,6 +109,3 @@ console.log(index)
 
 
 
-const empty = [];
-const result = empty.reduce((acc, curr) => acc + curr);
-console.log(result);
