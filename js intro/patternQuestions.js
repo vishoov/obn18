@@ -28,7 +28,7 @@ function diamond(n){
     }
 }
 
-// diamond(5)
+diamond(5)
 
 
 // *      *
