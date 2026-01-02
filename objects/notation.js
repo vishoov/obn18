@@ -39,3 +39,5 @@ console.log(obj[key])
 console.log(obj.key)
 // console.log(obj["name"])
 // getProperty("name")
+
+

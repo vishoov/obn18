@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D SciFi Logo Viewer</title>
+    
+    <!-- Import model-viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        model-viewer {
+            width: 800px;
+            height: 600px;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 900px) {
+            model-viewer {
+                width: 95vw;
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <model-viewer
+        src="./123.glb"
+        alt="SciFi Logo 3D Model"
+        auto-rotate
+        camera-controls
+        shadow-intensity="1"
+        
+        exposure="1"
+        environment-image="legacy">
+    </model-viewer>
+</body>
+</html>

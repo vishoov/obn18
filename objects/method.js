@@ -94,7 +94,7 @@ const bankAccount = {
 // get
     deposit(amount){
         const newBalance = this.balance+amount
-        setBalance(newBalance)
+        this.setBalance(newBalance)
         console.log(`Deposted ${amount}, to the account, new balance is ${this.balance}`)
     },
 
@@ -102,7 +102,7 @@ const bankAccount = {
         if(amount>this.balance){
             console.log("Insufficient Balance")
         }else{
-            this.balance -= amount;
+          this.setBalance(this.balance-amount)
             console.log(`Withdrawn ${amount}, New Balance is ${this.balance}`)
         }
     }
