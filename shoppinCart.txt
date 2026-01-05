@@ -1,0 +1,55 @@
+
+Problem Statement:
+
+You're building a shopping cart system with discounts and taxes.
+​
+
+Write a function calculateCart(cartItems, discounts, taxRate, couponCode) that:
+
+Calculates subtotal for each item (price × quantity)
+
+Applies category-based discounts
+
+Applies coupon code if applicable
+
+Calculates tax on discounted total
+
+Returns detailed breakdown with final total
+
+Input:
+
+
+const cartItems = [
+  { id: 1, name: "Laptop", price: 1000, quantity: 1, category: "electronics" },
+  { id: 2, name: "Mouse", price: 25, quantity: 2, category: "electronics" },
+  { id: 3, name: "T-Shirt", price: 20, quantity: 3, category: "clothing" },
+  { id: 4, name: "Book", price: 15, quantity: 2, category: "books" }
+];
+
+const discounts = {
+  electronics: 0.10, // 10% off
+  clothing: 0.15,    // 15% off
+  books: 0.05        // 5% off
+};
+
+const couponCode = "SAVE_20"; // Additional 20 off if total > 100
+const taxRate = 0.08; // 8% tax
+
+SAVEXY
+XY=20, 30, 15
+
+{
+    subtotal: 1140,              // Total before any discounts
+    couponDiscount: 20,          // Coupon code discount
+    priceBeforeTax: 1004.5,      // After all discounts, before tax
+    tax: 80.36,                  // Tax amount calculated
+    finalTotal: 1084.86,         // Final amount to pay
+    totalSavings: 135.5          // Total amount saved
+  }
+
+
+
+
+  function calculateCart(cartItems, discounts, taxRate, CouponCode){
+    
+  }
