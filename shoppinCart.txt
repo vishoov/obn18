@@ -20,7 +20,7 @@ Input:
 
 
 const cartItems = [
-  { id: 1, name: "Laptop", price: 1000, quantity: 1, category: "electronics" },
+  { id: 1, name: "Laptop", price: 1000, quantity: 1, category: "electronics", subtotal, discountAmount, discountedPrice },
   { id: 2, name: "Mouse", price: 25, quantity: 2, category: "electronics" },
   { id: 3, name: "T-Shirt", price: 20, quantity: 3, category: "clothing" },
   { id: 4, name: "Book", price: 15, quantity: 2, category: "books" }
@@ -51,5 +51,52 @@ XY=20, 30, 15
 
 
   function calculateCart(cartItems, discounts, taxRate, CouponCode){
-    
+        const itemswithCalculations = cartItems.map(item=>{
+            const subtotal = item.price * item.quantity;
+
+            const discountRate = discounts[item.category] || 0;
+            const discountAmount = subtotal*discountRate;
+            const discountedPrice = subtotal - discountAmont;
+
+            return {
+                ...item,
+                subtotal,
+                discountAmount,
+                discountedPrice 
+
+            }
+        })
+
+        const subtotal = itemswithCalculations.reduce((sum, item)=>{
+            return sum+item.subtotal
+        }, 0);
+
+        const totalDiscount = itemswithCalculations.reduce((sum, item)=>{
+            return sum+item.discountAmount;
+        }, 0);
+
+        let priceAfterDiscount = subtotal - totalDisount;
+
+
+        let couponDiscount = parseInt(couponCode.split("_")[1])/100;
+
+        priceAfterDiscount =priceAfterDiscount- priceAfterDiscount*couponDiscount ;
+
+        const taxAmount = priceAfterDiscount*taxRate;
+
+        const finalTotal = priceAfterDiscount+taxAmount;
+
+
+        return {
+            items:itemswithCalculations,
+            summary:{
+                  subtotal: subtotal,
+    couponDiscount: couponDiscount,
+    priceBeforeTax: priceAfterDiscount,
+    tax: taxAmont;
+    finalTotal: finalTotal
+    totalSavings: totalDiscount+couponDiscount*priceAfterDiscount
+            }
+        }
+
   }

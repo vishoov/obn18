@@ -24,7 +24,6 @@ const products = [
   { name: "Smartphone", category: "electronics", price: 800, stock: 15, rating: 4.8 },
   { name: "Sneakers", category: "clothing", price: 90, stock: 20, rating: 4.3 }
 ];
-
 const filters = {
   minPrice: 50,
   maxPrice: 1000,
@@ -35,7 +34,6 @@ const filters = {
   sortOrder: "desc" // "asc" or "desc"
 };
 Expected Output:
-
 javascript
 [
   { productName: "Smartphone", discountedPrice: 720, originalPrice: 800, savings: 80 },
