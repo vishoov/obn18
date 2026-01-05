@@ -1,0 +1,45 @@
+Problem Statement:
+
+You're building a product management system for an e-commerce platform. You have an array of product objects where each product has properties like name, category, price, stock, and rating.
+
+Write a function processProducts(products, filters) that performs the following operations:
+
+Filter products based on criteria (minimum price, maximum price, category, minimum rating, in-stock only)
+
+Sort the filtered products by a specified field in ascending or descending order
+
+Return a new array with product names and their discounted prices (10% discount for electronics, 15% for clothing, 5% for others)
+
+If no products match the filters, return an empty array with a message property
+
+Input Format:
+
+javascript
+const products = [
+  { name: "Laptop", category: "electronics", price: 1200, stock: 5, rating: 4.5 },
+  { name: "Headphones", category: "electronics", price: 150, stock: 0, rating: 4.2 },
+  { name: "T-Shirt", category: "clothing", price: 25, stock: 50, rating: 4.0 },
+  { name: "Jeans", category: "clothing", price: 60, stock: 30, rating: 4.7 },
+  { name: "Coffee Maker", category: "home", price: 80, stock: 10, rating: 3.8 },
+  { name: "Smartphone", category: "electronics", price: 800, stock: 15, rating: 4.8 },
+  { name: "Sneakers", category: "clothing", price: 90, stock: 20, rating: 4.3 }
+];
+
+const filters = {
+  minPrice: 50,
+  maxPrice: 1000,
+  category: null, // null means all categories
+  minRating: 4.0,
+  inStockOnly: true,
+  sortBy: "price", // "price", "rating", "name"
+  sortOrder: "desc" // "asc" or "desc"
+};
+Expected Output:
+
+javascript
+[
+  { productName: "Smartphone", discountedPrice: 720, originalPrice: 800, savings: 80 },
+  { productName: "Sneakers", discountedPrice: 76.5, originalPrice: 90, savings: 13.5 },
+  { productName: "Coffee Maker", discountedPrice: 76, originalPrice: 80, savings: 4 }
+  { productName: "Jeans", discountedPrice: 51, originalPrice: 60, savings: 9 },
+]
