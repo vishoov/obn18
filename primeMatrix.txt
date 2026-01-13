@@ -1,0 +1,64 @@
+================================================================================
+NESTED LOOPS CHALLENGE: PRIME NUMBER GRID
+================================================================================
+
+PROBLEM STATEMENT:
+Write a program that generates an m x n grid where each cell contains either 
+the product of its row and column indices if the product is a prime number, 
+or 0 if it's not prime.
+
+--------------------------------------------------------------------------------
+INPUT:
+- Two positive integers: m (number of rows) and n (number of columns)
+
+--------------------------------------------------------------------------------
+OUTPUT:
+An m x n grid where:
+- Each cell at position (i, j) contains i * j if the product is prime
+- Each cell contains 0 if the product is not prime or equals 1
+- Use 1-based indexing (rows and columns start from 1)
+- Each number should be right-aligned in a 4-character wide field
+
+--------------------------------------------------------------------------------
+EXAMPLE 1:
+
+Input: m = 5, n = 6
+
+Output:
+   0    2    3    0    5    0
+   2    0    0    0    0    0
+   3    0    0    0    0    0
+   0    0    0    0    0    0
+   5    0    0    0    0    0
+
+Explanation:
+- Cell (1,2): 1*2 = 2 (prime) -> display 2
+- Cell (1,3): 1*3 = 3 (prime) -> display 3
+- Cell (2,2): 2*2 = 4 (not prime) -> display 0
+- Cell (3,4): 3*4 = 12 (not prime) -> display 0
+
+--------------------------------------------------------------------------------
+EXAMPLE 2:
+
+Input: m = 4, n = 4
+
+Output:
+   0    2    3    0
+   2    0    0    0
+   3    0    0    0
+   0    0    0    0
+
+--------------------------------------------------------------------------------
+CONSTRAINTS:
+- 2 <= m, n <= 20
+- Implement a helper function to check if a number is prime
+- A prime number is a natural number greater than 1 that has no positive 
+  divisors other than 1 and itself
+
+--------------------------------------------------------------------------------
+HINTS:
+- Use nested loops: outer loop for rows, inner loop for columns
+- Create a separate function isPrime(num) to check primality
+- For formatting, use appropriate string formatting functions
+
+================================================================================

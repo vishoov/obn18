@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular SVG Image Slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Root Variables */
+        :root {
+            --highlight-color: #00ff00;
+            --dark-bg: #000000;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: var(--dark-bg);
+            overflow: hidden;
+        }
+
+        /* Image Styling */
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Widget Section */
+        .widgets {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Preview Image Container */
+        .widget-preview-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .widget-preview-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            will-change: opacity;
+            filter: grayscale(100%);
+        }
+
+        /* Widget Title */
+        .widget-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            text-transform: uppercase;
+            font-size: 2rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* SVG Styling */
+        #widget-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Indicator Line */
+        #indicator-line {
+            stroke: var(--highlight-color);
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+    </style>
+</head>
+<body>
+    <section class="widgets">
+        <div class="widget-preview-image"></div>
+        <div class="widget-title">Select a Widget</div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        // Widget Data
+        const widgets = [
+            { image: 'https://picsum.photos/400/400?random=1', name: 'Dashboard' },
+            { image: 'https://picsum.photos/400/400?random=2', name: 'Analytics' },
+            { image: 'https://picsum.photos/400/400?random=3', name: 'Reports' },
+            { image: 'https://picsum.photos/400/400?random=4', name: 'Settings' },
+            { image: 'https://picsum.photos/400/400?random=5', name: 'Profile' },
+            { image: 'https://picsum.photos/400/400?random=6', name: 'Messages' },
+            { image: 'https://picsum.photos/400/400?random=7', name: 'Calendar' },
+            { image: 'https://picsum.photos/400/400?random=8', name: 'Tasks' }
+        ];
+
+        // Helper function: Linear Interpolation
+        function lerp(start, end, factor) {
+            return start + (end - start) * factor;
+        }
+
+        // Helper function: Create SVG Element
+        function createSVG(type, attributes = {}) {
+            const element = document.createElementNS('http://www.w3.org/2000/svg', type);
+            for (const [key, value] of Object.entries(attributes)) {
+                element.setAttribute(key, value);
+            }
+            return element;
+        }
+
+        // State Variables
+        let svg;
+        let centerX;
+        let centerY;
+        let outerRadius;
+        let currentIndicatorAngle = 0;
+        let targetIndicatorAngle = 0;
+        let currentSpinnerAngle = 0;
+        let targetSpinnerAngle = 0;
+        let lastTime = performance.now();
+        let lastSegmentIndex = -1;
+
+        // Create Widget Spinner
+        function createWidgetSpinner() {
+            const widgetsContainer = document.querySelector('.widgets');
+            
+            // Calculate dimensions
+            const size = Math.min(window.innerWidth, window.innerHeight);
+            outerRadius = size * 0.4;
+            const innerRadius = size * 0.25;
+            centerX = window.innerWidth / 2;
+            centerY = window.innerHeight / 2;
+
+            // Create root SVG
+            svg = createSVG('svg', {
+                id: 'widget-svg',
+                viewBox: `0 0 ${window.innerWidth} ${window.innerHeight}`
+            });
+
+            // Create definitions block
+            const defs = createSVG('defs');
+            svg.appendChild(defs);
+
+            // Calculate angle per segment
+            const anglePerSegment = (Math.PI * 2) / widgets.length;
+
+            // Loop through widgets and create segments
+            widgets.forEach((widget, index) => {
+                const startAngle = index * anglePerSegment - Math.PI / 2;
+                const endAngle = (index + 1) * anglePerSegment - Math.PI / 2;
+                const midAngle = (startAngle + endAngle) / 2;
+
+                // Create clip path
+                const clipPath = createSVG('clipPath', { id: `clip-${index}` });
+                
+                // Build path for donut slice
+                const outerStartX = centerX + Math.cos(startAngle) * outerRadius;
+                const outerStartY = centerY + Math.sin(startAngle) * outerRadius;
+                const outerEndX = centerX + Math.cos(endAngle) * outerRadius;
+                const outerEndY = centerY + Math.sin(endAngle) * outerRadius;
+                const innerEndX = centerX + Math.cos(endAngle) * innerRadius;
+                const innerEndY = centerY + Math.sin(endAngle) * innerRadius;
+                const innerStartX = centerX + Math.cos(startAngle) * innerRadius;
+                const innerStartY = centerY + Math.sin(startAngle) * innerRadius;
+
+                const pathData = `
+                    M ${outerStartX} ${outerStartY}
+                    A ${outerRadius} ${outerRadius} 0 0 1 ${outerEndX} ${outerEndY}
+                    L ${innerEndX} ${innerEndY}
+                    A ${innerRadius} ${innerRadius} 0 0 0 ${innerStartX} ${innerStartY}
+                    Z
+                `;
+
+                const path = createSVG('path', { d: pathData });
+                clipPath.appendChild(path);
+                defs.appendChild(clipPath);
+
+                // Create group for segment
+                const group = createSVG('g', {
+                    'clip-path': `url(#clip-${index})`,
+                    'data-index': index
+                });
+
+                // Calculate image position
+                const midRadius = (innerRadius + outerRadius) / 2;
+                const imageX = centerX + Math.cos(midAngle) * midRadius;
+                const imageY = centerY + Math.sin(midAngle) * midRadius;
+                
+                // Calculate image size
+                const arcLength = anglePerSegment * midRadius;
+                const ringThickness = outerRadius - innerRadius;
+                const imageWidth = arcLength * 1.5;
+                const imageHeight = ringThickness * 1.5;
+                
+                // Calculate rotation
+                const rotationDeg = (midAngle * 180 / Math.PI) + 90;
+
+                // Create image
+                const image = createSVG('image', {
+                    href: widget.image,
+                    width: imageWidth,
+                    height: imageHeight,
+                    x: imageX - imageWidth / 2,
+                    y: imageY - imageHeight / 2,
+                    preserveAspectRatio: 'xMidYMid slice',
+                    transform: `rotate(${rotationDeg} ${imageX} ${imageY})`
+                });
+
+                group.appendChild(image);
+                svg.appendChild(group);
+            });
+
+            widgetsContainer.appendChild(svg);
+        }
+
+        // Update Content (Title and Background Image)
+        function updateContent() {
+            const anglePerSegment = (Math.PI * 2) / widgets.length;
+            
+            // Calculate relative rotation
+            let relativeRotation = (currentIndicatorAngle - currentSpinnerAngle) % (Math.PI * 2);
+            if (relativeRotation < 0) relativeRotation += Math.PI * 2;
+
+            // Calculate segment index
+            const segmentIndex = Math.floor(relativeRotation / anglePerSegment) % widgets.length;
+
+            // Check if segment changed
+            if (segmentIndex !== lastSegmentIndex) {
+                lastSegmentIndex = segmentIndex;
+
+                // Update title
+                const titleElement = document.querySelector('.widget-title');
+                titleElement.textContent = widgets[segmentIndex].name;
+
+                // Update preview image
+                const previewContainer = document.querySelector('.widget-preview-image');
+                const newImage = document.createElement('img');
+                newImage.src = widgets[segmentIndex].image;
+                newImage.alt = widgets[segmentIndex].name;
+                newImage.style.opacity = 0;
+                
+                previewContainer.appendChild(newImage);
+                
+                gsap.to(newImage, {
+                    opacity: 0.3,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+
+                // Remove old images (keep only last 2)
+                const images = previewContainer.querySelectorAll('img');
+                if (images.length > 2) {
+                    for (let i = 0; i < images.length - 2; i++) {
+                        images[i].remove();
+                    }
+                }
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            const now = performance.now();
+            const deltaTime = (now - lastTime) / 1000;
+            lastTime = now;
+
+            // Update target rotations
+            targetIndicatorAngle += 0.002;
+            targetSpinnerAngle -= 0.001;
+
+            // Lerp current rotations to targets
+            currentIndicatorAngle = lerp(currentIndicatorAngle, targetIndicatorAngle, 0.1);
+            currentSpinnerAngle = lerp(currentSpinnerAngle, targetSpinnerAngle, 0.1);
+
+            // Apply rotations
+            const indicatorLine = document.querySelector('#indicator-line');
+            if (indicatorLine) {
+                indicatorLine.setAttribute('transform', 
+                    `rotate(${currentIndicatorAngle * 180 / Math.PI} ${centerX} ${centerY})`
+                );
+            }
+
+            // Rotate all segments
+            const segments = svg.querySelectorAll('g[data-index]');
+            segments.forEach(segment => {
+                segment.setAttribute('transform', 
+                    `rotate(${currentSpinnerAngle * 180 / Math.PI} ${centerX} ${centerY})`
+                );
+            });
+
+            // Update content
+            updateContent();
+
+            requestAnimationFrame(animate);
+        }
+
+        // Create Indicator Line
+        function createIndicator() {
+            const size = Math.min(window.innerWidth, window.innerHeight);
+            const innerRadius = size * 0.25;
+            
+            const indicatorLine = createSVG('line', {
+                id: 'indicator-line',
+                x1: centerX,
+                y1: centerY - innerRadius,
+                x2: centerX,
+                y2: centerY - outerRadius - 20
+            });
+
+            svg.appendChild(indicatorLine);
+        }
+
+        // Scroll Event Listener
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY * 0.001;
+            targetIndicatorAngle += delta;
+            targetSpinnerAngle -= delta;
+        }, { passive: false });
+
+        // Resize Event Listener
+        window.addEventListener('resize', () => {
+            const oldSvg = document.querySelector('#widget-svg');
+            if (oldSvg) oldSvg.remove();
+            
+            createWidgetSpinner();
+            createIndicator();
+        });
+
+        // Initialize
+        createWidgetSpinner();
+        createIndicator();
+        animate();
+    </script>
+</body>
+</html>

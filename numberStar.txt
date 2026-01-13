@@ -1,0 +1,22 @@
+​Problem Statement
+Write a JavaScript function that takes a number n as input and prints a hollow diamond where:
+The borders display row numbers instead of stars\
+The interior is hollow (spaces only)
+Numbers are placed at the first and last position of each row
+
+For n = 6, the output should look like:
+     1
+    2 2
+   3   3
+  4     4
+ 5       5
+6         6
+ 5       5
+  4     4
+   3   3
+    2 2
+     1
+Constraints
+Input n should be greater than 1
+Use nested loops with conditional logic
+Handle spacing and hollow interior correctly
