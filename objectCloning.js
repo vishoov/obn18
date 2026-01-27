@@ -164,6 +164,10 @@ let cloneInfo = JSON.parse(JSON.stringify(info))
 
 function deepCloneFunc(object){
     //return value, we define it on the top, because throughout the function we will be modifying it
+    if(object==null){
+        return null;
+    }
+
     let clone = Object.assign({}, object);
     //this will give us a shllow copy 
     // top-level properties 
@@ -199,3 +203,44 @@ console.log("deepcloneFunc", deepCloneFunc(obj))
 // }
 
 
+
+//original2
+// deep copy with checking objects and array seperately
+function deepCopywithArray(obj){
+    //error handling
+
+    if(typeof obj !=='object' || obj == null){
+        return obj;
+    }
+
+    //check for array
+    if(Array.isArray(obj)){
+        console.log(obj)
+        const copy = []
+        for(let i=0; i<obj.length;i++){
+            copy[i]=deepCopywithArray(obj[i]);
+        }
+        return copy;
+    }
+
+    // if its an object
+    const objCopy = {};
+    for(let key in obj){
+        objCopy[key]=deepCopywithArray(obj[key]);
+    }
+
+    return objCopy;
+}
+
+const original2 = {
+    name:"ABC",
+    scores:[90, 85, 80, 75],
+    address:{
+        city:"delhi",
+        coordinates:[28.40976, 80.306]
+    }
+};
+
+const copyofOriginal = deepCopywithArray(original2);
+
+console.log(copyofOriginal)

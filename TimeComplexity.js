@@ -171,7 +171,9 @@ function mystery8(n) {
 
 function mystery9(n) {
     for (let i = 0, j = 1; i < n; j++, i += j) {
-      // O(1) work
+                console.log(i, j)
     }
   }
 //   O(undrr(n)
+
+mystery9(9)
