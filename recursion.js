@@ -47,3 +47,18 @@ function countdown(n){
     
     countdown(n-1);
 }
+
+
+// traverse an array
+// print even numbers inside an array using recursion
+// fibonacci
+// binarySearch
+
+
+function emptyArray(ar){
+
+    if(ar.length==0) return;
+
+    ar.pop();
+    emptyArray(ar);
+}
