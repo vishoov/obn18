@@ -50,10 +50,57 @@ function countdown(n){
 
 
 // traverse an array
+
+let arr = [1,2,3,4,5,6]
+function brutetraverse(arr){
+for(let i=0; i<arr.length; i++){
+    console.log(arr[i])
+}
+}
+
+
+function rectrav(arr, i=0){
+    if(i>= arr.length) return;
+    console.log(arr[i])
+    rectrav(arr, i+1)
+}
+
+rectrav(arr);
 // print even numbers inside an array using recursion
+function evenrec(arr, i=0){
+    if(i>= arr.length) return;
+    if(arr[i]%2==0){
+    console.log(arr[i])
+    }
+    rectrav(arr, i+1)
+}
 // fibonacci
+function fibonacci(n){
+    if(n<=1) return n;
+
+    const curr = fibonacci(n-1)+fibonacci(n-2);
+    return curr;
+}
+
 // binarySearch
 
+
+function binarySearch(arr, target, left=0, right=arr.length-1){
+
+
+    if(left>right) return -1;
+
+    const mid = left+Math.floor((right-left)/2);
+    
+    if(arr[mid]===target) return mid;
+    
+    if(arr[mid]<target){
+        // left=mid+1;
+        return binarySearch(arr, target, mid+1, right);
+    }else{
+        return binarySearch(arr, target, left, mid-1);
+    }
+}
 
 function emptyArray(ar){
 
