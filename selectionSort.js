@@ -63,3 +63,7 @@ function smallestKElement(arr, k){
 }
 
 console.log(smallestKElement([7, 10, 4, 3, 20, 15], 3));
+
+// O(n2)
+
+
