@@ -18,3 +18,11 @@ function moveZeroestoEnd(arr){
 console.log(moveZeroestoEnd([0, 5, 0, 3, 8, 0, 2]))
 
 //hw
+
+
+
+// [4, 3, 2, 1]
+// find minimum number of swaps required to sort this array
+
+
+
