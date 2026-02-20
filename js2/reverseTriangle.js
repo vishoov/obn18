@@ -23,3 +23,21 @@ function revv(n){
 }
 
 revv(5)
+
+
+function star(n) {
+    if (n < 1) return;
+  
+    star(n - 1);
+    helper(n);
+  }
+  
+  function helper(n, line = "") {
+    if (n < 1) {
+      console.log(line);
+      return;
+    }
+    line += n + " ";
+    helper(n - 1, line);
+    line += n;
+  }

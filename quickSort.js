@@ -44,3 +44,14 @@ function quickSortRandom(arr){
     }
     return [...quickSort(left), pivot, ...quickSort(right)]
 }
+
+
+//in place quickSort 
+
+// left=0 right=arr.length-1
+// if(low<high)
+// const pivot = partition(arr, low, high);
+// quickSort(arr, low, pivot-1)
+// quickSort(arr, pivot, high)
+
+
