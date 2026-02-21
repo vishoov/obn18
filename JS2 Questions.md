@@ -1,27 +1,4 @@
-# JavaScript Question Bank for Junior Developers
 
-> **Difficulty:** Mix (Beginner → Intermediate) | **Audience:** Bootcamp grads preparing for junior roles | **Format:** Mix (Short Answer, Code Snippets, Pseudo-code)
-
----
-
-## Table of Contents
-
-1. [Nested Loops](#1-nested-loops)
-2. [Star Patterns](#2-star-patterns)
-3. [Star Patterns Day 2](#3-star-patterns-day-2)
-4. [2D Matrix](#4-2d-matrix)
-5. [Nested Arrays and Strings](#5-nested-arrays-and-strings)
-6. [Time Complexity](#6-time-complexity)
-7. [Binary Search](#7-binary-search)
-8. [Map and Set](#8-map-and-set)
-9. [Recursion](#9-recursion)
-10. [Basic Sorting](#10-basic-sorting)
-11. [Merge Sort](#11-merge-sort)
-12. [Quick Sort](#12-quick-sort)
-13. [Callbacks and Higher-Order Functions](#13-callbacks-and-higher-order-functions)
-14. [Map, Filter, and Reduce](#14-map-filter-and-reduce)
-
----
 
 ## 1. Nested Loops
 
