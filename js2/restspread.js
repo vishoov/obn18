@@ -165,5 +165,6 @@ function flatten(obj, prefix="", map =new Map()){
 }
 
 // flatten(nested, "", map)
+//flatten(val, "user", map)
 
 console.log(flatten(nested))

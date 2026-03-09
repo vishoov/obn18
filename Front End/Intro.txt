@@ -1,0 +1,41 @@
+Intro to Front End
+This is the part of web development where we build the web pages i.e. what we see 
+
+
+FRONT END DEVELOPMENT -> client side development
+
+this is the part of product with which the user interacts
+
+3 components-> HTML, CSS, JS
+
+these 3 are the core tech that each and every web page is built from, or this is what the browser understands
+
+
+Why is it important?
+
+1. This is your only gateway to the user
+2. react, next, angular, vue, all of these frameworks/libs render these 3 languages
+3. understanding these 3 technologies helps you a sense of how the internet works and how browsers render UIs
+
+
+
+Core working
+
+HTML  Structures the web page 
+CSS   Styles the web pages(presentation)
+JS    interactivity and logic (behaviour)
+
+
+Browser's Job
+
+1. Network Request -> fetches website files over http/https
+2. Parse the Files -> the deployment sends files of the web page, html css, js, now browser parses them
+3. Build the html structure 
+4. Css Engine-> computes the styles for the web page
+5. JS Engine -> Implements the Javascript (V8 in chrome, spidermonkey in firefox)
+
+
+Key Data Structures
+1. DOM (Doctument Object Model) -> the tree representation of the html in the memory, this is exposed to Javascript through APIs
+2. CSSOM (CSS Object Model)-> a parallel tree of all the computed CSS
+3. RenderTree -> DOM + CSSOM merged together, only contains the visible elements 
