@@ -39,5 +39,68 @@
     <p>br</p>
     <p>hr</p>
     <a href="/">This is a link</a>
+<style>
+    td{
+        border:1px solid black
+    }
+    .title{
+        font-style: italic;
+    }
+</style>
+<h4>Types of elements: block and inline</h4>
+    <table>
+        <tr>
+            <td>Behaviour</td>
+            <td class="title">Block Elements</td>
+            <td class="title">Inline Elements</td>
+        </tr>
+        <tr>
+            <td>Default</td>
+            <td>start on a new line</td>
+            <td>flow within the line of text </td>
+        </tr>
+        <tr>
+            <td>Width</td>
+            <td>Full width of the parent</td>
+            <td>Only wide as the content</td>
+        </tr>
+        <tr>
+            <td>Contains</td>
+            <td>block + inline</td>
+            <td>only inline </td>
+        </tr>
+        <tr>
+            <td>Examples</td>
+            <td>div, p, h1-h6, ul, section, nav, footer</td>
+            <td>span, strong, em, i, a </td>
+        </tr>
+    </table>
+
+    <h5>HTML Document Tree</h5>
+    <pre>
+        Document
+            -head
+                - title
+                - meta
+                - link
+                - style
+            - body
+                - header
+                - main
+                - footer
+                - div
+
+    </pre>
+
+    <h4>Semantic vs Non-semantic Elements</h4>
+
+    <!-- <div class='header'>Header content</div> -->
+     <!-- <header></header> -->
+      <!-- <nav> -->
+        <!-- <main> -->
+            <!-- <footer -->
+             <!-- <article> -->
+                <!-- <aside></aside> -->
+            <aside>Hello there</aside>
 </body>
 </html>
