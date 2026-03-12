@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid black;
+        }
+        td, th{
+            border:1px solid black;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML Tables</h1>
+    <table>
+        <caption>Monthly Analytics Report </caption>
+        <thead>
+            <tr>
+                <th scope="col">Month</th>
+                <th>Revenue</th>
+                <th>Sale</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td scope="row">January</td>
+                <td>100000</td>
+                <td>10000</td>
+                <td>Nice</td>
+            </tr>
+            <tr>
+                <td>January</td>
+                <td>100000</td>
+                <td>10000</td>
+                <td>Nice</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td>200000</td>
+                <td>20000</td>
+                <td>Nice<sub>2</sub></td>
+            </tr>
+        </tfoot>
+    </table>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <table>
+        <tr>
+            <td colspan="2">This is a cell</td>
+        </tr>
+        <tr>
+            <td rowspan="2">This is cell 2</td>
+            <td>Normal Cell</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Again a cell</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td>hello</td>
+            <td>hello</td>
+            <td>hello</td>
+        </tr>
+        <tr>
+            <td>hello</td>
+            <td>hello</td>
+            <td>hello</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table> 
+        <caption style="border: 2px solid black;">
+            New Employees Record
+        </caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th colspan="2">Job</th>
+                <th>Working Experience</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td> john</td>
+                <td>Software Engineer</td>
+                <td>Data Analyst</td>
+                <td rowspan="2">5 Years</td>
+            </tr>
+            <tr>
+                <td> Ale</td>
+                <td colspan="2">Senior Software Engineer</td>
+
+            </tr>
+            <tr>
+                <td> Jack</td>
+                <td>Junior Tech Write</td>
+                <td>Blogger</td>
+                <td>6 Months</td>
+            </tr>
+        </tbody>
+
+    </table>
+<br>
+    <table>
+        <tr>
+            <td colspan="2">Cell 1</td>
+            <td>Cell 2</td>
+            <td>Cell 3</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Cell 4</td>
+            <td>Cell 5</td>
+            <td>Cell 6</td>
+            <td>Cell 7</td>
+        </tr>
+        <tr>
+            <td colspan="3">Cell 8</td>
+        </tr>
+        <tr>
+            <td>Cell 9</td>
+            <td colspan="2">Cell 10</td>
+        </tr>
+    </table>
+
+<br>
+<table>
+    <colgroup>
+        <col style="background-color: lightblue;">
+    <col style="background-color: lightcyan;">
+    <col style="background-color: lightcoral;">
+
+    </colgroup>
+
+    <tr>
+        <td>Language</td>
+        <td>City</td>
+        <td>Nationality</td>
+    </tr>
+    <tr>
+        <td>Hindi</td>
+        <td>Delhi</td>
+        <td>Indian</td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+<!-- Notes -->
+ <!-- 1. thead, tbody and tfoot are optional but useful for semantic structuring -->
+  <!-- 2.using scope='col' or scope='row' respectively helps in user guidance -->
+   <!-- 3. <caption> is very useful for making tables data appear in the structure  -->
