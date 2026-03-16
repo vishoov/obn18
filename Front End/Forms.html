@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+    <style>
+        table{
+            border:1px dashed black;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            border:1px dashed black;
+            padding:5px;
+        }
+
+        .header{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 2px dotted brown;
+            background: #ffffff;
+background: linear-gradient(0deg, rgba(241, 153, 153, 0.062) 0%, rgba(247, 165, 12, 0.47) 100%);
+box-shadow: 5px 5px;
+border-radius: 15px;
+            font-family:monospace;
+        }
+
+        .header p{
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="header">
+        <h1>HTML Forms</h1>
+        <p>An html form is a structured way of collecting information from the user</p>
+    </div>
+
+    <ul>
+        <li>User registration and login</li>
+        <li>Application forms, feedback forms, escalation forms</li>
+        <li>Chat UIs, Messaging UIs</li>
+        <li>Ecommerce chckout and payment flows</li>
+    </ul>
+
+
+    <form action="/submit" method="POST">
+        <label>Name</label>
+        <input type="text">
+    </form>
+
+    <h3>Form Attributes</h3>
+    <table >
+        <tr>
+            <th>Attribute</th>
+            <th>Purpose</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>action</td>
+            <td>URL where the form data is being sent</td>
+            <td>action='/register'</td>
+        </tr>
+        <tr>
+            <td>method</td>
+            <td>Method using which the data is sent (POST or PUT or PATCH)
+            </td>
+            <td>method="POST"</td>
+        </tr>
+
+        <tr>
+            <td>enctype</td>
+            <td>Enocding Type, required for file uploads</td>
+            <td>enctype='multipart/form-data'</td>
+        </tr>
+
+        <tr>
+            <td>novalidate</td>
+            <td>disable browser's internal validation</td>
+            <td>novalidate</td>
+        </tr>
+        <tr>
+            <td>autocomplete</td>
+            <td>Enables/disables browsers autocomplete</td>
+            <td>autocomplete="off"</td>
+        </tr>
+        <tr>
+            <td>onSubmit</td>
+            <td>It triggers a javascript function when the form is submitted</td>
+            <td>onSubmit={submitFunc()}</td>
+        </tr>
+    </table>
+
+    <h4>Form Elements</h4>
+    <table>
+        <tr>
+            <th>Element</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>input</td>
+            <td>Versatile single line text input used for text, password, email, description, or anything text</td>
+        </tr>
+        <tr>
+            <td>label</td>
+            <td>Associates a tag with an input</td>
+        </tr>
+
+        <tr>
+            <td>textarea</td>
+            <td>multi line text input</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>
+                dropdown list
+            </td>
+        </tr>
+        <tr>
+            <td>button</td>
+            <td>clickable action trigger</td>
+        </tr>
+        <tr>
+            <td>fieldset</td>
+            <td>for grouping similar fields together</td>
+        </tr>
+        <tr>
+            <td>legend</td>
+            <td>caption for a fieldset</td>
+        </tr>
+        <tr><td>radio</td><td>multiple choice</td></tr>
+    </table>
+        <h3>Step by step working flow</h3>
+        <ol>    
+            <li>
+                broswer reads the form
+            </li>
+            <li>User fills the fields</li>
+            <li>User clicks the submit button</li>
+            <li>browser validates the inputs</li>
+            <li>Data is serialized</li>
+            <li>HTTP request will be sent</li>
+            <li>Server will process the data </li>
+            <li>
+                Response is returned
+            </li>
+        </ol>
+        <br>
+        <form>
+            <label for="username">Username:<span style="color: red;">*</span></label>
+            <input type="email" id="username" name="username" placeholder="Enter your username" required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <br><br>
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <!-- signup form with name, email, password, phone number, address -->
+
+        <form>
+            <fieldset>
+                <legend>Basic information</legend>
+                <label for="Name">Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required minlength="3" maxlength="20" >
+
+                <label>Email</label>
+                <input type="email" id="email" name="email" required >
+
+                <label>Password</label>
+                <input type="password" id="password" name="password" >
+
+                <label>Phone</label>
+                <input type="number" id="phone" name="phone" min="1000000000" max="9999999999">
+
+                <label>Address</label>
+                <textarea placeholder="enter your address"></textarea>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>New Things</legend>
+                <label>Date of birth</label>
+                <input type="date">
+
+                <label>Gender</label>
+                <input type="radio" value="male" name="gender" id="gender">
+                <label for="male">Male</label>
+
+                <input type="radio" name="gender" value="female" id="gender">
+                <label for="female">Female</label>
+
+                <br>
+
+                <label>Country:</label>
+                <select id="country" name="country">
+                    <option value="">-- Select --</option>
+                    <option value="India">India</option>
+                    <option value="US">US</option>
+                    <option value="UK">UK</option>
+                </select>
+
+                    <input type="checkbox" id="terms" name="terms">
+                    <label>I agree to the Terms & conditions<a href="/terms">Link</a></label>
+            </fieldset>
+            <label>Any suggestions</label>
+            <textarea>Default Value</textarea>
+
+            <button type="submit">submit form</button>
+            <button type="reset">reset form</button>
+        </form>
+</body>
+</html>

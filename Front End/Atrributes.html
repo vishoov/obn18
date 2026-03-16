@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Attributes HTML</h1>
+    <h3>Attributes are specifications placed inside the html element's opening tag, that adds additional information about that element, hooks the styles it to , and helps build the behaviour</h3>
+    <style>
+        td, th{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+    </style>
+    <table>
+
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>Global Attributes</td>
+            <td>Attributes applicable on 
+                all html elements</td>
+                <td>class, id, title, style, hidden, tabindex</td>
+        </tr>
+        <tr>
+            <td>Element Specific</td>
+            <td>those attributes that belong to specific tags only</td>
+            <td>href, src, required, action, target, onSubmit</td>
+        </tr>
+        <tr>
+            <td>Boolean Attributes</td>
+            <td>presence = true, absence= false</td>
+            <td>autoplay, checked, disabled, required</td>
+        </tr>
+        <tr>
+            <td>
+                Custom Attribute (data-*)
+            </td>
+            <td>store product specific data</td>
+            <td> data-user-id="42"</td>
+        </tr>
+    </table>
+
+    <p aria-label="curr"> Alt Tag: whenever an image doesnt load, the alt text appears</p>
+</body>
+</html>
