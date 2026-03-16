@@ -1,0 +1,32 @@
+HTML form validation is the process of checking that user-submitted data meets defined rules before it is processed or sent to an API.
+
+email : 
+
+fphfph@
+user@email.com
+
+
+why does it matter?
+
+1. prevents garbage data (empty fields, wrong formats, inconsistent inputs) from reaching the database
+2. reduces unecessary server load 
+3. improves user experience
+
+Client side vs server side validation
+
+client side-> user's browsers -> UX responses 
+
+server side -> backend server -> true security & data integrity
+
+
+NOTE: never rely solelly on client side validation as it can be bypassed. A hacker can bypass it by using browser dev tools or by sending a raw HTTP request to the given api. always validate on the server side as well
+
+
+Detailed steps of html validation:
+
+1. user clicks the submit button
+2. browser scans for all fields 
+3. constraints checking 
+4. first failure found 
+5. failures fixed-> constraints are passed 
+6. server re-validates 

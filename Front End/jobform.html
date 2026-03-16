@@ -1,0 +1,227 @@
+<!-- Demonstrates: All major validation attributes together in one real-world form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Application</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 40px auto; background: #f9f9f9; }
+    h2   { color: #333; }
+    fieldset { background: white; border: 1px solid #ddd; border-radius: 6px; padding: 20px; margin-bottom: 20px; }
+    legend   { font-weight: bold; color: #444; padding: 0 8px; }
+    label    { display: block; margin-top: 12px; font-size: 0.9em; color: #555; }
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 11px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+
+    /* Only show validation colors after user interacts (uses :placeholder-shown trick) */
+    input:not(:placeholder-shown):valid   { border-color: #28a745; background: #f0fff4; }
+    input:not(:placeholder-shown):invalid { border-color: #dc3545; background: #fff0f0; }
+
+    .hint    { font-size: 0.78em; color: #888; margin: 3px 0 0 2px; }
+    button   { background: #0066cc; color: white; padding: 12px 28px; border: none;
+               border-radius: 4px; font-size: 1em; cursor: pointer; margin-top: 10px; }
+    button:hover { background: #004fa3; }
+  </style>
+</head>
+<body>
+  <h2>Job Application Form</h2>
+
+  <form action="/apply" method="POST" enctype="multipart/form-data">
+
+    <!-- ── SECTION 1: Personal Info ── -->
+    <fieldset>
+      <legend>Personal Information</legend>
+
+      <!-- Full name: letters and spaces only -->
+      <label for="full-name">Full Name *</label>
+      <input
+        type="text"
+        id="full-name"
+        name="full_name"
+        required
+        minlength="3"
+        maxlength="60"
+        pattern="[A-Za-z\s]+"
+        title="Name should contain only letters and spaces"
+        placeholder="Rahul Sharma"
+      >
+
+      <!-- Email -->
+      <label for="app-email">Email Address *</label>
+      <input
+        type="email"
+        id="app-email"
+        name="email"
+        required
+        placeholder="rahul@example.com"
+      >
+
+      <!-- Indian mobile number -->
+      <label for="app-phone">Mobile Number *</label>
+      <input
+        type="tel"
+        id="app-phone"
+        name="phone"
+        required
+        pattern="[6-9][0-9]{9}"
+        title="Enter a valid 10-digit Indian mobile number"
+        placeholder="9876543210"
+      >
+      <p class="hint">10-digit Indian mobile number (starting with 6, 7, 8, or 9)</p>
+
+      <!-- Date of birth: must be 18+ years (born before 2008-03-16) -->
+      <label for="dob">Date of Birth *</label>
+      <input
+        type="date"
+        id="dob"
+        name="dob"
+        required
+        max="2008-03-16"
+        min="1950-01-01"
+      >
+      <p class="hint">You must be at least 18 years old to apply</p>
+    </fieldset>
+
+    <!-- ── SECTION 2: Professional Details ── -->
+    <fieldset>
+      <legend>Professional Details</legend>
+
+      <!-- Years of experience: 0 to 40 -->
+      <label for="experience">Years of Experience *</label>
+      <input
+        type="number"
+        id="experience"
+        name="experience"
+        required
+        min="0"
+        max="40"
+        step="1"
+        placeholder="e.g. 3"
+      >
+
+      <!-- Expected salary: steps of 5000 -->
+      <label for="salary">Expected Salary (₹ per month) *</label>
+      <input
+        type="number"
+        id="salary"
+        name="salary"
+        required
+        min="10000"
+        max="2000000"
+        step="5000"
+        placeholder="e.g. 75000"
+      >
+      <p class="hint">Enter in multiples of ₹5,000 (min ₹10,000)</p>
+
+      <!-- Portfolio URL -->
+      <label for="portfolio">Portfolio / GitHub URL *</label>
+      <input
+        type="url"
+        id="portfolio"
+        name="portfolio"
+        required
+        placeholder="https://github.com/yourname"
+      >
+
+      <!-- LinkedIn: optional but must be valid URL if provided -->
+      <label for="linkedin">LinkedIn Profile (optional)</label>
+      <input
+        type="url"
+        id="linkedin"
+        name="linkedin"
+        placeholder="https://linkedin.com/in/yourname"
+      >
+
+      <!-- Resume upload: only PDF files, max enforced at server side -->
+      <label for="resume">Upload Resume (PDF) *</label>
+      <input
+        type="file"
+        id="resume"
+        name="resume"
+        required
+        accept=".pdf"
+      >
+      <!-- accept=".pdf" filters file picker to PDFs, but doesn't block other uploads -->
+      <p class="hint">PDF files only</p>
+    </fieldset>
+
+    <!-- ── SECTION 3: Preferences ── -->
+    <fieldset>
+      <legend>Work Preferences</legend>
+
+      <!-- Job type: required select -->
+      <label for="job-type">Preferred Job Type *</label>
+      <select id="job-type" name="job_type" required>
+        <option value="">-- Select --</option>
+        <option value="full-time">Full-Time</option>
+        <option value="part-time">Part-Time</option>
+        <option value="freelance">Freelance</option>
+        <option value="internship">Internship</option>
+      </select>
+
+      <!-- Notice period: 0 to 180 days, 15-day steps -->
+      <label for="notice">Notice Period (days) *</label>
+      <input
+        type="number"
+        id="notice"
+        name="notice_period"
+        required
+        min="0"
+        max="180"
+        step="15"
+        value="30"
+      >
+      <p class="hint">In multiples of 15 days (0, 15, 30, 45...)</p>
+
+      <!-- Cover letter: 100–1000 chars -->
+      <label for="cover">Cover Letter *</label>
+      <textarea
+        id="cover"
+        name="cover_letter"
+        required
+        minlength="100"
+        maxlength="1000"
+        rows="6"
+        placeholder="Tell us why you're a great fit... (100–1000 characters)"
+      ></textarea>
+
+      <!-- Agreement checkbox -->
+      <br>
+      <label>
+        <input type="checkbox" name="consent" required>
+        I confirm that all information provided is accurate *
+      </label>
+    </fieldset>
+
+    <button type="submit">Submit Application</button>
+    <button type="reset">Clear Form</button>
+  </form>
+</body>
+</html>
+
+<!--
+  Validation summary for this form:
+  ┌─────────────────┬──────────────────────────────────────────┐
+  │ Field           │ Rule enforced                            │
+  ├─────────────────┼──────────────────────────────────────────┤
+  │ Full Name       │ required, 3-60 chars, letters+spaces only│
+  │ Email           │ required, valid email format             │
+  │ Phone           │ required, 10-digit Indian mobile pattern │
+  │ Date of Birth   │ required, max 2008-03-16 (18+ years)     │
+  │ Experience      │ required, 0-40, whole number             │
+  │ Salary          │ required, 10000-2000000, step of 5000    │
+  │ Portfolio URL   │ required, valid URL format               │
+  │ Resume          │ required, .pdf files only                │
+  │ Job Type        │ required, must select from list          │
+  │ Notice Period   │ required, 0-180 in steps of 15           │
+  │ Cover Letter    │ required, 100-1000 characters            │
+  │ Consent         │ required checkbox                        │
+  └─────────────────┴──────────────────────────────────────────┘
+-->

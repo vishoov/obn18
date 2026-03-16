@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HTML input validation</h1>
+    <p>browser's built-in ability to check user inputs against rules of the product that we define using the html attributes, ZERO JS REQUIRED!</p>
+    <p>This is the fastest, smoothest and simplest form of validation i.e. the first layer of security before the data reaches our server</p>
+
+    <h3>Why is it important</h3>
+    <ul>
+        <li>It prevents empty inputs and malicious inputs from being sent to the server </li>
+        <li>Works in all browsers</li>
+        <li>Improves UX feedback without page reloads</li>
+    </ul>
+
+    <style>
+        table{
+            border:1px solid black;
+
+        }
+
+        td{
+            border:1px dotted grey;
+        }
+    </style>
+    <h2>Validation Attributes</h2>
+    <table>
+        <tr>
+            <th>Attributes</th>
+            <th>Purpose</th>
+            <th>Works on</th>
+        </tr>
+        <tr>
+            <td>required</td>
+            <td>field must not be empty</td>
+            <td>text, email, number, passowrd, etc etc</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>Enforces the data format</td>
+            <td>input tag</td>
+        </tr>
+        <tr>
+            <td>minLength</td>
+            <td>Minimum number of character in input</td>
+            <td>text, password, email</td>
+        </tr>
+
+        <tr>
+            <td>maxLength</td>
+            <td>Maximum characters</td>
+            <td>text, pass, email</td>
+        </tr>
+
+        <tr>
+            <td>min</td>
+            <td>Minimum numeric value</td>
+            <td>number, range,date, time</td>
+        </tr>
+        <tr>
+            <td>max</td>
+            <td>Maximum numeric value</td>
+            <td>number, range,date, time</td>
+        </tr>
+
+        <tr><td>
+            pattern
+        </td>
+    <td>REGEX</td>
+    <td>text, pass, email, etc</td>
+    </tr>
+
+    <tr><td>title</td>
+    <td>tooltip: the hint shown when you hover on the input</td></tr>
+
+    <tr>
+        <td>multiple</td>
+        <td>for multiple values (comma seperated)</td>
+        <td>email, file</td>
+
+    </tr>
+    
+    <tr>
+        <td>step</td>
+        <td>least applicable increment value</td>
+        <td>number, range, date</td>
+    </tr>
+
+    </table>
+</body>
+</html>

@@ -179,7 +179,7 @@ border-radius: 15px;
                 <input type="password" id="password" name="password" >
 
                 <label>Phone</label>
-                <input type="number" id="phone" name="phone" min="1000000000" max="9999999999">
+                <input type="number" id="phone" name="phone" min="1" max="5" step="1">
 
                 <label>Address</label>
                 <textarea placeholder="enter your address"></textarea>
@@ -207,6 +207,10 @@ border-radius: 15px;
                     <option value="US">US</option>
                     <option value="UK">UK</option>
                 </select>
+                <label for="browser">Choose your browser from the list:</label>
+                <input list="browsers" name="browser" id="browser">
+                
+                
 
                     <input type="checkbox" id="terms" name="terms">
                     <label>I agree to the Terms & conditions<a href="/terms">Link</a></label>
