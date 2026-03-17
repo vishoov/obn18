@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HTML Media Tags</h1>
+    <p>these tags help us EMBEDD media into our web page, including audio, video, interactive text, sections of different products</p>
+
+    <ul>
+        <li>audio</li>
+        <li>video</li>
+        <li>source</li>
+        <li>track</li>
+    </ul>
+
+    <ol>
+        <li>html parser parse the audio tag</li>
+        <li>src attribute or the child <span><</span>source> element </li>
+        <li>checks the MIME type </li>
+        <li>preload the data based on the attributes present (preload)</li>
+        <li>renders the controls if the controls attribute is present</li>
+        <li>fires the javascript events like play, pause, ended, stop</li>
+
+    </ol>
+
+
+    <div class="song" style="width: 100vw; height: 200px; background-color: aqua; padding: 20px;;">
+        <h1>audio tag example</h1>
+        <audio 
+        controls
+        autoplay 
+        loop
+        muted
+        preload="auto"
+        >
+            <source src="./alexgrohl-energetic-action-sport-500409.mp3" type="audio/mp3">
+            <!-- <source > -->
+
+        </audio>
+    </div>
+
+    <div class="video"
+    style="background-color: antiquewhite; width: auto;">
+<h1>Video tag exmaple</h1>
+
+    <video 
+    width="400"
+    height="280"
+    preload="metadata" 
+    autoplay
+    controls
+    muted
+    loop
+
+    >
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+
+        <track
+        src="subtitle.sub"
+        kind="subtitles"
+        srclang="en"
+        >
+    </video>
+
+
+</div>
+
+
+<img src="./seo" width="100px" height="100px" alt="SEO icon">
+<!-- <picture>
+    <source media="(min-width: 650px)" srcset="large-image.jpg">
+    <source media="(min-width: 465px)" srcset="medium-image.jpg">
+    <img src="small-image.jpg" alt="Description of the image">
+  </picture> -->
+
+
+</body>
+</html>
