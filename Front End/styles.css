@@ -1,3 +1,149 @@
-*{
-    display:none;
+
+
+html{
+    background-color: beige;
 }
+
+
+
+p{
+    color: green;
+}
+
+
+/* 1. element selector */
+p{
+    color: black;
+}
+
+/* 2. Class Selector */
+.selectors{
+    background: #f70000;
+    background: linear-gradient(0deg, rgba(247, 0, 0, 0) 0%, rgba(255, 166, 0, 0.67) 100%);
+    min-height: 100px;
+    margin: 10px 0;
+    border: 4px dashed brown;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* 3. ID selector */
+#selectID{
+    /* color:blue; */
+    font-size:20px;
+}
+
+
+#paraID{
+    color:black;
+}
+.para{
+    color: white;
+}
+
+/* 4. Universal Selector */
+/* *{
+    display: none;
+} */
+
+/* 5. Descendant or child selector */
+.selectors h2{
+    color: white;
+}
+
+/* 6. Pseudo Class */
+div:hover{
+    background-color: red;
+}
+
+input{
+    padding: 5px;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+input:focus{
+    border-color: purple;
+    background-color: rgb(237, 237, 237);
+    outline: none;
+}
+
+button{
+    padding: 6px;
+    background-color: rgb(0, 0, 250);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:active{
+    background-color: white;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    color: red;
+}
+
+/* 7. Grouping of elements */
+h1, h2, h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Specificity : class < id< inline  */
+/* Cascade order: inline>internal>external  */
+/* whenever 2 rules conflict the rule with higher specificity or later position wins */
+
+
+
+/* Color formats */
+.example{
+    /* Named Color */
+    /* color: red;  */
+    /* Hex Code */
+    color:#416093;
+    /* rgb values */
+    /* color:rgb(255, 190, 200) */
+    /* RGB + Alpha (transparency) */
+    /* color: rgba(255, 0, 0, 0.7); */
+    /* HSL: hue, saturation and lightness */
+    /* color:hsl(0, 100%,50%) */
+
+}
+
+@font-face {
+    font-family: "Custom Font";
+    src: url('./PlaywriteDKUloopetGuides-Regular.ttf');
+    font-weight: 800;
+}
+
+/* FONT PROPERTIES */
+body{
+/* using CDN link */
+/* font-family: "Playwrite DK Uloopet Guides", cursive; */
+/* Using the custom typeface */
+    /* font-family: Custom Font; */
+    font-size:20px;
+    font-weight: bold;
+    line-height: 30px;
+    /* letter-spacing: -2px; */
+
+}
+/* Text properties */
+p{
+    text-align:justify;
+    /* left or center or right or justify */
+    /* text-decoration:line-through; */
+    text-transform:capitalize;
+    text-shadow:5px -2px 2px grey;
+}
+
+
+/* Box sizing : the way through which an element is sized in relation to its border and spacing */
+
+/* By default all the elements have content box  */
+/* size of an element = content width */

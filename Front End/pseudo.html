@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Classes in CSS</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color:black;
+            color: white;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+
+    pre{
+        border: 1px solid white; 
+        margin:8px;
+    }
+
+    p{
+        margin: 5px;
+
+    }
+
+    .list{
+        margin: 20px;
+        list-style:square;
+    }
+
+    /* .list:not(#thisone){
+        margin: 20px;
+        list-style:square;
+    } */
+
+    #thisone:has(#special){
+        color:rgb(248, 0, 248)
+    }
+
+    .item:nth-child(2){
+        color: aquamarine;
+        font-weight: 900;
+    }
+
+    .item:is(#diff){
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(0, 255, 60);
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Pseudo Classes in CSS</h1>
+        <pre >
+
+            selector:pseudo-class{
+            
+                property:value
+            
+            }
+
+        </pre>
+        <p>Pseudo Class is a keyword added to  selector (after a colon) that styles an element based on its state, or position or condition</p>
+        <p>This gives us a little bit of dynamicity over the styling of our web page</p>
+    </div>
+<br>
+
+
+    <h2>Interactive pseudo classes</h2>
+    <br>
+    <ul class="list">
+        <li>:hover- when the mouse is over that element</li>
+        <li>:focus - whenever an element has the cursor active in it</li>
+        <li>:active: while the element is activated (pressed down) </li>
+        <li>:visited - already visited links</li>
+        <li>:link - unvisited link </li>
+    </ul>
+
+    <br>
+
+    <h2>Form UI pseudo classes</h2>
+
+
+
+    <ul class="list">
+        <li>
+            :valid/:invalid - form fields whenever they pass the form validation or not
+        </li>
+        <li>
+            :required/:optional - whenever required is mentioned in an input
+        </li>
+        <li>
+            :disabled/:enabled :whenever a field is disabled from being filled
+        </li>
+
+        <li>
+            :checked: for checkboxes/ radio
+        </li>
+    </ul>
+
+    <h2>Functional pseudo classes</h2>
+    <ul class="list" id="thisone">
+        <li id="special">:not - to exclude any element from the styling </li>
+        <li>:has - has a specific child element or not </li>
+        <li>
+            :is(selector) : matches any element in the selector list (where the inner selector also matches)
+        </li>
+    </ul>
+
+    <br>
+    <h2>Structural Pseudo Classes</h2>
+    <ul class="list" id="struct">
+       <li class="item">:first-child - first child of its parent</li>
+       <li class="item">:last-child - last child of its parent</li>
+       <li class="item" id="diff">:nth-child(n) - nth (n value) child of its parent</li>
+       <li class="item">:nth-last-child(n) - nth (n value) last child of its parent</li>
+
+
+    </ul>
+</body>
+</html>

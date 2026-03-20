@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: blueviolet;
+            font-size:52px;
+            text-align: center;
+        }
+        
+        .header{
+            margin: 20px;
+            box-shadow: 5px 2px 5px violet;
+        }
+        
+        .section2{
+            background-color: burlywood;
+            padding:10px;
+            border: 2px dotted black;
+        }
+        
+        p{
+            color: grey;
+        }
+        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=Playwrite+DK+Uloopet+Guides&display=swap" rel="stylesheet">  
+        <link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+    <div class="header" style="background-color: bisque; padding: 10px; border: 2px solid brown; border-radius:10px;">
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: aqua;">CSS</h1>
+        <p style="color: brown;">Cascading Style Sheets: visual presentation of HTML documents.</p>
+        <p>used for controlling colors, fonts, spacing, layout design</p>
+    </div>
+
+
+    <pre style="background-color:blanchedalmond; padding: 10px; font-family: 'Courier New', Courier, monospace;">
+        css ruleset
+        selector{
+            property:value
+        }
+    </pre>
+
+    <ul>
+        <li>selector: targetting HTML element: h1. .card, #header </li>
+        <li>property: the style attributes : color, font-size, margin, font-family</li>
+        <li>value: whatever the property is set to: color:Red, font-size:16px, margin:auto</li>
+        <li>Declaration: property+value: color:Red, line-height:2px</li>
+        <li>Declaration Block: all declaration inside {} </li>
+    </ul>
+
+
+    <div class="section2">
+        <h2>Ways to add CSS</h2>
+        <ol>
+            <li>Inline CSS: <span><</span>h1 <span></span>style="color:red; font0size:50px; font-family:'Arial'"><span><</span>/h1></li>
+            <li>Internal CSS: written inside the style tag</li>
+            <li>External CSS: a seperate .css file linked to the html</li>
+        </ol>
+    </div>
+
+    <div class="selectors">
+        <h2 id="selectID">Selectors in CSS</h2>
+        <p id="paraID" class="para" >Refer to styles.css</p>
+
+    </div>
+
+    <div class="selectors"> 
+        <p class="example">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus facilis necessitatibus pariatur voluptas ipsa illo, expedita rem eum quasi asperiores?</p>
+    </div>
+
+    <div class="selectors">
+    <input type="text" placeholder="Please write something..." >
+    <button type="button">Click Me!</button>
+</div>
+
+<div class="selectors">
+    <a href="https://google.co.in" target="_blank" >I am a link</a>
+</div>
+
+
+
+</body>
+</html>

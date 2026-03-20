@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: url('./matrix-matrix-code.gif');
+            color: rgb(255, 255, 255);
+            font-family: 'Doto';
+            padding: 10px;
+        }
+
+        .header{
+            background-color: rgba(0, 86, 0, 0.589);
+            border: 1px solid greenyellow;
+            padding: 10px 20px;
+        }
+
+        p, td{
+            font-family:'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <h1>CSS units</h1>
+    <hr>
+    <p>CSS has 2 categories of units </p>
+
+    <table style="border: 1px dotted greenyellow;">
+        <tr>
+            <th>Absolute Units</th>
+            <th>Relative Units</th>
+        </tr>
+
+        <tr>
+            <td>Fixed (compared to the size of pixels)</td>
+            <td>Flexible (scale with the content)</td>
+        </tr>
+
+      
+
+    </table>
+
+    <div>
+        <h5>Fixed Units Examples</h5>
+        <p>width:200px - pixels is most comment for screens (1920X1080)
+        <br>
+            width:2cm- centimeters for print layouts 
+        </p>
+            </div>
+
+            <h5>Relative Units Example</h5>
+        <div>
+            <pre>
+.container{
+    <b>width:80%;</b> % of parent element's width
+    <b>font-size:1.5em;</b> 1.5 times the size of parent's font size;
+    <b>font-size:1rem;</b> 1.5 times of the size of 
+    ROOT element's font size 
+    <b>height:100vh;</b> 100% of viewport height
+    <b>width:100vw;</b> 100% of viewport width
+}
+</pre>
+
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

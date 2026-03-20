@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 10px;
+            background-color: brown;
+            color: yellow;
+            font-family:monospace;
+
+        }
+        .box{
+            background-color: rgba(255, 255, 0, 0.342);
+            border: 1px solid yellow;
+            min-height: 100px;
+            padding: 10px;
+            max-height: 300px;
+        }
+
+        .card{
+            background-color: yellow;
+            color: black;
+            /* Content */
+            width: 300px;
+            height: 200px;
+            
+            /* padding - space inside the border and outside the content */
+            /* padding: 20px; all sides padding */
+            /* padding: 50px 20px; top/bottom | left/right */
+            padding: 20px 20px 20px 20px; /*top right bottom left*/
+            
+            /* Border */
+            border: 3px solid blue;
+            border-radius: 15px;
+
+            /* margin*/
+            margin: 20px auto; /*auto (finds the available space and divides that equally into both the sides)*/
+        }
+
+        .default{
+            box-sizing: content-box; /*default styling of browsers */
+            /* content-box -> width only counts the content area */
+            /* padding margin border-> these are all outside the width of the element */
+            background-color: rgba(153, 205, 50, 0.681);
+            width: 200px;
+            padding: 20px;
+            border: 5px solid;
+            /* actual width 200px + 20px +20px + 10px = 250px */
+        }
+
+        .better{
+            box-sizing: border-box;
+            width:200px;
+            padding: 20px;
+            border: 5px solid yellow;
+            background-color:  rgba(153, 205, 50, 0.681);
+            /* Actual rendered width 200px exactly*/
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Box Model</h1>
+    <p>Every html element is a rectangular box made of four layers</p>
+
+<br>
+        Margin
+        <div class="box" style="background-color: rgba(255, 255, 0, 0.114);">
+            Border
+            <div class="box" style="border: 2px dotted yellow; ">
+                Padding
+                <div class="box" style="background-color: rgb(238, 255, 49); color: black;">Content</div>
+            </div>
+        </div>
+
+<br>
+<br>
+
+    <div class="card">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi quisquam eligendi laborum omnis quidem tempora quae iusto possimus, ea nisi.
+    </div>
+
+
+    <p>box-sizing: controls how width and height are calculated for each html element 
+    </p>
+
+    <br>
+
+    <div class="default">
+        Default Content Box
+    </div>
+<br>
+    <div class="better">
+        Box model border box
+    </div>
+</body>
+</html>
