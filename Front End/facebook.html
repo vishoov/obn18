@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .main{
+        display: block;
+        height: 92.5vh;
+        border: 1px solid grey;
+        width: 100vw;
+    }
+
+    .footer{
+        height: 7.5vh;
+        width: 100vw;
+        text-align: center;
+        padding: 20px;
+    }
+    a{
+        text-decoration: none;
+        margin: 5px;
+        color: grey;
+    }
+
+    .left, .right{
+        display: inline-block;
+    }
+
+    .left{
+        width: 67.5%;
+        /* background-color: pink; */
+        height: 100%;
+        position: relative;
+
+        border-right: 1px solid grey;
+    }
+
+    .icon{
+        position: relative;
+        top: 40px;
+        left: 40px;
+    }
+
+    .image{
+        position: absolute;
+        right: 9%;
+        top: 0;
+    }
+
+    .text{
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+    }
+
+    h2{
+        font-size: 55px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 560;
+
+    }
+    .right{
+        position: absolute;
+        padding: 10% 40px ;
+    }
+
+    form > *{
+        width: 100%;
+        margin: 20px;
+        font-weight: 200;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    input{
+        padding: 15px;
+        display: block;
+        width: 100%;
+        border: 1px solid grey;
+        border-radius: 10px;
+    }
+
+    
+    button{
+        border-radius: 20px;
+        padding:8px;
+        border: none;
+    }
+    #login{
+        background-color: blue;
+        color: white;
+    }
+
+    #newacc{
+        color: white;
+        border: 1px solid blue;
+        background-color: white;
+        color: blue;
+    }
+
+    #forgot{
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+
+
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="left">
+            <div class="icon">
+                <img src="./facebook-svgrepo-com (1).svg" height="60px" alt="">
+            </div>
+            <div class="image">
+                <img height="780px" src="https://static.xx.fbcdn.net/rsrc.php/y0/r/U45qBJmWVHU.webp">
+            </div>
+            <div class="text">
+
+                <h2>Explore the <br>things <span style="color: blue;">you<br> love</span>.</h2>
+            </div>
+        </div>
+        <div class="right">
+            <form>
+                <h3>Login to facebook</h3>
+                <input type="text" placeholder="Email address or mobile number">
+                <input  placeholder="Password" type="password">
+                <button id="login" type="submit">Log in</button>
+                <a id="forgot">Forgotten Password</a>
+                <button id="newacc" type="button">Create Account</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+            <a class="link">English (UK)</a>
+            <a href="" class="link">हिन्दी</a>
+            <a href="" class="link">हिन्दी</a>
+            <a href="" class="link">हिन्दी</a>
+            <a href="" class="link">हिन्दी</a>
+            <a href="" class="link">हिन्दी</a>
+            <a href="" class="link">हिन्दी</a>
+    </div>
+</body>
+</html>

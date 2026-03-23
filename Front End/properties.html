@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            /* margin: 20px; */
+            background-color: greenyellow;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+        }
+
+        .box{
+            background-color: chartreuse;
+            border: 3px solid green;
+            margin: 5px;
+            /* border-top-left-radius: 40px; */
+            /* border-bottom-right-radius: 40px; */
+            border-radius:0 40px 0px 40px;
+            height: auto;
+            padding: 20px;
+            /* display: inline; */
+        }
+
+        h1{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 10px;
+            color: rgb(248, 248, 0);
+        text-shadow: 1px 1px 1px black;
+        }
+        
+        .box2{
+            background-color: yellow;
+            display: inline-block;
+            width: 200px;
+        }
+
+        .col{
+            background-color: rgb(142, 142, 249);
+            display: inline-block;
+            width: 46vw;
+
+        }
+
+        .navbar{
+            position: sticky;
+            top:0px;
+            margin: 0 !important;
+            background-color: white;
+        }
+        h2{
+            text-align: center;
+        }
+        .upper{
+            background-color: aqua;
+            margin: 0;
+            padding: 5px;
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+<div class="upper">
+    Study now to get 100% increment
+</div>
+    <div class="navbar">
+        <h2>This is a sticky navbar</h2>
+    </div>
+    <h1>Display Properties</h1>
+    <div class="box">
+        <span>display property controls how an element participates in the layout</span>
+        <ul>
+            <li>
+                BLOCK: takes full width, stacks vertically
+                <!-- p, div, h1-h6, section, header, pre, footer, nav -->
+            </li>
+            <li>
+                INLINE: only as wide as the content, flows with the text
+                <!-- span, a, strong, em, b -->
+            </li>
+            <li>
+                INLINE-BLOCK: inline flow but accepts width/height
+
+            </li>
+            <li>
+                NONE: hidden element 
+            </li>
+        </ul>
+    </div>
+<br>
+<br>
+    <!-- <div class="box2">
+        <span>
+            Hell world
+        </span>
+    </div>
+
+    <div class="box2">
+        <span>heyy</span>
+    </div>
+
+    <div class="col col1">Heyy</div>
+    <div class="col col2">Heyy</div> -->
+
+    <h1>Position Property</h1>
+    <div class="box">
+        <p>The position property REMOVES the element from the normal document flow</p>
+        <!-- <div style="height: 50px; width:50px; background-color: black; border-radius:50%; position: fixed; top:50%; left: 50%; "></div> -->
+         <ul>
+            <li>
+                STATIC: this is the default, follows the normal document flow
+            </li>
+            
+            <li>
+                RELATIVE: offset from normal position, space is also preserved
+
+            </li>
+            <li>
+                ABSOLUTE: removed from the flow, positioned relative to the nearest non-static element element or the parent
+                NOTE: ALWAYS USE RELATIVE IN PARENT TO USE ABSOLUTE IN CHILD
+            </li>
+            <li>FIXED: it fixes an element to the viewport</li>
+            <li>STICKY: relative untill scroll threshold, then fixed</li>
+        </ul>
+
+    </div>
+    <!-- <div class="box" style="position: relative; height: 500px; width: auto;">
+        <div style="height: 50px; width: 50px; border-radius: 50%; background-color: red; position: absolute; left: 50%; top: 50%;"></div>
+    </div> -->
+</body>
+</html>
+
+
+
+
+
