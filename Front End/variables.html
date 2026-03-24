@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* css variables */
+        :root{
+            --primary-color:rgb(23, 11, 241);
+            --font-size-base:10px;
+            --font-size-header:30px;
+        }
+
+
+        .box{
+            background-color: var(--primary-color, black);
+            height: 100px;
+            width: 100px;
+            font-size: var(--font-size-header);
+            color: white;
+            border: 2px solid grey;
+        }
+        .rect{
+            background-color: var(--primary-color);
+            height: 100px;
+            font-size: var(--font-size-base);
+
+            color: white;
+            width: 200px;
+            border: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">Hello</div>
+    <div class="rect">Aman</div>
+</body>
+</html>

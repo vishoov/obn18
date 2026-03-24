@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+                /* max-width, min-width, oritentation:portait or landscape, screen */
+                @media(max-width:768px){
+                    /* //rules */
+                    h1{
+                        color:blue;
+                    }
+                }
+        h1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Responsive Design</h1>
+    <p>Responsive design means building web pages that automatically adapt to their layout, size and appearance on different screens sizes and devices</p>
+    <ul>
+        <li>to make our web pages work well on all devices (device compatibility)</li>
+        <li>
+            Improves usability, readability, accessibility  (UX)
+        </li>
+        <li>Increases user engagement </li>
+    </ul>
+
+    <ol>
+        <li>viewport meta tag: visible area of a web page, on mobile the width is less, 768px</li>
+        <li>
+            Fluid Layouts & relative units : elements size themselves accordingly to the size of the viewport or their parent container
+        </li>
+        <li>
+            Flexible Media : a flexible image always scale down on smaller screens instead of overflowing
+        </li>
+        <li>
+            MEDIA QUERIES!!!! : let us apply css only when certain conditions are true, maining screen size, orientation etc
+        </li>
+        <li>Mobile first approach:write default css for small screens, and then use min-width media query</li>
+        <li>Flexbox and Grid: layout systems designed with responsiveness in mind</li>
+    </ol>
+
+    <style>
+        .box{
+            display: flex;
+            max-width: 100vw;
+            flex-direction: row;
+            align-items: flex-end;
+            height: 500px;
+            justify-content: flex-end;
+            background-color: aqua;
+            flex-wrap: wrap;
+            }
+
+        .small{
+            height: 100px;
+            min-width: 100px;
+            background-color: purple;
+            margin: 5px;
+            color: white;
+            padding: 10px;
+            font-size: 50px;
+
+        }
+    </style>
+
+    <div class="box">
+        <div class="small">A</div>
+        <div class="small">B</div>
+        <div class="small">C</div>
+        <div class="small">D</div>
+        <div class="small">E</div>
+    </div>
+</body>
+</html>
