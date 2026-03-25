@@ -84,13 +84,60 @@
         }
 
         .btn{
-            padding: 10px;
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border: 1px solid rgb(98, 98, 98);
             border-radius: 20px;
             background-color: rgb(41, 41, 41);
             width: 100%;
+            padding: 10px;
+        }
 
+        main{
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .top{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .top-right{
+            display: flex;
+            height: auto;   
+            gap: 5px;
+            
+        }
+
+
+        .btn2{
+            width: 280px;
+        }
+
+        .active{
+            background-color: white;
+            color: black;
+
+        }
+
+        .query{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 50px;
+        }
+        .query_in{
+            width: 60%;
+            background-color: grey;
+            height: 10%;
         }
     </style>
 </head>
@@ -130,12 +177,26 @@
             <h2>Get Responses Tailored to you!</h2>
             <p>Log in to get answers based on saved chats, plus create images and upload files.</p>
             <br>
-            <br>
+
             <button class="btn" >Log in</button>
         </div>
     </div>
     <main>
+        <div class="top">
+            <div class="top-left">
+                <h2>ChatGPT</h2>
+            </div>
+            <div class="top-right">
+                <div class="btn active">Login</div>
+                <div class="btn btn2">Sign up for free</div>
+            </div>
+        </div>
+        <div class="query">
+            <h3>Ask a question</h3>
+            <div class="query_in">
 
+            </div>
+        </div>
     </main>
 </body>
 </html>
