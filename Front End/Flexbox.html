@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .heading{
+            padding: 20px;
+            width: 100vw;
+            height: 200px;
+            background-color: crimson;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
+        .nav{
+            height: 50px;
+            width: 100vw;
+            background-color: antiquewhite;
+            padding: 10px;
+            position: relative;;
+        }
+
+        .nav > a{
+            margin: 10px;
+        }
+
+        .account{
+            position: absolute;
+            right: 0;
+            top: 40%;
+        }
+
+        .box{
+            background-color: black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .small{
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            margin: 5px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="heading">
+    <h1>Flex<span style="color: black;"> box</span></h1>
+    <p>Flexible Box Layout is CSS layout model used for distributing space evenly and align items within a container </p>
+   </div>
+
+   <div class="heading">
+    <h2>FlexBox Usage</h2>
+    <p>Flexbox always get implemented on the parent div</p>
+
+    <ul>
+        <li>Main Axis: horizontal axis (by default)</li>
+        <li>Cross Axis: perpendicular to main axis</li>
+    </ul>
+   </div>
+
+   <div class="box">
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+
+   </div>
+
+</body>
+</html>
