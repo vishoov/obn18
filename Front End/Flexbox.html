@@ -14,7 +14,7 @@
         .heading{
             padding: 20px;
             width: 100vw;
-            height: 200px;
+            /* height: 200px; */
             background-color: crimson;
             font-family: 'Courier New', Courier, monospace;
             color: white;
@@ -72,14 +72,99 @@
         <li>Cross Axis: perpendicular to main axis</li>
     </ul>
    </div>
-
+<!-- 
    <div class="box">
     <div class="small"></div>
     <div class="small"></div>
     <div class="small"></div>
-    <div class="small"></div>
+    <div class="small"></div> -->
 
+   <!-- </div> -->
+
+   <div class="heading">
+    <h2>Flex Direction</h2>
+    <p>defines which direction the main axis runs in, this sets the flow of items to be aligned</p>
+    <ul>
+        <li>row-> DEFAULT -> left to right</li>
+        <li>column-> vertically-> top to bottom</li>
+        <li>row-reverse-> same as row, but the order is reversed right -> left</li>
+        <li>column-reverse-> bottom to top</li>
+
+    </ul>
    </div>
 
+   <div class="heading">
+    <h2>Main Axis Alignment</h2>
+    <p>justify-content helps us distribute the items along the main axis</p>
+    <p>justify-content has following values</p>
+    <ol>
+        <li>flex-start: DEFAULT-> pack the items on the main axis' start point that is left edge by default</li>
+        <li>center-> aligns items in the center of the div</li>
+        <li>flex-end: right align</li>
+        <li>space-between: equal gaps BETWEEN the items, no gaps at the edges</li>
+        <li>space-around: equal space around each item including edges</li>
+        <li>space-evenly: equal gaps everywhere</li>
+
+    </ol>
+   </div>
+   <div class="heading">
+    <h2>Cross Axis Alignment</h2>
+    <p>align-items controlls alignment along the cross axis (vertical by default)</p>
+    <ul>
+        <li>
+            flex-start:top
+        </li>
+        <li>flex-end: bottom</li>
+        <li>center: vertically in middle</li>
+        <li>stratch (DEFAULT) : items stretch to fill the space</li>
+        <li>baseline: text baseline</li>
+    </ul>
+   </div>
+
+   <div class="heading">
+    <h2>align-self: does the same thing as align-items, but applied only to one specific flex item instead of all items, it only overrides align-items setting for the selected element</h2>
+    
+   </div>
+
+   <div class="heading">
+    <h2>Flex-Wrap: This is for controlling overflow</h2>
+    <ol>
+        <li>no-wrap default</li>
+        <li>
+            wrap: elements flow into the next line when they run out of available space
+        </li>
+        <li>
+            wrap-reverse: same as wrap but the order is reversed
+        </li>
+
+    </ol>
+   </div>
+
+   <div class="heading">
+    <h2>Flex Grow, Shrink, Basis</h2>
+    <p>FlexBasis: initial size of the element before any shrinking or growing</p>
+    <p>flex-grow: defines how much an item grows relative to others when there's extra space</p>
+    <p>flex-shrink: how much items shrink when there NOT enough space, higher the value more the shrink</p>
+   </div>
+
+   
+   <div class="heading">
+       <h2>Order: decided when an item irrespedtive of its HTML order will be displayed</h2>
+       <p>order is 0 by default any value greater than 0 will push that elmeent to the end, any value less than 0 will bring it towards the start</p>
+    </div>
+    
+    <div class="heading">
+        <h2>Align content: this aligns the content as a whole in a certain direction</h2>
+    </div>
+    <div class="heading">
+        <h2>flex-flow: _flex-direction_ _flex-wrap_</h2>
+    </div>
+        <div class="boxx" style="display: flex;gap:10px; height
+        :500px; background-color: aqua;">
+         <div class="item" style="height:200px; flex-basis: 300px; flex-shrink:0; background-color: black; color: white; order: 1;">A</div>
+         <div class="item" style="height:200px; flex-basis: 300px; flex-grow:2; order: -2;  background-color: black;"></div>
+         <div class="item" style="height:200px; flex-basis: 300px; background-color: black; color:white;">C</div>
+     
+        </div>
 </body>
 </html>
