@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav{
+    height: 100px;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 32px 10%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FF5201;
+}
+
+a{
+    color: white;
+
+}
+
+.links{
+    
+    display: flex;  
+    width: 50%;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+    font-size: 0.8rem;
+    letter-spacing: 10%;
+}
+
+button{
+    padding: 15px;
+    background-color: transparent;
+    border-radius: 14px;
+    border: 1px solid white;
+    color: white;
+}
+
+#signin{
+    padding-inline: 30px;
+    background-color: black;
+    border: none;
+}
+
+.hero{
+    width: 100vw;
+    height: 90vh;
+    background-color: #FF5201;
+
+}
+
+.top{
+    background-color: azure;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+    color: white;
+    background-color: #FF5201;
+}
+
+h1{
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 500;
+}
+
+.bottom{
+    width: 100%;
+    height: 60%;
+    /* background-color:blue; */
+}
+
+.inputs{
+    display: flex;
+    width: 40%;
+    min-width: 500px;
+    gap: 10px;
+}
+
+.input{
+    background-color: white;
+    border-radius: 10px;
+    height: 45px;
+    width: 38%;
+    display: flex;
+    align-items: center;
+    gap:5px;
+    justify-content: center;
+
+}
+
+/* .input:nth-child(2){ */
+/* .input:last-child{ */
+.input:nth-child(even){
+    width: 62%;
+}
+
+input{
+    border: none;
+    width: auto;
+}
+
+#searchbar{
+    width: 85%;
+}
+
+.bottom{
+    width: 100vw;
+    padding: 10px 12%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.display_card{
+    height: 300px;
+    width: 30%;
+    background-color: white;
+    border-radius: 35px;
+}
+
+.details{
+    position: relative;
+    padding: 8%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.details h2{
+    font-weight: 1000;
+    font-size: 2rem;
+    margin: 8px 0;
+}
+
+.details h3{
+    color: grey;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.details p{
+    background: #f70000;
+background: linear-gradient(263deg, rgba(247, 0, 0, 0) 0%, rgba(247, 0, 0, 0.1) 100%);
+padding: 5px 8px;
+border-radius: 20px;
+color: rgba(255, 0, 0, 0.564);
+font-size: 1.2rem;
+width: 60%;
+font-weight: 800;
+}
+
+
+.arrow{
+    background-color: #FF5201;
+    width: fit-content;
+    border-radius: 48%;
+    position: absolute;
+    bottom: -100px;
+    left: 40px;
+}
+
+.banner{
+    height: 60%;
+    position: absolute;
+    width: 12%;
+}
+
+.banner:nth-child(2){
+    right: 0;
+}

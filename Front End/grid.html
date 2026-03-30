@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+
+    <Style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: rgba(0, 192, 0, 0.897);
+            padding: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        
+
+
+        }
+        .container{
+            min-height:100px;
+            background-color: rgb(238, 30, 30);
+            border: 2px solid yellow;
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            text-shadow: 2px 2px #000 ;
+            margin: 5px;
+            
+        }
+        p{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .container2{
+            background-color: blue;
+            display:grid;
+            grid-template-columns: 10% 10% 10% 10% 10%;
+            place-content: center center;
+            grid-template-rows:50% 50%;
+
+        }
+
+        .item{
+            background-color: white;
+            margin: 5px;
+        }
+
+        .containerA{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+        }
+
+        .difference{
+
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+    </Style>
+</head>
+<body>
+    <div class="container">
+    <h1>Grid</h1>
+    <p>Two dimensional layout system that divides the whole div into smaller chunks with specific locations: 2D Array</p>
+    <p>2D Array: arr[i][j]</p>
+</div>
+<h2 style="color: yellow; text-shadow:2px 2px #000">Differences between grid and flex</h2>
+<div class="container containerA">
+        <div class="header-left">CSS Grid</div>
+        <div class="header-right">FlexBox</div>
+        <div class="difference">> Two Dimensional (rows and columns both)</div>
+        <div class="difference">> One Dimensional (row or column)</div>
+        <div class="difference">> Layout first approach</div>
+        <div class="difference">> Content first approach</div>
+        <div class="difference">> overlapping : true</div>
+        <div class="difference">> overlapping : false</div>
+    <!-- Note: prefer using grid for page skelecton 
+     With : fix
+     sections: rows -->
+    </div>
+
+    <div class="container">
+        <h2>Important terms in grid</h2>
+        <ul>
+            <li>Grid container</li>
+            <li>Grid items</li>
+            <li>Grid Lines : these are the invisible dividing lines </li>
+            <li>Grid Tracks : rows or column</li>
+            <li>Grid Cell</li>
+            <li>Grid Area</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Properties</h2>
+        <h3 style="color: rgb(255, 144, 162);">Layout properties</h3>
+        <ol>
+            <li>grid-template-columns: number of columns with their values as their widths</li>
+            <li>grid-template-rows: number of rows with their values as their heights</li>
+            <li>grid-template:rows/columns</li>
+        </ol>
+        <h3 style="color: rgb(255, 144, 162);">Content Properties</h3>
+        <ol>
+            <li>grid-column-start: where an element starts in the grid (column wise)</li>
+            <li>grid-column-end: where the element ends column wise</li>
+            <li>grid-row-start: where an element starts in the grid (row wise)</li>
+            <li>grid-row-end</li>
+            <li>grid-column: start_column_line / end_column_line shorthand for column start and column end</li>
+            <li>grid-row: start_row_line / end_row_line shorthand for row start and row end</li>
+            <li>grid-area: shorthand for grid_row / grid_column</li>
+
+        </ol>
+
+        <h2>Alignment Properties</h2>
+        <ul>
+            <li>justify-content: aligns the grid tracks equally in the grid</li>
+            <li>align-content: arrange the contend vertically </li>
+            <li>place-content : align / justify</li>
+        </ul>
+    </div>
+
+    <div class="container container2">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+    </div>
+
+</body>
+</html>

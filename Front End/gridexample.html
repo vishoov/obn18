@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 8px;
+    background: #2d3561;
+    padding: 8px;
+  }
+
+  .cell { border-radius: 4px; }
+  .green  { background: #5cb85c; }
+  .red    { background: #e84040; }
+  .orange { background: #f0a830; }
+
+
+  .left {
+    min-height: 420px;
+  }
+
+
+  .middle {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .middle-top {
+    min-height: 130px;
+  }
+  .middle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .middle-grid .cell {
+    min-height: 140px;
+  }
+
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .right-top {
+    min-height: 130px;
+  }
+  .right-bottom {
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-wrapper">
+
+
+  <div class="cell green left"></div>
+
+
+  <div class="middle">
+    <div class="cell green middle-top"></div>
+
+    <div class="middle-grid">
+      <div class="cell orange"></div>
+      <div class="cell red"></div>
+    </div>
+
+    <div class="middle-grid">
+      <div class="cell red"></div>
+      <div class="cell orange"></div>
+    </div>
+  </div>
+
+
+  <div class="right">
+    <div class="cell red right-top"></div>
+    <div class="cell green right-bottom"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
