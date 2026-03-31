@@ -176,3 +176,121 @@ font-weight: 800;
 .banner:nth-child(2){
     right: 0;
 }
+
+.categories{
+    height: 60vh;
+    width: 100vw;
+    /* background-color: red; */
+    padding: 5rem 12%;
+}
+
+.grid-layout{
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.groceries{
+    height: 60vh;
+    width: 100vw;
+    padding: 5rem 12%;
+}
+
+.array{
+    margin-top: 20px;
+    display: flex;
+    height: 95%;
+    overflow-x: auto;
+    gap: 10px;
+    scrollbar-width: none;
+}
+
+.single{
+    min-width: 130px;
+}
+
+.single p{
+    text-align: center;
+}
+
+
+
+.restaurants{
+    height: 78vh;
+    width: 100vw;
+    padding: 5rem 12%;
+    /* background-color: aquamarine; */
+}
+
+.list{
+    display: flex;
+    height: 100%;
+    padding: 10px 0;
+}
+
+
+.rest_flex{
+    height: 100%;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.23);
+
+}
+
+.image_div{
+    height: 65%;
+    width: 100%;
+    background-image: url('https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/v1661204035/n15ubkqqk4lpoxwh0ogj.jpg');
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+
+}
+
+
+.title{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    height: 100%;
+    
+    /* background-color: black; */
+    align-items: flex-end;
+    background: #000000;
+background: linear-gradient(180deg, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%);
+}
+
+
+.info_div{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: 100;
+    line-height: 25px;
+    color: grey;
+}
+
+.info:nth-child(2){
+    text-align: right;
+}
+
+.discount{
+    padding: 5px;
+    background-color: #C8F9E5;
+    /* border: 1px solid rgba(0, 128, 0, 0.553); */
+    margin: 0 10px;
+    font-weight: 100;
+    padding: 10px;
+    color: green;
+    border-radius: 10px;
+}
