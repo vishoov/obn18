@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Box Rotation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .box {
+      width: 100px;
+      height: 200px;
+      background: tomato;
+      /* transform: rotate(360deg); */
+      animation: spin 10s infinite linear;
+    }
+
+
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lightsaber Gallery
+        <a href="https://lightsabers.art">lightsabers.art</a></h1>
+      
+        <div class="gallery-wrap">
+          
+          
+          
+          <div class="item red">
+            <img src="https://assets.codepen.io/28337/darth-vader.svg" />
+            <div class="copy">
+              <h2>Darth Vader</h2>
+              <p>Vader's lightsaber shares similarities with his previous hilt as Anakin Skywalker, but has been customized with a more aggressive design, dual crystals, and adjustable blade length suited to his brutally powerful Form V fighting style.</p>
+            </div>
+          </div>
+          
+          
+          
+          <div class="item blue">
+            <img src="https://assets.codepen.io/28337/obi-wan-kenobi.svg" />
+            <div class="copy">
+              <h2>Obi-Wan Kenobi</h2> 
+              <p>Obi-Wan wielded this lightsaber from Attack of the Clones through his duel with Vader on the Death Star. The new hilt design represents Obi-Wan's progression and increased mastery as a Jedi. It moves away from the simple design, inspired by Qui-Gon, that Obi-Wan used as a Padawan.</p>
+            </div>
+          </div>
+          
+            
+          
+          <div class="item purple">
+            
+            <img src="https://assets.codepen.io/28337/mace-windu.svg" />
+            <div class="copy">
+              <h2>Mace Windu</h2>
+              <p>Mace Windu's lightsaber featured an electrum-plated hilt, signifying his senior status on the Jedi Council. The distinct amethyst/purple blade was produced by a specialized kyber crystal.</p>
+            </div>
+          </div>
+      
+          <div class="item red long">
+            <img src="https://assets.codepen.io/28337/darth-maul.svg" />
+            <div class="copy">
+              <h2>Darth Maul</h2>
+              <p>Darth Maul wielded an iconic double-bladed lightsaber, with two hilts connected together, producing two blades when deployed. This unique design allowed for versatile fighting styles, extended reach, and an intimidating spinning display, but compromised defensive capabilities and mobility compared to single-bladed lightsabers. </p>
+            </div>
+          </div>
+          
+          
+          <div class="item yellow">
+            <img src="https://assets.codepen.io/28337/rey2.svg" />
+            <div class="copy">
+              <h2>Rey</h2>
+                <p>Rey's unique lightsaber hilt  pays homage to her scavenger origins, while the yellow blade represents her role as the first of a new Jedi Order. The rotating activation that flashed green and blue before igniting yellow is an innovative feature not seen on most lightsabers.</p>
+            </div>
+          </div>
+          
+          <div class="item green">
+            <img src="https://assets.codepen.io/28337/luke-skywalker.svg" />
+            <div class="copy">
+              <h2>Luke Skywalker</h2>
+              <p>Luke modeled this new lightsaber hilt after Obi-Wan's as a tribute, using salvaged materials to construct it after losing Anakin's blue saber on Bespin. It has adjustable blade length and defensive capabilities for intense dueling against opponents like Vader and the Emperor.</p>
+          </div>
+        </div>
+          
+          <div class="item red wide">
+            
+            <img src="https://assets.codepen.io/28337/kylo-ren.svg" />
+            <div class="copy">
+              <h2>Kylo Ren</h2>
+              <p>Kylo's unique crossguard design with quillon plasma vents, allowing for added protection and leverage in combat. The unstable, flickering blade was caused by a cracked kyber crystal. The quillon vents acted as lateral plasma channels for the unstable crystal.</p>
+            </div>
+          </div>
+          
+          <div class="item green">
+            <img src="https://assets.codepen.io/28337/yoda.svg" />
+            <div class="copy">
+              <h2>Yoda</h2>
+              <p>Yoda's lightsaber was designed with a compact size to match his small stature, yet remained an elegant and powerful weapon. Its green blade represented Yoda's attunement to the living Force and the light side. The hilt's simple design belied the incredible skill of its master in the ancient lightsaber forms.</p>
+            </div>
+          </div>
+          
+          <div class="item red wide">
+            <img src="https://assets.codepen.io/28337/count-dooku.svg" />
+            <div class="copy">
+              <h2>Count Dooku</h2>
+              <p>Dooku's curved hilt was designed for the precision and mobility of Form II (Makashi) lightsaber combat, allowing him to slash and lunge with great dexterity. The unique design was controversial among the Jedi Order, as Yoda felt it reflected Dooku's obsession with dueling prowess over Jedi ideals.</p>
+            </div>
+          </div>
+          
+          
+          <div class="item blue">
+            <img src="https://assets.codepen.io/28337/anakin-skywalker.svg" />
+            <div class="copy">
+              <h2>Anakin Skywalker</h2>
+                      <p>Anakin's Episode II hilt has a smooth emitter shroud design compared to the more angled shroud on the later Episode III version. It also features two small illuminating LED lights not present on the Episode III hilt.The blade dimensions, adjustable length, and ridged grip allow for ideal dueling performance and control.
+      </p>
+            </div>
+          </div>
+          
+              
+          <div class="item green">
+            <img src="https://assets.codepen.io/28337/qui-gon.svg" />
+            <div class="copy">
+              <h2>Qui-Gon Jinn</h2>
+                      <p>Qui-Gon's iconic lightsaber had a distinct curved grip hilt made of alloy, utilized a green kyber crystal. The green-bladed lightsaber was constructed by Qui-Gon to resemble the weapon of his former master, Count Dooku.</p>
+            </div>
+          </div>
+          
+          <div class="item red">
+            <img src="https://assets.codepen.io/28337/darth-siduous.svg" />
+            <div class="copy">
+              <h2>Darth Siduous</h2>
+                <p>Sidious' curved hilt allowed for precise strikes and mobility fitting his mastery of Form VII lightsaber combat. The adjustable red blade length and defusing finish made it suitable for intense dueling bouts against skilled opponents like Yoda and Mace Windu. Overall, Sidious' lightsaber reflected his prowess as a Sith Lord through its menacing yet elegant design.
+      </p>
+            </div>
+          </div>
+          
+          
+       </div>
+      
+      <div class="social">
+        <a href="https://twitter.com/StefCharle" target="_blank">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/149103/twitter.svg" alt="">
+        </a>
+      </div>
+</body>
+</html>

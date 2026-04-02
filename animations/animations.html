@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loader{
+            height: 200px;
+            width:100vw;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle{
+            height: 50px;
+            width: 50px;
+            /* background-color: grey; */
+            border-radius: 50%;
+            border: 5px dashed white;
+            animation: spinning 8s infinite linear;
+        }
+
+        @keyframes spinning{
+            0%{
+                transform: rotate(0deg);
+                opacity: 0;
+            }
+
+            100%{
+                transform: rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Animations</h1>
+    <p>let you smoothly chang CSS properties over time using only CSS, these are used for micro interactions in the UI </p>
+    <div class="loader">
+        <div class="circle"></div>
+    </div>
+    <ul>
+        <li>Keyframes : decribe what the changes over time will be (states)</li>
+        <li>animation proerties: decribes how the change will be executed</li>
+    </ul>
+
+    <h3>Keyframe : @keyframe name{rules}</h3>
+    <ul>
+        <li>to and from
+            <br>
+        <pre>
+            @keyframe myAnimation{
+                
+                from:{opacity:100}
+                to:{opactiy:0} 
+
+            }
+        </pre> </li>
+        <li>percentage
+            <pre>
+                @keyframe myAnime{
+                    
+                    0%{
+                        opacity:0
+                    }
+                    100%{
+                        opacity:1
+                    }
+
+                }
+            </pre>
+        </li>
+
+    </ul>
+</body>
+</html>
