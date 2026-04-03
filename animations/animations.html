@@ -19,18 +19,72 @@
             /* background-color: grey; */
             border-radius: 50%;
             border: 5px dashed white;
-            animation: spinning 8s infinite linear;
+            animation: spinning 2s infinite alternate cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         @keyframes spinning{
             0%{
                 transform: rotate(0deg);
-                opacity: 0;
+                /* opacity: 0; */
             }
 
             100%{
                 transform: rotate(360deg);
                 opacity: 0.8;
+            }
+        }
+
+        .section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px; width: 100vw; background-color: chartreuse;
+        }
+        .box{
+            width: 100px;
+            height: 50px;
+            background-color: steelblue;
+            color: white;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            animation-name:slideIn;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode:both;
+
+        }
+
+        @keyframes lazy{
+            0%{
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(50%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn{
+            0%{
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            40%{
+                opacity:1;
+            }
+            50%{
+                opacity: 1;
+                transform: translateX(0%);
+            }
+            60%{
+                opacity:1;
+            }
+            100%{
+                opacity:0;
+                transform:translateX(250%)
             }
         }
     </style>
@@ -46,7 +100,7 @@
         <li>animation proerties: decribes how the change will be executed</li>
     </ul>
 
-    <h3>Keyframe : @keyframe name{rules}</h3>
+    <h3>Keyframe : @keyframe name{states}</h3>
     <ul>
         <li>to and from
             <br>
@@ -65,6 +119,9 @@
                     0%{
                         opacity:0
                     }
+                    50%{
+                        opacity:0.5
+                    }
                     100%{
                         opacity:1
                     }
@@ -74,5 +131,28 @@
         </li>
 
     </ul>
+
+    <h3>Animation Properties</h3>
+    <ol>
+        <li>animation_name: which is defined using the @keyframe </li>
+        <li>animation_duration: how lomg the animation cycle will take to complete</li>
+        <li>animation_timing_function : easing curve (linear, ease, ease-in, ease-out, cubic-bezier(...))</li>
+        <li>animation-iteration-count: how many times to repeat : 1, 2, 3, 4, infinite</li>
+        <li>animation-delay: wait before starting of the animation</li>
+        <li>animation-direction: plaback direction in terms of progress percentage (normal, reverse, alternate, alternate-reverse</li>
+        <li>animation-play-state: running or paused</li>
+        <li>
+            animation-fill=-mode: what state to keep after the animation is completed : both, npne, forward, backward
+        </li>
+    </ol>
+    <pre>
+        animation: name duration timing-function delay iteration_count direction;
+    </pre>
+
+    <p>The properties that can be animated are transform, opacity, color, background-color, box-shadow, height, width, etc</p>
+
+    <div class="section">
+        <div class="box">Animate Me</div>
+    </div>
 </body>
 </html>
