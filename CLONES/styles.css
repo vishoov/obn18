@@ -15,6 +15,17 @@ nav{
     background-color: #FF5201;
 }
 
+@media  screen and (min-width:768px) {
+    .mobile_nav{
+        display:none
+    }
+
+    .top_banner{
+        display: none;
+    }
+}
+
+
 a{
     color: white;
 
@@ -148,7 +159,7 @@ input{
 
 .details p{
     background: #f70000;
-background: linear-gradient(263deg, rgba(247, 0, 0, 0) 0%, rgba(247, 0, 0, 0.1) 100%);
+background: linear-gradient(263deg, rgba(247, 0, 0, 0) 0%, rgba(247, 0, 0, 0.2) 100%);
 padding: 5px 8px;
 border-radius: 20px;
 color: rgba(255, 0, 0, 0.564);
@@ -345,6 +356,345 @@ footer{
 
 .copyright{
     margin-top: 5px;
+
+}
+
+.top_mobile{
+    display: none;
+}
+
+.background_image{
+    display:none
+}
+
+.mobile_showmore{
+    display: none;
+}
+
+.overlay{
+    display:none
+}
+
+
+.bottom_footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.app_logos{
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app_logos > img{
+    width: 40%;
+    height: auto;
+}
+
+@media screen and (max-width:768px) {
+
+    .overlay{
+        display:flex;
+        color: black;
+        position: fixed;
+        background-color: white;
+        bottom: 0;
+        height: 7vh;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid rgb(159, 159, 159);
+    }
+
+    .overlay > button{
+        width: 50%;
+        color: grey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+    }
+
+
+    nav{
+        display: none;
+    }
+
+    .top_banner{
+        display: flex;
+        height: 60px;
+        background-color: black;
+        padding: 15px;
+        color: white;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 0.9rem;
+    }
+
+    .hero{
+        max-width: 100vw;
+        overflow: hidden;
+        height: fit-content;
+        padding-bottom: 20px;
+    }
+
+    .banner{
+        display: none;
+    }
+    .app_button{
+        border: none;
+        background-color: #FF5201;
+        width: 35%;
+        border-radius: 60px;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 3%;
+    }
+    .mobile_nav{
+        height: fit-content;
+
+        width: 100vw;
+        background-color: #FF5201;
+        display: flex;
+        padding: 5%;
+    }
+
+    .mn_left{
+        display: flex;
+        align-items: center;
+        width: 60%;
+    }
+    .mn_right{
+        display: flex;
+        justify-content: flex-end;
+        width: 40%;
+    }
+
+    .boundary{
+        background-color: #000000;
+        padding: 7px;
+        border-radius: 50%;
+    }
+
+    .mnl_content{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+    }
+
+    .top{
+        display: none;
+    }
+
+    .top_mobile{
+
+        display: flex;
+        width: 100vw;
+        padding: 5%;
+        padding-bottom: 1%;
+        flex-direction: column;
+        
+    }
+
+  .mobile_search{
+    width: 90vw;
+    justify-content: space-between;
+    padding: 10px;
+    overflow: visible;
+  }
+
+  .mobile_search > input{
+    width: 80%;
+  }
+
+  
+
+  .mobile_tagline{
+    color:white;
+    display:flex;
+    padding:8% 3%;
+    padding-bottom: 0;
+    font-size:0.8rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .image-wrapper{
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    /* transform: translateY(-20px); */
+  }
+
+    .bottom{
+        border-top: 1px solid white;
+        display: grid;
+        grid-template: 1fr 1fr/0.8fr 1fr;
+        gap: 20px;
+        padding: 20px 5%;
+        height: fit-content;
+
+    }
+
+    .display_card{
+        height: 20vh;
+        width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .background_image{
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: -40px;
+        height: 200px;
+    }
+
+    .bg_second{
+        top:60px
+    }
+
+
+
+    .display_card:first-child{
+        height: 18vh;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+
+    .details{
+        padding: 6%;
+    
+    }
+    
+    .details h2{
+
+        font-size: 1rem;
+    }
+    
+    .details h3{
+        color: grey;
+        font-size: 0.7rem;
+        margin-bottom: 10px;
+    }
+    
+    .details p{
+    font-size: 0.6rem;
+    }
+    
+    
+    .arrow{
+        display: none;
+    }
+    
+    .categories{
+        padding:7%;
+        padding-right: 0;
+        overflow: hidden;
+        height: auto;
+    }
+
+
+    h2{
+    font-size: 1rem;
+        }
+
+        .grid-layout{
+            overflow-x: scroll;
+            grid-template-columns: repeat(8, 100px);
+            scrollbar-width: none;
+
+        }
+
+        .groceries{
+            padding: 7%;
+            height: fit-content;
+        }
+        .single{
+            height: fit-content;
+
+        }
+
+        .restaurants{
+            padding: 7%;
+            height:fit-content;
+            overflow: hidden;
+        }
+
+        .image_div{
+            height: 180px;
+        }
+
+        .info_div{
+            padding: 5%;
+            
+        }
+
+        .discount{
+            transform: translateY(-10px);
+        }
+
+        .list{
+            overflow-x: scroll;
+            width: fit-content;
+            flex-direction: row;
+        }
+
+        .cities{
+            padding: 7%;
+            height: auto;
+        }
+
+        .grid{
+            grid-template-columns: 1fr 1fr;
+
+        }
+
+        .link{
+            display: none;
+        }
+
+        .link:nth-child(even){
+            display:flex;
+        }
+
+        .mobile_showmore{
+            display: flex;
+            padding: 5% 10%;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(204, 199, 199);
+            color: #FF5201;
+        }
+
+        footer{
+            padding:0;
+            margin-bottom: 100px;
+        }
+
+        .top_footer{
+            grid-template-columns: 1fr 1fr;
+
+        }
+
+        .footer_links{
+            height: auto;
+        }
+
+        .footer_links:first-child{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
 
 }
 
