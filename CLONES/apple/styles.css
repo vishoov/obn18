@@ -124,12 +124,88 @@ button{
 }
 
 
+
 .left_split, .right_split{
     height: 100%;
     width: 50%;
     /* background-color: red; */
     position: relative;
 
+}
+
+
+.carousel_section{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee_track{
+    height: 60vh;
+    display: flex;
+    animation : scroll 40s ease-in-out infinite;
+
+    gap:10px;
+}
+.marquee_track:hover{
+    animation:none
+}
+
+.single_banner{
+    min-width: 500px;
+    position: relative;
+}
+
+@keyframes scroll{
+    0% {
+        transform:translateX(0%);
+    }
+    10%{
+        transform: translateX(-5%);
+    }
+    20%{
+        transform: translateX(-10%);
+
+    }
+    30%{
+        transform: translateX(-15%);
+
+    }
+    40%{
+        transform: translateX(-20%);
+
+    }
+    50%{
+        transform: translateX(-25%);
+
+    }
+    60%{
+        transform: translateX(-30%);
+
+    }
+    70%{
+        transform: translateX(-35%);
+
+    }
+    80%{
+        transform:translateX(-40%);
+    }
+    90%{
+        transform: translateX(-45%);
+    }
+    100%{
+        transform: translateX(-50%);
+
+    }
+}
+
+.second_swiper{
+    height:50vh;
+    width: 100vw;
 }
 
 /* Mobile Screens */
@@ -143,7 +219,6 @@ button{
 
     .mobile{
         display: block;
-
     }
     nav{
 
@@ -184,5 +259,21 @@ button{
 
     .learn_more, .shop_now{
         font-size:0.9rem
+    }
+
+    /* split section */
+    .split_section{
+        flex-direction: column;
+    }
+
+    .left_split, .right_split{
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .image-wrapper{
+        max-width: 100vw;
+        display: flex;
+        justify-content: center;
     }
 }
