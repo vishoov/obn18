@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+          --color-clifford: #0000ff;
+          --color-helvetica:#ff0000;
+        }
+      </style>
+  </head>
+  <body class="min-h-screen bg-slate-200 text-slate-800 w-100">
+
+    <div class="w-2xl bg-white mx-auto px-4 py-7 border-2 border-slate-800 rounded-2xl my-10 flex-column justify-content-left align-items-center ">
+    <h1 class="text-3xl ">Tailwind CSS</h1>
+    <p class="text-xl mt-5 py-3">Tailwind CSS is a utility-first CSS framework that lets your build custom designs by composing small, purpose driven classes directly in the HTML</p>
+</div>
+
+
+<div class="w-2xl bg-white mx-auto px-4 py-7 border-2 border-slate-800 rounded-2xl my-10 flex-column justify-content-left align-items-center ">
+    <h1 class="text-3xl ">Why do we use tailwind</h1>
+    <p class="text-xl mt-5 py-3">
+        - there is no need of naming classes <br>
+        - the output css is very lightweight <span><</span>10kb <br>
+        - you can build themes etc using variables <br>
+        - consistency -> buil-in scales for spacing, coloring, typography
+    </p>
+</div>
+
+<div class="w-2xl bg-white mx-auto px-4 py-7 border-2 border-slate-800 rounded-2xl my-10 flex-column justify-content-left align-items-center shadow-md shadow-slate-500">
+    <h1 class="text-3xl ">Tailwind properties usage</h1>
+    <p class="text-xl mt-5 py-3">
+        -> p-4 = gives padding on all sides 
+        -> text-center = centers the text 
+        -> flex = display:flex
+        -> bg-blue-500 :background-color blue with intensity 500
+        -> rounded-lg : rounded corners
+        -> shadow:md -> box-shadow: 
+    </p>
+</div>
+
+
+<div class="w-2xl bg-white mx-auto px-4 py-7 border-2 border-slate-800 rounded-2xl my-10 flex-column justify-content-left align-items-center shadow-md shadow-slate-500">
+    <h1 class="text-3xl ">Tailwind responsive design</h1>
+    <p class="text-xl mt-5 py-3 text-mauve-800">
+        mobile-first approach - we start default styles with smaller screens and then add breakpoints prefixes to adjust layouts and styles as the screens get bigger
+<br>
+        sm: 640px+ <br>
+        md:768px+ <br>
+        lg:1024px+ <br>
+        xl:1280+ <br>
+
+
+    </p>
+</div>
+
+
+
+<div class="border-2 p-6 rounded-2xl mx-10  w-lg 
+flex  gap-2 flex-wrap justify-center ">
+    <div class="bg-red-800 w-40 h-40 text-center flex justify-center items-center">Box 1</div>
+    <div class="bg-red-800 w-40 h-40">Box 2</div>
+    <div class="bg-red-800 w-40 h-40">Box 3</div>
+    <div class="bg-red-800 w-40 h-40">Box 4</div>
+    <div class="bg-red-800 w-40 h-40">Box 5</div>
+    <div class="bg-red-800 w-40 h-40">Box 6</div>
+</div>
+
+
+  </body>
+</html>

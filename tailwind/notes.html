@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-[100px]">Tailwind notes</h1>
+    <h2 class="text-2xl">Common Units</h2>
+    <ul class="bg-slate-300 p-1 w-2/3">
+        <li>0= m-0, p-0, w-0</li>
+        <li class="text-[50px]">px = p-[100px]</li>
+        <li>Numeric Scale: p-4, m-6, in terms of rem -> p-1 = p[0.25rem]</li>
+        <li>Keywords: w-full, h-screen, max-w-sm, min-h-full</li>
+        <li>Fractions: w-1/2, this is fraction of the parent or percentage as we use in css</li>
+    </ul>
+
+    <!-- half with box with fixed height and spacing 
+     -->
+    <div class="bg-blue-300 w-1/2 h-16 rounded-[10px]">
+        Hello world
+    </div>
+
+    <div class="w-full bg-slate-400 max-w-[200px] h-128 p-32 ">
+        Full width box, but 200px max width with 32rem height and 8rem padding
+    </div>
+
+    <!-- div in rem --> 
+     <div class="bg-blue-500 w-[10rem] h-[5rem] p-[2rem] m-[3rem]">
+        Hello bhai
+     </div>
+
+    <!-- div in pointers -->
+     <div class="bg-blue-500 w-40 h-20 p-8 m-12">
+        Hello bhai in tailwind
+     </div>
+
+     <h2>Spacing and sizing</h2>
+     <h4>Padding</h4>
+     <ul class="ps-[100px]">
+        <li>p-* = padding for all sides</li>
+        <li>px-* = padding for x axis i.e. left and right</li>
+        <li>py-* = padding for y axis i.e. top and bottom</li>
+        <li>pt-*, pb-*, pr-*, pl-* -> top, bottom, right, left</li>
+        <li>ps=*, pe-* = padding start, and padding end </li>
+     </ul>
+
+     <!-- padding 10px on all sides -->
+     <div class="bg-red-100 p-[10px] w-sm">Padding example</div>
+     <!-- padding 10 pixels on top and bottom -->
+     <div class="bg-red-100 py-[10px] w-sm">Padding example</div>
+
+     <!-- padding 10px on top and bottom and 20px on left and right -->
+     <div class="bg-red-100 py-[10px] px-[20px] w-sm">Padding example</div>
+
+     <!-- padidng top, bottom, left,= 10px right = 20px -->
+     <div class="bg-red-100 py-[10px]  pl-[40px] w-sm">Padding example</div>
+
+
+     <h3>Margins</h3>
+     <ul>
+        <li>m-* for all sides</li>
+        <li>my-*, m-x*</li>
+        <li>mt-*, mb-*, ml-*, mr-*</li>
+        <li>-mt-*, -mx-* : negative margin value</li>
+        <li>mx-auto for horizontal centering of block elements</li>
+     </ul>
+
+
+</body>
+</html>
