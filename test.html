@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+    /* .box{ */
+        /* height: 300px; */
+        /* width: 500px; */
+        /* background-color: rebeccapurple; */
+        /* padding: 10px; */
+        /* display:flex; */
+        /* flex-direction: column; */
+        /* flex-wrap: wrap; */
+        /* align-items: center; */
+        /* align-content: center; */
+        /* justify-content: center; */
+
+    /* } */
+
+
+    .box{
+        background-color: cadetblue;
+        padding: 10px;
+        height:300px;
+        width: 500px;
+        display: grid;
+        grid-template-columns:  repeat(3, 100px) 1fr;
+        grid-template-rows: repeat(3, 100px);
+
+
+    }
+
+    .smaller{
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        background-color: aliceblue;
+    }
+
+    #second{
+        grid-row: 2/3;
+        grid-column: 2/3;
+        /* grid-area:2/2/3/3; */
+
+    }
+
+    #C{
+        grid-column:3/4;
+        grid-row:3/4
+    }
+</style>
+<div class="box">
+    <div class="smaller">A</div>
+    <div class="smaller" id="second">Second</div>
+    <div class="smaller" id="C">C</div>
+    <div style="background-color: red;"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.box{
+    height: 500px;
+    width: 100vw;
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.product{
+    height: 200px;
+    width: 300px;
+    background-color: aquamarine;
+    border: 1px solid grey;
+}
+    </style>
+</head>
+<body>
+
+
+      <p>You are building a product listing page that should show between 2 and 5 cards per row depending on screen width. The cards should all have equal width and a consistent gap in both rows and columns.
+        Describe how you would configure the parent container using CSS Grid (properties and values) so that:
+        
+        Cards auto‑wrap to new rows.
+        </p>
+
+        <h2>.grid{
+            display:grid:
+            gap:1rem;
+            grid-template-columns:repeat(
+                auto-fit, minmax(200px, 1fr)
+            )
+        }
+        </h2>
+
+        <br>
+
+        <div class="box">
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+            <div class="product"></div>
+        </div>
+</body>
+</html>
