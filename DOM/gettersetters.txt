@@ -1,0 +1,141 @@
+1. Contnet getters and setters
+
+const el = document.querySelector('p')
+
+
+el.textContent ='xyz' 
+el.innerText 
+el.innerHTML = value
+el.outerHTML  //element itself + content 
+
+2. attribute getters, setters and methods
+
+const img = document.querySelector('img')
+
+img.getAtteibute('src) //fetched the value of the src attribute
+img.setAttribute('src', 'new value')
+img.hasAttribute('alt')
+img.removeAttribute('alt')
+img.toggleAttribute('hidde')
+
+
+//directproperty access
+img.src
+img.alt
+img.id
+img.href
+img.hidden //boolean
+
+
+3. class getters and setters
+
+<div class='box active big rounded' > Box</div>
+const box = document.querySelector('.box');
+
+box.className;
+box.classList -> DOMTokenList ['box', 'active', 'rounded']
+box.classList.length
+box.classList.item(0)
+box.classList.contains('active')
+
+<ul>
+<li class='active'>Hello</li>
+<li> Bye</li>
+</ul>
+
+
+active-> remove active -> !active -> active
+
+4. Style getters and setters
+
+const el = document.querySelector('.box');
+
+el.style.backgroundColor ="red"
+el.style.fontSize
+el.style.display
+
+el.style.cssText
+
+computed styles
+
+const computed = window.getComputedStyle(el);
+
+5. Element dimension and position getters
+
+el
+//size (includes padding, border, scrollbars)
+el.clientWidth
+el.clientHeight
+
+//padding + border
+el.offsetWidth
+el.offsetHeight
+
+el.scrollWidth
+el.scrollHeight
+
+
+const rect = el.getBoundingClientRect();
+
+rect.width
+rect.height
+rect.top
+rect.left
+rect.right
+rect.bottom
+
+
+6. DOM Tree getters
+
+el.parentNode
+
+el.firstChild
+el.lastChild
+el.childNodes
+el.nextSibling
+el.previousSibling
+
+element nodes
+
+el.firstElementChild
+el.lastElementChild
+el.nextElementSibling
+el.previousElementSibling
+
+7. Form setters and getters
+
+input.value;
+input.value = "new text"
+
+const checkbox = document.querySelector('.input[type='checkbox']');
+
+checkbox.checked //boolean 
+
+other
+
+
+input.disabled = true;
+input.readOnly 
+input.placeholder
+input.type 
+
+
+FOCUS/BLUR
+
+input.focus();
+
+DOM Manipulation methods
+
+const ul 
+
+to create a new dom Element
+const newLi = document.createElement('li')
+newLi.innerText="Hello"
+ul.appendChild(newLi)
+
+
+appendChild => adds to the last
+
+prepend(newLi) adds to the start
+
+parent.insertBefore(newLi, parent.children(2))

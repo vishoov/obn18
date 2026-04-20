@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="active">Hello</li>
+        <li>Bye</li>
+    </ul>
+
+    <input type="text" placeholder="hello likho">
+
+    <script>
+        const li = document.querySelectorAll('li')
+
+        li.forEach(ele=>{
+            if(ele.classList.contains('active')){
+                ele.classList.remove('active')
+            }else{
+                ele.setAttribute('class', 'active')
+            }
+        })
+
+
+        const ul = document.querySelector('ul')
+
+        ul.style.cssText='background-color:blue; border:5px green solid '
+
+        const input = document.querySelector('input')
+
+        // input.focus()
+        // input.blur()
+    </script>
+</body>
+</html>

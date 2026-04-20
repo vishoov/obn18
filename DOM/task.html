@@ -1,0 +1,50 @@
+<!-- ul -> 3 li -> color white -> background color-> red -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            border: 1px solid grey;
+            padding: 10px;
+            list-style:circle;
+            background-color:aqua;
+        }
+
+        li{
+            padding: 10px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Hello</li>
+        <li>Bhai</li>
+        <li>goodbye</li>
+    </ul>
+    <script>
+        //selecting the element
+        const li = document.querySelectorAll('li');
+
+        li.forEach(ele=>ele.style.backgroundColor='red')
+
+    li.forEach(ele=>console.log(ele.style.backgroundColor))
+
+    li.forEach(ele=>console.log(ele.textContent))
+
+    const ul = document.querySelector("ul")
+
+    console.log(ul.innerHTML='<li>byebye</li>')
+
+    // alert("Hello")
+    const body = document.querySelector('body');
+
+    body.innerHTML =""
+    alert("Your site has been hacked")
+
+    </script>
+</body>
+</html>
