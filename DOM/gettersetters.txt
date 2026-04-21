@@ -1,4 +1,4 @@
-1. Contnet getters and setters
+1. Content getters and setters
 
 const el = document.querySelector('p')
 
@@ -12,11 +12,13 @@ el.outerHTML  //element itself + content
 
 const img = document.querySelector('img')
 
+<img >
+
 img.getAtteibute('src) //fetched the value of the src attribute
 img.setAttribute('src', 'new value')
 img.hasAttribute('alt')
 img.removeAttribute('alt')
-img.toggleAttribute('hidde')
+img.toggleAttribute('hidden')
 
 
 //directproperty access
@@ -54,7 +56,7 @@ el.style.backgroundColor ="red"
 el.style.fontSize
 el.style.display
 
-el.style.cssText
+el.style.cssText = "backgroundColor=red; height:100px"
 
 computed styles
 

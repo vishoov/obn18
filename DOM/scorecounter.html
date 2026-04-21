@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Count</h1>
+    <h2></h2>
+    <button class="inc">+++++</button>
+    <button class="dec">-----</button>
+    <button class="reset">Reset</button>
+    <script>
+        let clickCount =0;
+
+        let h2 = document.querySelector('h2');
+
+        //increase the counter
+        const increasebtn = document.querySelector('.inc');
+
+
+        //interaction -> addEventListener
+
+        increasebtn.addEventListener('click', handleClick);
+
+        function handleClick(){
+            clickCount++;
+            h2.innerText=clickCount;
+        }
+
+
+
+
+        h2.innerText=clickCount
+
+
+        // decrease the counter
+
+        const decreaseBtn = document.querySelector('.dec');
+
+        decreaseBtn.addEventListener('click', ()=>{
+            clickCount--;
+            h2.innerText=clickCount;
+        })
+    </script>
+</body>
+</html>

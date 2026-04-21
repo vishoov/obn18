@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tasks to be done</h1>
+
+    <input id="todo-input" type="text" placeholder="add a task" >
+    <button id="add-btn">Add Task</button>
+    <p id="message"></p>
+
+    <ul id="todo-list">
+
+
+    </ul>
+    <script>
+        // Get the dom elements
+        const input = document.getElementById('todo-input');
+        const addBtn = document.querySelector('#add-btn');
+        const list = document.getElementById('todo-list');
+
+        const message = document.querySelector('#message')
+
+        addBtn.addEventListener('click', function(){
+            //adding a todo list
+            // 1. get the user input
+            const task = input.value;
+
+            if(task.length==0){
+                return;
+            }
+            // list.innerHTML=`<li>${task}</li>`
+            // this will not work because this will override the previous elements
+
+            const li= document.createElement('li');
+            li.innerText = task;
+
+            list.appendChild(li)
+
+            input.value=""
+
+        })
+
+        input.addEventListener('keyup', function(event){
+
+            if(event.key!=="Enter") return;
+
+            const task = input.value;
+
+            const li= document.createElement('li');
+            li.innerText = task;
+
+            list.appendChild(li)
+
+            input.value=""
+        })
+
+        // addBtn.addEventListener('mouseover', function(){
+        //     message.innerText="button hovered"
+        // })
+
+        input.addEventListener('click', function(){
+            message.innerText="Input box clicked"
+        })
+
+        // addBtn.addEventListener('mouseout', function(){
+        //     message.innerText="mouse left the button"
+        // })
+
+
+        // addBtn.addEventListener('mousedown', function(){
+        //     message.innerText="mouse is clicked..."
+        // })
+
+        // addBtn.addEventListener('mouseup', function(){
+        //     message.innerText='mouse unclicked'
+        // })
+
+        // document.addEventListener('mousemove', function(){
+        //     message.innerText='mouse is moving'
+        // })
+
+        // addBtn.addEventListener('dblclick', function(){
+        //     message.innerText="mouse double clicked"
+        // })
+
+        // addBtn.addEventListener('contextmenu', function(){
+        //     message.innerText="mouse right clicked"
+        // })
+
+
+
+    </script>
+</body>
+</html>

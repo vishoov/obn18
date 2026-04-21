@@ -1,0 +1,63 @@
+addEventListener, DOM state 
+
+addEventListener is the method that is available to us through DOM nodes that helps js listen for events like clicks, keypresses, scrolles, keyboard key interactions hovers etc and run a function when they occur
+
+Events and event targets
+
+an event is a signal that something has happened in the browsers and the event target is the object (i.e the element) on which it has happened or which has recieved the event
+
+targetElement.addEventListener('event-type', handlerFunction)
+
+Event handler functions
+
+the simple most function that is called when a specific event occurs 
+
+
+State Management with Variables 
+
+state is any information your code remembers between events, usually stored in variables such as let clickCount =0 for our click counter;
+
+In DOM applications, state stays alive in :
+
+Javascript variables 
+DOM itself (in innerText etc) (only the current state)
+
+
+Conditional Rendering 
+
+it is when you show certain elements based on certain conditions, like if/else with class toggles, or direct style changes 
+
+
+Events
+
+How to register events 
+
+1. inline html attribute onClick 
+
+<button onClick="function()" > Click</button>
+
+2. DOM proprty onClick 
+
+document.querySelector('.btn').onClick = functionName;
+
+3. addEventListener (highly recommended)
+
+document.querySelector('.btn').addEventListener('click', functionName);
+
+Different kinds of events 
+
+1. Mouse Events 
+
+click 
+dbClick doubleClick
+mouseover
+mouseout
+mousemove 
+mousedown 
+mouseup
+contextmenu
+
+Keyboard events 
+
+keydown 
+keyup
