@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Window Object</h1>
+    <p>The window object represents the browser window containing the DOM Document.</p>
+
+    <div class="loading" style="position: fixed; top:0; left:0; height: 100vh; width: 100vw; background-color: black;"> 
+        <img src="./Material wave loading.gif" alt="Loading..." style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    </div>
+
+    
+    <script>
+        var name ="Amjad";
+        console.log(window.name);
+
+        function greet(){
+            return "Hello ";
+
+        }
+        console.log(window.greet());
+
+        console.log(window.document);
+        console.log(window.location);
+        console.log(window.history)
+        console.log(window.screen)
+        console.log(window.localStorage)
+        console.log(window.sessionStorage);
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+
+
+        // Dialog box methods
+
+        // window.alert('this is a message');
+        // window.confirm('Are you sure you want to delete this item?');
+        // window.prompt('What is your name?');
+
+
+        document.addEventListener('DOMContentLoaded', function(){
+            setTimeout(()=>{
+            document.querySelector('.loading').style.display = 'none';
+            }, 2000)
+        })
+
+        
+        // function change(){setTimeout(()=>
+        // {
+        // document.querySelector('h1').textContent="Hello" 
+        // }
+        // ,1000)}
+
+        // change()
+
+    </script>
+</body>
+</html>
