@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+
+        padding: 10%;
+        background-color: rgb(232, 247, 255);
+    }
+
+    h1{
+
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .panel{
+        min-height: 100px;
+        min-width: 200px;
+        background-color: white;
+        border-radius: 30px;
+        border: 2px solid grey;
+    }
+
+    .panel{
+        display:flex;
+        gap: 10px;
+        align-items: center;
+        padding: 15px;
+        min-height: 150px;
+        justify-content: center;
+    }
+
+    .field{
+        color: grey;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    input, textarea{
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: aliceblue;
+    }
+
+    .add-btn{
+        padding: 15px;
+        border-radius: 10px;
+        background-color: blue;
+        color: white;
+        border: none;
+}
+
+.container{
+    min-height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    margin-top: 20px;
+    gap:10px;
+}
+
+.card{
+    background-color: white;
+    padding:20px;
+    border: 1px solid grey;
+    box-shadow:1px 1px 1px;
+    width: 32%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card h3{
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 8000;
+}
+
+.edit, .delete{
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+.edit{
+    background-color:rgba(221, 106, 221, 0.433);
+    color: rgb(174, 0, 174);
+}
+
+.delete{
+    background-color: rgba(182, 0, 0, 0.246);
+    color: rgb(249, 0, 0);
+}
+
+.role{
+    background-color: blueviolet;
+    padding: 5px 10px;
+    border-radius: 16px;
+    color: white;
+
+}
+</style>
+<body>
+    <h1>Vishoo's Team Manager</h1>
+
+    <div class="panel">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" id="inputName" placeholder="John Doe" />
+          </div>
+          <div class="field">
+            <label>Role</label>
+            <input type="text" id="inputRole" placeholder="Designer" />
+          </div>
+          <div class="field">
+            <label>Bio</label>
+            <textarea id="inputBio" rows="2" cols="22" placeholder="Short bio..."></textarea>
+          </div>
+          <div class="field">
+            <label>Badge Color</label>
+            <input type="color" id="inputColor" value="#6c63ff" />
+          </div>
+          <button class="add-btn" onclick="addCard()">+ Add Card</button>
+    </div>
+
+    <div class="container">
+        <!-- <div class="card">
+            <div class="profile_img">:D </div>
+            <h3 class="name">John Doe</h3>
+            <p class="role">Dev</p>
+            <p class="bio">Lazy dev</p>
+            <div class="buttons">
+                <button class="edit" onclick='editCard(card, name, bio, badgeColor)'>Edit</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div> -->
+    </div>
+
+    <script>
+
+        let container = document.querySelector('.container');
+
+
+        function addCard(){
+            let name = document.getElementById('inputName').value;
+            let role = document.getElementById('inputRole').value;
+            let bio = document.getElementById('inputBio').value;
+            let badgeColor = document.getElementById('inputColor').value;
+
+            //create a new element
+            let card = document.createElement('div');
+            card.classList.add('card');
+
+        //     card.innerHTML= `
+        //     <div class="profile_img">:D </div>
+        //     <h3 class="name">${name}</h3>
+        //     <p class="role">${role}</p>
+        //     <p class="bio">${bio}</p>
+        //     <div class="buttons">
+        //         <button class="edit" onclick='editCard(${card}, ${name}, ${role})'>Edit</button>
+        //         <button class="delete">Delete</button>
+
+        // </div>`
+
+
+            // image fetching 
+            var avatarUrl = 'https://i.pravatar.cc/100?img=';
+
+            let nameTag = document.createElement('h3');
+            nameTag.textContent = name;
+
+            // //badge
+            let badge = document.createElement('p');
+            badge.classList.add('role')
+            badge.textContent = role;
+            badge.style.backgroundColor= badgeColor;
+
+
+            // //bio
+
+            let bioTag = document.createElement('p');
+            bioTag.textContent=bio;
+
+            let actionbuttons = document.createElement('div')
+            actionbuttons.classList.add('buttons')
+
+
+            // edit button
+            let editBtn = document.createElement('button');
+            editBtn.classList.add('edit');
+            editBtn.textContent="Edit"
+            editBtn.onclick= function(){
+                editCard(card, nameTag, badge, badgeColor);
+                // alert("edit clicked")
+            }
+
+            //delete button
+            let deleteBtn = document.createElement('button');
+            deleteBtn.classList.add('delete');
+            deleteBtn.textContent="Delete"
+
+            
+
+            actionbuttons.appendChild(editBtn);
+            actionbuttons.appendChild(deleteBtn);
+
+            card.appendChild(nameTag)
+            card.appendChild(badge)
+            card.appendChild(bioTag)
+            card.appendChild(actionbuttons)
+
+            container.appendChild(card);
+
+        }
+
+        function editCard(card, nameTag, badge, color){
+            var nameInput = document.createElement('input');
+            nameInput.classList.add('edit-input');
+            nameInput.type="text"
+            nameInput.value = nameTag.textContent;
+
+            var roleInput = document.createElement('input');
+            roleInput.classList.add('edit-input');
+            roleInput.type="text"
+            roleInput.value = badge.textContent;
+
+           
+            nameTag.replaceWith(nameInput);
+            badge.replaceWith(roleInput)
+
+            
+
+
+        }
+    </script>
+</body>
+</html>
