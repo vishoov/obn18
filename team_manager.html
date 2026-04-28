@@ -118,6 +118,22 @@
     color: white;
 
 }
+
+.saveBtn{
+    padding:5px;
+    background-color: green;
+    border-radius:5px;
+    border:1px solid green;
+    color:white
+}
+.emptyState{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 </style>
 <body>
     <h1>Vishoo's Team Manager</h1>
@@ -143,6 +159,10 @@
     </div>
 
     <div class="container">
+        <div class="emptyState">
+            No Employees to show.
+        </div>
+    
         <!-- <div class="card">
             <div class="profile_img">:D </div>
             <h3 class="name">John Doe</h3>
@@ -155,16 +175,43 @@
         </div> -->
     </div>
 
+   
     <script>
 
         let container = document.querySelector('.container');
+        let state =0;
+        let emptyState = document.querySelector('.emptyState');
+        function checkState(){
+            // alert(state)
+            if(state!==0){
+                emptyState.style.display='none';
+            }else{
+                emptyState.style.display='flex'
+            }
+        }
 
+        checkState();
 
         function addCard(){
+        //user inputs extraction
             let name = document.getElementById('inputName').value;
             let role = document.getElementById('inputRole').value;
             let bio = document.getElementById('inputBio').value;
             let badgeColor = document.getElementById('inputColor').value;
+
+
+            //input validation
+            if(name.length<3){
+                alert('name is too small')
+                return;
+            }
+
+            //first name and last name 
+            if(name.trim().split(' ').length<2){
+                alert('write First Name + Last Name')
+                return;
+            }
+
 
             //create a new element
             let card = document.createElement('div');
@@ -183,7 +230,10 @@
 
 
             // image fetching 
-            var avatarUrl = 'https://i.pravatar.cc/100?img=';
+            var avatarUrl = 'https://i.pravatar.cc/100?img='+state;
+            let img = document.createElement('img');
+            img.src=avatarUrl;
+
 
             let nameTag = document.createElement('h3');
             nameTag.textContent = name;
@@ -207,32 +257,45 @@
             // edit button
             let editBtn = document.createElement('button');
             editBtn.classList.add('edit');
-            editBtn.textContent="Edit"
+            editBtn.textContent="Edit";
+
+
             editBtn.onclick= function(){
-                editCard(card, nameTag, badge, badgeColor);
+                editCard(card, nameTag, badge, badgeColor, editBtn);
                 // alert("edit clicked")
             }
 
             //delete button
             let deleteBtn = document.createElement('button');
             deleteBtn.classList.add('delete');
-            deleteBtn.textContent="Delete"
+            deleteBtn.textContent="Delete";
+            deleteBtn.onclick=function(){
+                deleteCard(card);
+            }
 
             
 
             actionbuttons.appendChild(editBtn);
             actionbuttons.appendChild(deleteBtn);
-
+            card.appendChild(img)
             card.appendChild(nameTag)
             card.appendChild(badge)
             card.appendChild(bioTag)
             card.appendChild(actionbuttons)
 
             container.appendChild(card);
+            state++;
+            checkState();
+        }
+
+        function deleteCard(card){
+            card.remove();
+            state--;
+        checkState();
 
         }
 
-        function editCard(card, nameTag, badge, color){
+        function editCard(card, nameTag, badge, color, editBtn){
             var nameInput = document.createElement('input');
             nameInput.classList.add('edit-input');
             nameInput.type="text"
@@ -245,11 +308,32 @@
 
            
             nameTag.replaceWith(nameInput);
-            badge.replaceWith(roleInput)
+            badge.replaceWith(roleInput);
 
-            
+            const saveBtn = document.createElement('button');
+            saveBtn.innerText='Save';
+            saveBtn.classList.add('saveBtn');
+            saveBtn.onclick=function(){
+                saveCard(card, nameInput, roleInput, nameTag, badge, editBtn);
+            }
+
+            // const editBtn = document.querySelector('.edit');
+
+            editBtn.replaceWith(saveBtn)
+        };
+
+        function saveCard(card, nameInput, roleInput, nameTag, badge, editBtn){
+            let newName = nameInput.value;
+            nameTag.innerText=newName    
+            let newRole = roleInput.value;
+            badge.innerText = newRole;
+            nameInput.replaceWith(nameTag);
+            roleInput.replaceWith(badge);
+
+            const saveBtn= document.querySelector('.saveBtn');
 
 
+            saveBtn.replaceWith(editBtn);
         }
     </script>
 </body>

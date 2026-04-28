@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color:slategrey;
+            padding:5%;
+        }
+
+        #products_form{
+            padding: 10px;
+            border-radius: 15px;
+            background-color: aquamarine;
+            display:flex;
+            justify-content: space-between;
+            font-size:2rem;
+
+        }
+
+        input{
+            font-size:1.2rem
+        }
+
+        button{
+            background-color: blue;
+            border-radius:5px;
+            padding:10px;
+            color:white
+        }
+        .products{
+            width: 100%;
+            margin-top:30px;
+            border: 1px solid black;
+        }
+
+        th, td{
+            border:1px solid white;
+            padding:5px;
+            font-size:1.5rem;
+            text-align: center;
+        }
+
+        #finalprice{
+            background-color:greenyellow
+        }
+        
+
+
+        #discount{
+            margin-top: 20px;
+            padding:10px;
+            border-radius:10px;
+            background-color: aqua;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Ecomm Cart Component</h1>
+
+    <form id="products_form">
+        <label>Name</label>
+        <input type="text" placeholder="Ex. iphone 15" id="name">
+        <label>Quantity</label>
+        <input type="Number" placeholder="Add Quantity" id="quantity">
+        <label>Price</label>
+        <input type="number" placeholder="Whats the price" id="price">
+        <button type="submit" id="submit">Add To Cart</button>
+
+    </form>
+
+
+    <form id="discount">
+        <label>Discount Code</label>
+        <input type='text' placeholder="Use coupon or redeem gift card" id="discountCode">
+        <button type="submit">Apply Discount</button>
+    </form>
+
+    <table class="products">
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+       
+        <tfoot>
+            <td></td>
+            <td>Total</td>
+            <td id="finalprice"></td>
+        </tfoot>
+    </table>
+
+    <script>
+        let totalPrice = 0
+        const table = document.querySelector('.products')
+        const submitbtn = document.querySelector('#submit');
+      
+        const finalprice = document.getElementById('finalprice')
+        let discountForm = document.querySelector('#discount');
+        const products = document.querySelector('.products')
+        submitbtn.addEventListener('click', 
+      
+      
+        function addtocart(e){
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        let quantity = document.querySelector('#quantity').value;
+    
+        let price = document.querySelector('#price').value;
+
+        totalPrice+=parseInt(price)*parseInt(quantity);
+
+        let newRow = document.createElement('tr');
+
+        newRow.innerHTML  = 
+        `<td>${name}</td><td>${quantity}</td><td id='priceEach'>${price*quantity}</td>`
+
+        console.log(newRow)
+        table.appendChild(newRow);
+        finalprice.innerText=totalPrice;
+
+            
+        
+
+        
+        });
+
+
+        discountForm.addEventListener('submit', (e)=>{
+            e.preventDefault();
+
+
+            let discountCode = document.querySelector('#discountCode');
+
+            if(discountCode.value=='HAHA10'){
+                finalprice.innerHTML = `<span style="text-decoration:line-through">${totalPrice}</span> ${totalPrice*0.9}`
+
+            }
+            console.log('done')
+        })
+        </script>
+
+</body>
+</html>
