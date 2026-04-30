@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 100vh;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+        gap: 10px;
+        }
+        label{
+            display: block;
+
+        }
+
+        input, select{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .password-box{
+            display: flex;
+            gap: 5px;
+        }
+
+        .password-box input{
+            flex:1;
+        }
+
+        .password-box button{
+            padding: 10px;
+            border: none;
+            background:grey;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .gender-box{
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .gender-box label{
+            display: flex;
+            gap: 5px;
+        }
+        .error{
+            color:red;
+            font-size:15px;
+        }
+        button[type='submit']{
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signup form with advanced validation</h1>
+    <form id="signupForm"> 
+        <!-- first name -->
+         <label for="firstName">First Name: </label>
+         <input 
+         type="text" 
+         placeholder="Please add your first name" 
+         minlength="3"
+         maxlength="30"
+         required
+         id="firstName"
+         >
+         <div class="error" id="firstNameError"></div>
+        <!-- last name -->
+         <label 
+         for="lastName"
+         >Last Name: </label>
+         <input 
+         type="text" 
+         placeholder="Please add your last name" id="lastName"
+         required
+         minlength="4"
+         maxlength="30"
+         >
+         <!-- username -->
+
+         <label for="username">Username:</label>
+         <input type="text" id="username" required minlength="3" maxlength="30" placeholder="Please enter a unique username">
+         <div class="error" id="usernameError"></div>
+
+        <!-- email -->
+         <label for="email">Email</label>
+         <input type="email" id="email">
+         <div class="error" id="emailError"></div>
+
+        <!-- password with toggle password-->
+         <label for="password">Password:</label>
+         <div class="password-box">
+            <input type="password" id="password" required>
+            <button type="button" id="toggleBtn" onclick="togglePassword()"
+            >Show</button>
+        </div>
+        <div class="error" id="passwordError"></div>
+
+        <!--  DOB-->
+          <label for="dob">DOB</label>
+          <input type="date" id="dob" required>
+          
+        <!--  Gender-->
+          <label for="gender">Gender</label>
+          <div class="gender-box">
+            <label><input type="radio" name="gender" value="Male">Male
+            </label>
+            <label>
+                <input type="radio" name="gender" value="Female" >Female
+            </label>
+          </div>
+          <button type="submit">Submit</button>
+    </form>
+    <script>
+        const signupForm = document.getElementById('signupForm');
+
+        signupForm.addEventListener('submit', function(event){
+            event.preventDefault();
+        
+            let isValid = true;
+
+            //element selectors
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const email= document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const dob = document.getElementById('dob').value;
+            const gender = document.querySelector("input[name='gender']:checked").value;
+
+            //error messages
+            const usernameError = document.getElementById('usernameError');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+
+            usernameError.textContent="";
+            emailError.textContent="";
+            passwordError.textContent="";
+
+
+            // username check for lenhgth>5 atleast one number
+            if(!usernameValid(username) || username.length<5){
+                usernameError.innerText='invalid username'
+                isValid=false;
+            }
+            
+
+            // should not be a public email
+            if(!validEmail(email)){
+                emailError.innerText="Invalid Email"
+                isValid=false;
+            }
+
+            // uppercase
+            // lowercase
+            // Number
+            // special character
+            // length
+
+            if(!validPass(password)){
+                passwordError.innerText='Invalid Password'
+                isValid=false;
+            }
+
+            // toggle password
+
+            // min age 18
+
+            // 
+
+            console.log(isValid);
+        })
+
+        function usernameValid(val){
+            let result = false;
+            for(let i=0; i<val.length; i++){
+                let character = val[i];
+                if(!isNaN(character)){
+                    result=true
+                }
+            }
+            return result;
+        }
+
+        function validEmail(email){
+            console.log('email check')
+            if(email.includes('gmail.com')){
+                return false;
+            }
+            return true;
+        }
+
+        function validPass(password){
+            if(password==""){
+                return false;
+            }
+            if(password.length<6){
+                return false;
+            }
+            if(password.includes(" ")){
+                return false;
+            }
+
+            let hasNumber = false;
+            let hasUpper = false;
+            let hasLower = false;
+            for(let i=0; i<password.length; i++){
+                let char = password[i];
+                if(char==" "){
+                    return false;
+                }
+
+                if(!isNaN(char) && char!==" "){
+                    hasNumber=true;
+                }
+
+                if(char===char.toUpperCase() && isNaN(char) && char!==" "){
+                    hasUpper=true;
+                }
+
+                if(char===char.toLowerCase() && isNaN(char) && char!==" "){
+                    hasLower=true;
+                }
+
+
+
+            }
+
+
+
+            if(hasNumber==false || hasLower==false || hasUpper==false){
+
+                return false;
+            }
+            return true;
+
+        }
+
+        function togglePassword (){
+            const pass = document.getElementById('password');
+            const toggleBtn = document.getElementById('toggleBtn');
+
+            
+            if(pass.type=='password'){
+                pass.type='text'
+                toggleBtn.innerText='Hide'
+            }else{
+                pass.type='password';
+                toggleBtn.innerText='Show'
+            }
+        }
+    </script>
+</body>
+</html>
