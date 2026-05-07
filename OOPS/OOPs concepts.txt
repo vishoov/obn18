@@ -1,0 +1,12 @@
+OOP-> object oriented programming 
+
+OOP majorly works on 4 principles
+
+1. Encapsulation : Bundling related data and methods together
+
+2. Inheritance - creating new objects derived from existing ones 
+
+3. abstraction - hiding complex or sensitive implementation from outside the scope
+
+
+4. polymorphism - same interface, different implementation 
