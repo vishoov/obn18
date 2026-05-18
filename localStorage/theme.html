@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin:0;
+            padding:20px;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content:center;
+            align-items: center;
+        }
+
+        button{
+            padding:10px;
+            border-radius: 10px;
+            margin:10px;
+            width: 200px;
+        }
+
+        .light{
+            background-color:white;
+            color:black;
+        }
+
+        .dark{
+            background-color: black;
+            color: white;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body class="dark">
+    <h1>Theme Switched</h1>
+    <p>Click the buttons to toggle the theme. </p>
+
+    <!-- <button id="lightbtn">Light Theme </button> -->
+    <!-- <button id="darkbtn">Dark Theme</button> -->
+
+    <button id="toggle">Toggle The Theme</button>
+    <script>
+        const body = document.body;
+        const h1 = document.querySelector('h1')
+        const p = document.querySelector('p')
+        const buttons = document.querySelector('button');
+
+        const lightbtn = document.getElementById('lightbtn')
+        const darkbtn = document.getElementById('darkbtn');
+
+// Load the saved theme
+const savedTheme = localStorage.getItem('theme');
+body.className=savedTheme || 'dark';
+buttons.className=savedTheme
+
+
+        lightbtn.onclick= ()=>{
+            localStorage.setItem('theme', 'light')
+            body.className='light';
+            h1.className='light'
+            p.className='light'
+            buttons.className='light'
+        }
+        darkbtn.onclick=()=>{
+            localStorage.setItem('theme', 'dark')
+            body.className='dark';
+            h1.className='dark'
+            p.className='dark'
+            buttons.className='dark'
+        }
+
+        const toggle = document.getElementById('toggle');
+
+        toggle.onclick = ()=>{
+            const isDark = localStorage.getItem('theme') =='dark'?true:false;
+            console.log(isDark)
+            if(isDark){
+                localStorage.setItem('theme', 'light')
+                body.className='light'
+
+            }else{
+                localStorage.setItem('theme', 'dark')
+                body.className='dark'
+            }
+
+        }
+
+    
+    </script>
+</body>
+</html>

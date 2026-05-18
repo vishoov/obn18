@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Management System</h1>
+
+    <input type="text" placeholder="Enter your name" id="name" />
+    <input type="number" placeholder="Enter your Age" id="age" />
+
+    <button id="submit" onclick="AddStudent()">Add Student</button>
+
+    <ul id="studentsList">
+
+    </ul>
+
+    <script>
+
+        class Student{
+            constructor(name, age){
+                this.id = Date.now();
+                this.name = name;
+                this.age = age;
+            }
+        }
+
+        class StudentManager{
+            constructor(){
+                this.students = JSON.parse(localStorage.getItem('students')) || [];
+            }
+
+            add(student){
+                this.students.push(student);
+                this.save();
+            }
+
+            save(){
+            localStorage.setItem('students', JSON.stringify( this.students))                                                               
+            }
+
+
+            delete(id){
+                this.students = this.students.filter(
+                    student=>student.id !== id
+                )
+
+                this.save();
+
+            }
+
+            display(){
+
+
+const ul = document.getElementById('studentsList');
+ul.innerHTML='';
+this.students.forEach((stu)=>{
+    const li = document.createElement('li');
+    li.innerHTML = `${stu.name} - ${stu.age} <button onClick='removeStudent(${stu.id})'>Delete</button>`
+
+    ul.appendChild(li);
+}
+)
+            }
+
+        }
+
+        const manager = new StudentManager();
+        manager.display();
+
+
+
+        function removeStudent(id){
+            manager.delete(id);
+            manager.display();
+        }
+
+
+        function AddStudent(){
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+
+            // if(name.length<3){
+            //     return -1;
+            // }
+            const newStudent = new Student(name, age);
+            console.log(newStudent)
+            manager.add(newStudent)
+
+            manager.display();
+            
+        }
+
+
+    </script>
+</body>
+</html>

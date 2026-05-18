@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Manager</title>
+</head>
+<body>
+
+  <h2>Student Management System</h2>
+
+  <pre>
+    Create a Student Management System using JavaScript OOP concepts.
+
+            The application should:
+
+            Add students
+            Display all students
+            Delete students
+            Save data in Local Storage
+  </pre>
+
+  <input type="text" id="name" placeholder="Enter Name">
+  <input type="number" id="age" placeholder="Enter Age">
+  <button onclick="addStudent()">Add Student</button>
+
+  <ul id="studentList"></ul>
+
+<script>
+
+class Student {
+  constructor(name, age) {
+    this.id = Date.now();
+    this.name = name;
+    this.age = age;
+  }
+}
+
+class StudentManager {
+  constructor() {
+    this.students = JSON.parse(localStorage.getItem("students")) || [];
+  }
+
+  add(student) {
+    this.students.push(student);
+    this.save();
+  }
+
+  delete(id) {
+    this.students = this.students.filter(
+      student => student.id !== id
+    );
+    this.save();
+  }
+
+  save() {
+    localStorage.setItem(
+      "students",
+      JSON.stringify(this.students)
+    );
+  }
+
+  display() {
+    const list = document.getElementById("studentList");
+
+    list.innerHTML = "";
+
+    this.students.forEach(student => {
+      list.innerHTML += `
+        <li>
+          ${student.name} - ${student.age}
+          <button onclick="removeStudent(${student.id})">
+            Delete
+          </button>
+        </li>
+      `;
+    });
+  }
+}
+
+const manager = new StudentManager();
+
+manager.display();
+
+function addStudent() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+
+  if (!name || !age) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  const student = new Student(name, age);
+
+  manager.add(student);
+
+  manager.display();
+}
+
+function removeStudent(id) {
+  manager.delete(id);
+  manager.display();
+}
+
+</script>
+
+</body>
+</html>

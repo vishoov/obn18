@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NodeList vs HTMLCollection</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .inp{
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    button{
+      margin-right: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>NodeList vs HTMLCollection</h2>
+
+  <div id="inputs-container">
+    <input class="inp" type="text" value="Input 1">
+    <input class="inp" type="text" value="Input 2">
+  </div>
+
+  <button id="btn">Check Collections</button>
+  <button id="addBtn">Add New Input</button>
+
+  <script>
+
+    // STATIC NodeList
+    const nodeList = document.querySelectorAll('.inp');
+
+    // LIVE HTMLCollection
+    const htmlCollection = document.getElementsByClassName('inp');
+
+    const btn = document.getElementById('btn');
+    const addBtn = document.getElementById('addBtn');
+    const container = document.getElementById('inputs-container');
+
+    // CHECK DIFFERENCE
+    btn.addEventListener('click', function () {
+
+      console.clear();
+
+      console.log("------ NODELIST ------");
+      console.log(nodeList);
+      console.log("Length:", nodeList.length);
+
+      nodeList.forEach((item, index) => {
+        console.log(`NodeList ${index}:`, item.value);
+      });
+
+
+      console.log("------ HTML COLLECTION ------");
+      console.log(htmlCollection);
+      console.log("Length:", htmlCollection.length);
+
+      for(let i = 0; i < htmlCollection.length; i++) {
+        console.log(`HTMLCollection ${i}:`, htmlCollection[i].value);
+      }
+
+    });
+
+    // ADD NEW INPUT DYNAMICALLY
+    addBtn.addEventListener('click', function () {
+
+      const newInput = document.createElement('input');
+
+      newInput.type = 'text';
+      newInput.className = 'inp';
+      newInput.value = `Input ${htmlCollection.length + 1}`;
+
+      container.appendChild(newInput);
+
+      console.log("New input added!");
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name" />
+    <input type="email" id="email" />
+    <input type="color" id="color" />
+
+
+    <button id="saveBtn">Save</button>
+    <div id="preview"></div>
+    <script>
+        const name = document.getElementById('name')
+        const email = document.getElementById('email')
+        const color = document.getElementById('color');
+        const preview = document.getElementById('preview')
+        const saveBtn = document.getElementById('saveBtn');
+
+        const raw = localStorage.getItem('user');
+
+        if(raw){
+            const data = JSON.parse(raw);
+            name.value = data.name;
+            email.value = data.email;
+            color.value = data.color;
+
+            preview.innerHTML= `Name: ${data.name}, email:${data.email}, color:${data.color}`
+        }
+
+
+        saveBtn.onclick=()=>{
+            const data = {name:name.value, email:email.value, color:color.value};
+
+            localStorage.setItem('user', JSON.stringify(data))
+            preview.innerHTML = `
+            Name:${data.name}, email:${data.email}, color:${data.color}`
+
+        }
+    </script>
+</body>
+</html>
