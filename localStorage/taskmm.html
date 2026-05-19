@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h1>Smart Task Manager</h1>
+
+    <div>
+      <input type="text" id="title" placeholder="Task title">
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <input type="date" id="dueDate">
+      <button id="addBtn">Add Task</button>
+    </div>
+  
+    <div>
+      <button data-filter="all">All</button>
+      <button data-filter="completed">Completed</button>
+      <button data-filter="pending">Pending</button>
+    </div>
+  
+    <ul id="taskList"></ul>
+
+    <script>
+    // ======================
+    // Task Class
+    // ======================
+    class Task {
+        constructor(id, title, priority, dueDate, completed = false) {
+            this.id = id;
+            this.title = title;
+            this.priority = priority;
+            this.dueDate = dueDate;
+            this.completed = completed;
+        }
+        
+        toggle() {
+            this.completed = !this.completed;
+        }
+    }
+    
+    // ======================
+    // Task Manager Class
+    // ======================
+    class TaskManager {
+
+  constructor() {
+    this.tasks = this.loadFromStorage();
+
+    // DOM References
+    this.taskList = document.getElementById("taskList");
+    this.titleInput = document.getElementById("title");
+    this.priorityInput = document.getElementById("priority");
+    this.dueDateInput = document.getElementById("dueDate");
+    this.addBtn = document.getElementById("addBtn");
+
+    this.currentFilter = "all";
+
+    this.initialize();
+  }
+
+  // ======================
+  // Initialize App
+  // ======================
+  initialize() {
+    this.addBtn.addEventListener("click", () => this.handleAddTask());
+
+    this.taskList.addEventListener("click", (e) =>
+      this.handleTaskActions(e)
+    );
+
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        this.currentFilter = e.target.dataset.filter;
+        this.renderTasks();
+      });
+    });
+
+    this.renderTasks();
+  }
+
+  // ======================
+  // Add Task
+  // ======================
+  handleAddTask() {
+    const title = this.titleInput.value.trim();
+    const priority = this.priorityInput.value;
+    const dueDate = this.dueDateInput.value;
+
+    if (!title) {
+      alert("Task title is required");
+      return;
+    }
+
+    const newTask = new Task(
+      Date.now().toString(),
+      title,
+      priority,
+      dueDate
+    );
+
+    this.tasks.push(newTask);
+
+    this.saveToStorage();
+    this.clearInputs();
+    this.renderTasks();
+  }
+
+  // ======================
+  // Handle Button Actions
+  // ======================
+  handleTaskActions(event) {
+    const target = event.target;
+
+    const taskElement = target.closest("li");
+
+    if (!taskElement) return;
+
+    const taskId = taskElement.dataset.id;
+
+    // Delete Task
+    if (target.classList.contains("delete")) {
+      this.deleteTask(taskId);
+    }
+
+    // Toggle Complete
+    if (target.classList.contains("toggle")) {
+      this.toggleTask(taskId);
+    }
+
+    // Edit Task
+    if (target.classList.contains("edit")) {
+      this.editTask(taskId);
+    }
+  }
+
+  // ======================
+  // Delete Task
+  // ======================
+  deleteTask(id) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+
+    this.saveToStorage();
+    this.renderTasks();
+  }
+
+  // ======================
+  // Toggle Task
+  // ======================
+  toggleTask(id) {
+    const task = this.tasks.find((task) => task.id === id);
+
+    if (task) {
+      task.toggle();
+    }
+
+    this.saveToStorage();
+    this.renderTasks();
+  }
+
+  // ======================
+  // Edit Task
+  // ======================
+  editTask(id) {
+    const task = this.tasks.find((task) => task.id === id);
+
+    if (!task) return;
+
+    const updatedTitle = prompt("Edit task title", task.title);
+
+    if (!updatedTitle || !updatedTitle.trim()) return;
+
+    task.title = updatedTitle.trim();
+
+    this.saveToStorage();
+    this.renderTasks();
+  }
+
+  // ======================
+  // Get Filtered Tasks
+  // ======================
+  getFilteredTasks() {
+    switch (this.currentFilter) {
+      case "completed":
+        return this.tasks.filter((task) => task.completed);
+
+      case "pending":
+        return this.tasks.filter((task) => !task.completed);
+
+      default:
+        return this.tasks;
+    }
+  }
+
+  // ======================
+  // Render Tasks
+  // ======================
+  renderTasks() {
+    const filteredTasks = this.getFilteredTasks();
+
+    if (!filteredTasks.length) {
+      this.taskList.innerHTML = `
+        <li>No tasks found</li>
+      `;
+      return;
+    }
+
+    this.taskList.innerHTML = filteredTasks
+      .map(
+        (task) => `
+        <li data-id="${task.id}">
+          <span 
+            style="
+              text-decoration: ${
+                task.completed ? "line-through" : "none"
+              };
+            "
+          >
+            ${task.title}
+            [${task.priority}]
+            (${task.dueDate || "No Date"})
+          </span>
+
+          <button class="toggle">
+            ${task.completed ? "Undo" : "Complete"}
+          </button>
+
+          <button class="edit">
+            Edit
+          </button>
+
+          <button class="delete">
+            Delete
+          </button>
+        </li>
+      `
+      )
+      .join("");
+  }
+
+  // ======================
+  // Clear Inputs
+  // ======================
+  clearInputs() {
+    this.titleInput.value = "";
+    this.priorityInput.value = "low";
+    this.dueDateInput.value = "";
+  }
+
+  // ======================
+  // Save To LocalStorage
+  // ======================
+  saveToStorage() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
+  }
+
+  // ======================
+  // Load From LocalStorage
+  // ======================
+  loadFromStorage() {
+    const storedTasks =
+      JSON.parse(localStorage.getItem("tasks")) || [];
+
+    return storedTasks.map(
+      (task) =>
+        new Task(
+          task.id,
+          task.title,
+          task.priority,
+          task.dueDate,
+          task.completed
+        )
+    );
+  }
+}
+
+// ======================
+// Initialize Application
+// ======================
+const taskManager = new TaskManager();
+
+</script>
+</body>
+</html>

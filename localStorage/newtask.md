@@ -201,36 +201,7 @@ project-folder/
 └── README.md
 ```
 
----
 
-# ▶️ How to Run the Project
-
-## Step 1
-
-Create the following files:
-
-```bash
-index.html
-app.js
-```
-
----
-
-## Step 2
-
-Paste the provided HTML and JavaScript code.
-
----
-
-## Step 3
-
-Open:
-
-```bash
-index.html
-```
-
-inside the browser.
 
 ---
 
