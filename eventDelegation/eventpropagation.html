@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            padding:10px;
+        }
+
+
+        .parent{
+            height: 500px;
+            width: 500px;
+            border: 1px solid white;
+            border-radius:10px;
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap:5px;
+
+        }
+
+        .box{
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: xxx-large;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="box" id="1">1</div>
+        <div class="box" id="2">2</div>
+        <div class="box" id="3">3</div>
+        <div class="box" id="4">4</div>
+        <div class="box" id="5">5</div>
+        <div class="box" id="6" style="background-color: green;">6</div>
+        <div class="box" id="7">7</div>
+        <div class="box" id="8">8</div>
+        <div class="box" id="9">9</div>
+
+    </div>
+<script>
+    const body = document.body;
+    const parent = document.querySelector('.parent');
+    const cell = document.getElementById('6');
+    
+    
+        parent.addEventListener('click', function(event){
+        // event.stopPropagation();
+
+            console.log('Board captured the click on', event.target.textContent);
+
+            // console.log('parent clicked')
+        }, {
+            capture:true
+        })
+    // document.addEventListener('click', function (event){
+    //     console.log(this);
+        
+    //     console.log('document clicked');
+    // })
+    
+    // cell.addEventListener('click', function(event){
+    //         console.log(this);
+    //         console.log('cell clicked')
+    //     })
+
+    // body.addEventListener('click', function(event){
+    //     console.log(this);
+    //     console.log('body clicked')
+    // })
+
+
+</script>
+
+
+</body>
+</html>
