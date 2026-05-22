@@ -47,6 +47,12 @@
         <div class="box" id="9">9</div>
 
     </div>
+
+    <div class="outer" style="padding:50px; background-color: blanchedalmond;">
+        <div class="dibba" style="height: 100px; width: 100px; background-color: antiquewhite; border: 2px solid black;">
+            Hello good morning
+        </div>
+    </div>
 <script>
     const body = document.body;
     const parent = document.querySelector('.parent');
@@ -54,9 +60,9 @@
     
     
         parent.addEventListener('click', function(event){
-        // event.stopPropagation();
-
-            console.log('Board captured the click on', event.target.textContent);
+            event.stopPropagation();
+            const targetElement = event.target;
+            console.log('Board captured the click on', targetElement.id);
 
             // console.log('parent clicked')
         }, {
@@ -78,9 +84,23 @@
     //     console.log('body clicked')
     // })
 
+        const outer = document.querySelector('.outer');
+        const dibba = document.querySelector('.dibba');
+
+        outer.addEventListener('click', (e)=>{
+            console.log('outer clicked')
+        })
+
+        dibba.addEventListener('click', (e)=>{
+            e.stopPropagation();
+
+            console.log('dibba clicked')
+        })
 
 </script>
 
 
 </body>
 </html>
+
+<!-- To optimize memory in javascript's working, instead of writing multiple repetitive event listeners, we add a single event listener on the parent, this is called event delegation -->

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Kanban Board</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .column {
+      width: 30%;
+      min-height: 200px;
+      padding: 10px;
+      margin: 10px;
+      float: left;
+      background: #f2f2f2;
+      border-radius: 8px;
+    }
+
+    .task {
+      background: lightblue;
+      padding: 10px;
+      margin: 10px 0;
+      cursor: grab;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simple Kanban Board</h1>
+
+  <div class="column">
+    <h2>To Do</h2>
+
+    <div class="task" draggable="true">Task 1</div>
+    <div class="task" draggable="true">Task 2</div>
+  </div>
+
+  <div class="column">
+    <h2>In Progress</h2>
+
+    <div class="task" draggable="true">Task 3</div>
+  </div>
+
+  <div class="column">
+    <h2>Done</h2>
+  </div>
+
+  <script>
+    let draggedTask = null;
+
+    // Select all tasks
+    const tasks = document.querySelectorAll(".task");
+
+    tasks.forEach(task => {
+
+      // Save dragged task
+      task.addEventListener("dragstart", () => {
+        draggedTask = task;
+      });
+
+    });
+
+    // Select all columns
+    const columns = document.querySelectorAll(".column");
+
+    columns.forEach(column => {
+
+      // Allow drop
+      column.addEventListener("dragover", (e) => {
+        e.preventDefault();
+      });
+
+      // Move task into column
+      column.addEventListener("drop", () => {
+        column.appendChild(draggedTask);
+      });
+
+    });
+  </script>
+
+</body>
+</html>

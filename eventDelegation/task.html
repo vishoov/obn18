@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .completed{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h2> Todo App using Event Delegation</h2>
+
+    <input type="text" id="taskInput" placeholder="enter task"/>
+    <button id ='addBtn'>Add Task</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addBtn = document.getElementById('addBtn')
+        const taskList = document.getElementById('taskList')
+
+
+        addBtn.addEventListener('click', ()=>{
+            const taskValue = taskInput.value;
+            const li = document.createElement('li')
+
+            li.innerHTML = `
+            <span>${taskValue}</span>
+            <button class='completeBtn'>Complete</button>
+            <button class='deleteBtn'>Delete</button>`
+
+            taskList.appendChild(li);
+            taskInput.value=""
+        })
+
+        taskList.addEventListener('click', ()=>{
+            if(event.target.classList.contains('deleteBtn')){
+                event.target.parentElement.remove();
+            }
+
+            if(event.target.classList.contains('completeBtn')){
+                event.target.parentElement.querySelector('span').classList.toggle('completed')
+            }
+        })
+    </script>
+</body>
+</html>

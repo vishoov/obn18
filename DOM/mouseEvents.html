@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<p class="mouse"></p>
+<p class="page"></p>
+<body>
+    <script>
+        const mouse = document.querySelector('.mouse');
+        const page = document.querySelector('.page');
+
+        document.addEventListener('mousemove', (e)=>{
+            mouse.innerText=`client: ${e.clientX}, ${e.clientY}`;
+            page.innerText=`page: ${e.pageX}, ${e.pageY}`;
+        })
+    </script>
+</body>
+</html>
