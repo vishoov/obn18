@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        header{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            padding:20px;
+            text-align:center;
+            color:white;
+            background: red;
+            transition:background 0.3s;
+        }
+
+
+        header.scrolled{
+            background:blue;
+        }
+
+        .box{
+            width:250px;
+            height: 100px;
+            border:1px solid grey;
+            overflow:auto;
+            padding:10px;
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body>
+    <header>My website</header>
+    <main>
+        <p>Scroll down to see the header background change</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+        <p>More Content...</p>
+
+        <div class="box">
+            <p>Scroll inside this box.</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p>More text.....</p>
+            <p id="scrollbox">More text.....</p>
+        </div>
+    </main>
+
+    <script>
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function(){
+            if(window.scrollY>0){
+                header.classList.add('scrolled')
+            }else{
+                header.classList.remove('scrolled')
+            }
+        })
+
+        const box = document.querySelector('.box');
+        const scrollbox = document.getElementById('scrollbox');
+        box.addEventListener('scroll', function(){
+            scrollbox.innerText="Isse zyada scroll nahi hoga"
+        })
+    </script>
+    
+</body>
+</html>

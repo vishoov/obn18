@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing:border-box;
+            padding:0;
+            margin:0;
+        }
+
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            padding:20px;
+            background-color: rgb(242, 242, 242);
+        }
+
+        .column{
+            float:left;
+            width:30%;
+            min-height:200px;
+            background-color: #ffffff;
+            margin:1%;
+            padding:10px;
+            border-radius:10px;
+            
+        }
+
+        .task{
+            padding:5px;
+            margin:5px;
+            background-color:lightblue;
+            border-radius:4px;
+            cursor:grab;
+        }
+    </style>
+</head>
+<body>
+    <h1>Drag Tasks between Columns</h1>
+
+    <div class="column" id="todo">
+        <h2>To-do</h2>
+        <div class="task" draggable="true">Task 1</div>
+        <div class="task" draggable="true">Task 2</div>
+    </div>
+
+    <div class="column" id="inProgress">
+        <h2>In-progress</h2>
+        <div class="task" draggable="true">Task 3</div>
+    </div>
+    <div class="column" id="done">
+        <h2>Done</h2>
+    </div>
+
+    <script>
+
+// State : to remember the currently dragged task 
+        let draggedTask = null;
+
+        // All tasks 
+        const tasks = document.querySelectorAll('.task');
+
+        // implement an event on all task divs 
+        tasks.forEach(task=>{
+            task.addEventListener('dragstart', e=>{
+                draggedTask = e.target;
+                console.log(draggedTask)
+            })
+        });
+
+        tasks.forEach(task=>{
+            task.addEventListener('dragend', ()=>{
+                draggedTask=null;
+            })
+        });
+
+
+
+        let columns =document.querySelectorAll('.column');
+
+        columns.forEach(col=>{
+
+          col.addEventListener('dragover', e=>{
+            e.preventDefault();
+          })
+
+          col.addEventListener('dragenter', e=>{
+            e.preventDefault();
+            console.log(e.target, " this is the div where the element has entered")
+          })
+
+            col.addEventListener('drop', e=>{
+                // e.preventDefault();
+
+                if(draggedTask){
+                e.target.appendChild(draggedTask);
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>

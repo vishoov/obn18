@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <button id="add-items">Add Items</button>
+    <ul id="my-list"></ul>
+
+
+
+    <script>
+        const button = document.getElementById('add-items');
+
+        const ul = document.getElementById('my-list')
+        button.onclick= function(){
+
+            const fragment = document.createDocumentFragment();
+            //this will create an empty tree with reference fragment
+
+            for(let i=0; i<100; i++){
+                const li = document.createElement('li');
+                li.textContent = 'Item'+i;
+                fragment.appendChild(li);
+            }
+            ul.appendChild(fragment)
+        }
+    </script>
+</body>
+</html>

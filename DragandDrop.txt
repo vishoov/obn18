@@ -1,0 +1,43 @@
+Drag and drop is an interaction pattern where users:
+1. grab an element ('drag source');
+2. move it with the pointer
+3. release it over another area (drop zone)
+
+in html, this is built using the event based apis layered on top of DOM
+
+HTML part 
+1. mark an element draggable 
+2. listen for the drag events on that element : 
+    - dragstart, dragend, drag
+3. Listen to drop events 
+    - drop, dropover, dragover, dragenter, dragleave 
+
+
+1. draggable html 
+
+<div 
+class='task' 
+draggable='true'
+>Task 1</div>
+
+2. dragevents 
+Drag source events  
+element.addEventListener('dragstart', e=>{
+
+})
+
+
+element.addEventListener('dragend', e=>{
+});
+
+
+3. dropevents 
+
+Drop Zone Events 
+
+dragover, dragenter -> prevent these
+
+
+drop -> e.target.appendChild(stored in state)
+
+
