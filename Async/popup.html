@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        .popup{
+            position: fixed;
+            top: 10%;
+            left:10%;
+            background-color: rgb(176, 176, 255);
+            border: 1px solid black;
+            padding:20px;
+            box-shadow:5px 5px 5px grey;
+            border-radius: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap:10px;
+            display: none;
+        }
+
+        .close-btn{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 2px 5px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid red;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="popup">
+        <button class="close-btn">X</button>
+        <h1>Welcome to our site</h1>
+        <p>Please enter your email to join our newsletter</p>
+        <input type="text" placeholder="email"/>
+    </div>
+
+    <script>
+        const popup = document.querySelector('.popup');
+
+        popup.style.display="none";
+
+        const popupTimer = setTimeout(()=>{
+            popup.style.display="flex";
+        }, 5000);
+
+
+        const closeBtn = document.querySelector('.close-btn');
+
+        closeBtn.onclick = ()=>{
+            popup.style.display = "none";
+        }
+
+
+    
+    </script>
+
+</body>
+</html>

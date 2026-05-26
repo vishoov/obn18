@@ -1,0 +1,25 @@
+Asynchronouse JS
+
+Synchronouse code runs line by line, and each step must finish before the next begins this is blocking nature of single threaded javascript 
+
+
+
+Asynchronous code breaks that by allowing certain operations to happen in the background while the rest of the program continues 
+
+Why it matters 
+
+when some tasks take time, such as network request, api calls, timers, user interactions, without async handling the browser could become unresponsive while doing these tasks, so to avoid this, we use async 
+
+
+Why is it particularly useful in web development?
+
+this is useful because web heavily depends on third parties to fetch data, like servers CDNS etc along with that it has to respond to clicks, and load resourcec and execute main code all at once, so it is very important that it should be able to handle multiple takss in a given time frame 
+
+
+Building Blocks 
+
+1. Timers like setTimeout, setInterval, scheduling code to run later 
+2. Callbacks functions 
+3. Promises represent a future result of an async operation and can be pending, fulfilled or rejected 
+4. async and await provide a cleaner way to work with promises (ES6+)
+

@@ -36,16 +36,43 @@
 // console.log("W");
 
 
-console.log("One");
+// console.log("One");
 
-setTimeout(() => {
-  console.log("Two");
-}, 500);
+// setTimeout(() => {
+//   console.log("Two");
+// }, 500);
 
-console.log("Three");
+// console.log("Three");
 
-setTimeout(() => {
-  console.log("Four");
-}, 0);
+// setTimeout(() => {
+//   console.log("Four");
+// }, 0);
 
-console.log("Five");
+// console.log("Five");
+
+
+function bringfrommarket(veggie){
+  setTimeout(()=>{
+    console.log("Babycorn acquired");
+  }, 5000)
+
+  return true;
+}
+
+
+function cookHakkaNoodles(){
+  // 1. bring noodles 
+  console.log("noodles agaye")
+
+  // 2. bring vaggies
+  console.log("Veggies are here ")
+
+  // we dont have baby corn 
+  if(bringfrommarket("babycon")){
+
+  console.log("Cooked!")
+  }
+
+
+}
+cookHakkaNoodles();
