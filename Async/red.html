@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Stopwatch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .stopwatch {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .time {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="stopwatch">
+    <div class="time">
+      <span id="minutes">00</span> :
+      <span id="seconds">00</span> :
+      <span id="milliseconds">00</span>
+    </div>
+
+    <button onclick="startWatch()">Start</button>
+    <button onclick="stopWatch()">Stop</button>
+    <button onclick="resetWatch()">Reset</button>
+  </div>
+
+  <script>
+    let seconds = 0;
+    let milliseconds = 0;
+    let minutes =0;
+    let timer = null;
+    function startWatch(){
+
+        if(timer!==null) return;
+
+        timer = setInterval(()=>{
+            milliseconds++;
+
+            if(milliseconds===100){
+                seconds++;
+                milliseconds=0;
+
+            }
+
+            if(seconds==60){
+                seconds=0;
+                minutes++;
+            }
+            updateDisplay();
+        }, 10);
+    }
+
+
+    function stopWatch(){
+        clearInterval(timer);
+        timer = null;
+    }
+
+
+    function resetWatch(){
+        clearInterval(timer);
+        minutes =0;
+        seconds =0;
+        milliseconds=0;
+        updateDisplay();
+        timer=null;
+
+    }
+
+    function updateDisplay(){
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        document.getElementById('milliseconds').textContent=String(milliseconds).padStart(2, "0");
+        document.getElementById('minutes').textContent=String(minutes).padStart(2, "0");
+    }
+  </script>
+</body>
+</html>

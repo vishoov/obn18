@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traffic Light Simulator</title>
+    <style>
+        body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+.container {
+  text-align: center;
+}
+
+.signal {
+  width: 120px;
+  padding: 20px;
+  background: #222;
+  border-radius: 20px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.light {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #444;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.red.active {
+  background: red;
+  box-shadow: 0 0 20px red;
+}
+
+.yellow.active {
+  background: yellow;
+  box-shadow: 0 0 20px yellow;
+}
+
+.green.active {
+  background: limegreen;
+  box-shadow: 0 0 20px limegreen;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Traffic Light Simulator</h1>
+
+    <div class="signal">
+      <div class="light red" id="red"></div>
+      <div class="light yellow" id="yellow"></div>
+      <div class="light green" id="green"></div>
+    </div>
+
+    <p id="status">Ready</p>
+    <button onclick="startTrafficLight()">Start</button>
+    <button onclick="stopTrafficLight()">Stop</button>
+  </div>
+
+  <script>
+    const red = document.getElementById("red");
+const yellow = document.getElementById("yellow");
+const green = document.getElementById("green");
+const status = document.getElementById("status");
+
+let current = 0;
+let timer = null;
+
+const lights = [
+  { element: red, text: "STOP", time: 3000 },
+  { element: yellow, text: "WAIT", time: 1000 },
+  { element: green, text: "GO", time: 3000 }
+];
+
+function clearLights() {
+  red.classList.remove("active");
+  yellow.classList.remove("active");
+  green.classList.remove("active");
+}
+
+function showLight(index) {
+  clearLights();
+  lights[index].element.classList.add("active");
+  status.textContent = lights[index].text;
+}
+
+function nextLight() {
+  showLight(current);
+  timer = setTimeout(() => {
+    current = (current + 1) % lights.length;
+    nextLight();
+  }, lights[current].time);
+}
+
+function startTrafficLight() {
+  if (timer) return;
+  current = 0;
+  nextLight();
+}
+
+function stopTrafficLight() {
+  clearTimeout(timer);
+  timer = null;
+  clearLights();
+  status.textContent = "Stopped";
+}
+  </script>
+</body>
+</html>
