@@ -6,7 +6,10 @@
 // pin
 // initiatepayment 
 // processpayment 
-//success 
+
+// const qr = new Promise(qrScan())-> proxy value -> promise -> status: pending
+// pending-> fulfillled -> value = qr
+// .then(idFind()
 
 
 // Callback 
@@ -21,7 +24,7 @@
 // }
 
 // api.scanQr(image, function(code){
-
+    // image -> code-> continue;
 //     api.idFind(code, function(){
 //         api.amount(function(){
 //                 api.pin(function(){
@@ -139,3 +142,64 @@ fetchUser
         // these let us treat async operations like normal values-> success goes to then and failure goes to catch
 
         // think of resolve as "the operation completed successfully" and reject as the 'operation failed with an error"
+
+
+
+        scanQr(image)
+  .then((code) => idFind(code))
+  .then((user) => amount(user))
+  .then((amt) => pin(amt))
+  .then((data) => initiatePayment(data))
+  .then((data) => processPayment(data))
+  .then((data) => success(data))
+  .catch((err) => {
+    console.error("Error:", err.message);
+  });
+
+
+  class Promise{
+    constructor(callback){
+        this.resolve = callback(success);
+        this.reject = callback(failure);
+        this.function = callback(resolve, reject);
+        this.status = 'pending';
+    }
+
+    reolve(){
+        return callback(value);
+    }
+
+    reject(){
+        return callback(error);
+    }
+  }
+
+  class MyPromise {
+    #state = "pending";
+    #value = undefined;
+    #reason = undefined;
+    #thenCallbacks = [];
+    #catchCallbacks = [];
+  
+    constructor(executor) {
+      try {
+        executor(this.#resolve.bind(this), this.#reject.bind(this));
+      } catch (err) {
+        this.#reject(err);
+      }
+    }
+  
+    #resolve(value) {
+      if (this.#state !== "pending") return;
+      this.#state = "fulfilled";
+      this.#value = value;
+      this.#thenCallbacks.forEach(cb => cb(value));
+    }
+  
+    #reject(reason) {
+      if (this.#state !== "pending") return;
+      this.#state = "rejected";
+      this.#reason = reason;
+      this.#catchCallbacks.forEach(cb => cb(reason));
+    }
+}
