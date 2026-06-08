@@ -55,6 +55,12 @@ async function showUser(){
 
 // showUser();
 
+
+// async/await is a syntax in js that is helping us in wriitng async code that looks and behaves almost like synchronous code, which is built on top of promises.
+// sequential 
+// non blocking
+// more readable and easy to debug 
+
 // Concepts 
 
 // 1. Asynchronous work -> finish later, like fetching dara, calling a db, reading a file
@@ -103,3 +109,40 @@ async function run(){
 }
 
 run()
+
+
+
+// mobileInput()
+//   .then(connectionSpeed)
+//   .then(webcamAccess)
+//   .then(shareScreen)
+//   .then(testStarted)
+//   .catch((error) => {
+//     console.lor(error);
+//   });
+
+// async function studentVerification(){
+//     const mobile = await mobileInput();
+//     const speed = await connectionSpeed();
+//     const access = await webcamAccess();
+// }
+
+
+// fetch("a")
+//   .then(a => fetch(`b?x=${a.id}`))
+//   .then(b => fetch(`c?y=${b.id}`))
+//   .then(c => console.log(c));
+
+// async function fetching(userId){
+//     try{
+//     const a = await fetch(userId);
+//     const b = await fetch(userId);
+//     console.log(b);
+//     }
+//     catch(err){
+//         console.error(err);
+//     }
+//     finally{
+//         console.log("sara kaam done")
+//     }
+// }
