@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="lang">
+        <option value="hi">Hindi</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+    </select>
+    <div id="result">
+        The tiger is one of the most powerful and majestic wild animals in the world. It belongs to the cat family and is known for its distinctive orange coat with black stripes. Tigers are carnivorous animals and mainly hunt deer, wild boar, and other animals for food. They are excellent hunters, possessing sharp teeth, strong jaws, and powerful limbs that help them catch prey. 
+    </div>
+    <button id="btn">translate</button>
+    <script>
+        let btn = document.getElementById("btn");
+        const para = document.getElementById('result')
+        btn.addEventListener("click",async ()=>{
+           const data = await translate();
+           para.innerHTML=data;
+        
+             
+        })
+        async function translate(){
+            const lang = document.getElementById("lang").value;
+            const result = document.getElementById("result").innerText;
+            // const response =  await fetch( `https://api.mymemory.translated.net/get?q=${encodeURIComponent(result)}&langpair=en|${lang}`
+            // );
+            
+            const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(result)}&langpair=EN|${lang}`);
+            const data = await response.json();
+            console.log(data)
+            const responseData = data.responseData;
+            const translated = responseData.translatedText;
+            console.log(translated)
+            
+            
+             return translated;
+        }
+    </script>
+</body>
+</html>
