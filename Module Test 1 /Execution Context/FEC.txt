@@ -1,0 +1,20 @@
+FEC-> Function execution context 
+
+Every time a function is invoked, a brand new function execution context is created just for that call 
+
+step by step working
+
+1. FEC created and this function is pushed into call stack 
+2. creation phase: set up the variables, parameters, arguments, local hoisting, function declarations
+3. Execution phase: run the function body line by line 
+4. once everything is done, FEC is popped off the call stack and destroyed from the memory 
+
+
+scope chain 
+
+stack 
+stack overflow 
+hoisting and scope 
+TDZ
+
+block scope vs function scope 

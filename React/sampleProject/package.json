@@ -1,0 +1,23 @@
+{
+  "name": "sampleproject",
+  "version": "1.0.0",
+  "description": "this is a project that is explaining usage of npm",
+  "keywords": [
+    "learning",
+    "mern",
+    "npm"
+  ],
+  "license": "ISC",
+  "author": "Vishoo Verma",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0",
+    "nodemon": "^3.1.14"
+  }
+}

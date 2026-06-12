@@ -1,0 +1,21 @@
+the GEC (Global Execution Context) is the default javascript environment where the code runs when a script loads. 
+
+its the outermost layer where everything that is not inside a function lives ( or you can say anything declared globally )
+
+-> Every Javascript program has only one GEC 
+
+-> example lobby of a building -> before we enter any specific room, we have to go through the lobby, the lobby always exists 
+
+
+Phases of GEC 
+-> Phase 1- creation phase - pre-scan of your entire script 
+
+1. create the global object -> window object, global 
+2. creates this keyword -> GEC
+3. set up memory space for all variables and functions including hoisting 
+4. var behaviour -> intialise undefined 
+
+
+Phase-2 Execution phase 
+
+the js engine now runs the code line by line, top to bottom, assigning real values and invoking functions 
