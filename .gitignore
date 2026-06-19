@@ -2,8 +2,11 @@
 .env.local
 *.key
 node_modules/
+<<<<<<< HEAD
 __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
 
+=======
+>>>>>>> eb697c1 (Add .gitignore)
