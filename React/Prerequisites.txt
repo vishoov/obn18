@@ -23,6 +23,8 @@ package-lock.json -> contains the stable or current versions of the dependancies
 npm init -> initialised a new project and creates a package.json
 npm install <package-name> -> installs a package with name package-name
 
+npm create vite@latest
+
 example 
 npm install express 
 npm install redux 

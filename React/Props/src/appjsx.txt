@@ -1,0 +1,40 @@
+import AlertButton from "./components/AlertButton";
+import Frame from "./components/Frame";
+import UserCard from "./components/UserCard";
+
+const App = () =>{
+  // const handleAlert = (text) =>{
+  //   alert(text);
+  // }
+
+  return (
+    <>
+    {/* <h1>Welcome to Props</h1>
+    <UserCard name="Shubham" place="West Delhi" />
+    <UserCard name="Abhishek" place="east delhi" />
+    <UserCard  />
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <Frame title="Weather">
+      <UserCard />
+      <h1>Delhi- 40C</h1>
+      <h2>Feels like: I'm melting</h2>
+    </Frame>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <AlertButton onAlert= {handleAlert}/> */}
+
+    </>
+  )
+
+}
+
+export default App;

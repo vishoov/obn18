@@ -1,0 +1,72 @@
+whenever we delete any css file, nothing changes on the UI, this situation usually happens in react development servers like vite, CRA, next.js)
+and it is called ghost styles problem
+
+why does this happen?
+
+1. Dynamic style injection -> DOM doesnt know that the file has gone 
+
+during development the bundler doesnt link css files directly, instead tools like ESbuild, or webpack, read our css and turn it into a js string, which dynamically injects into the browser's DOM 
+
+so when we delete a file our developmetn server stops tracking that file, but it doesnt activelly tell the browser to scrub it out that causes the ghost issue 
+
+
+2. Hot Module Replacement 
+
+dev server they use hmr to push updates to the browsers instantly without refreshing the whole page 
+
+-> HMR is amazing at adding and updating code 
+-> terrible at deleting or cleaning up 
+
+
+3. Bundler Caching 
+
+build tools are optimized for speed, in order to achieve this they cache the assets in easily available memory, and when we delete a file the dev server's cache still holds that, which causes ghost style issue
+
+
+-> How to avoid this problems 
+
+1. hard refresh 
+2. Clear browser cache 
+3. check our imports 
+
+
+
+
+
+
+1. given three api endpoints a, b, c, write a code to request them all at once and proceed once all api functions succeed, if any one fails, cancel remaining processes and return the first error 
+
+
+
+2. Write a debounced sesrch bar 
+
+3. create an accessible modal dialog that opens on button click, and disappears on esc key press and shows a product info 
+{
+    name:"iphone", 
+    price:100,
+    description:"nice one"
+}
+
+let x = [1, 2, 3];
+x[10] = 99;
+console.log(x.length);
+
+a. console.log(0 == []);
+b. console.log(0 == "");
+c. console.log("" == []);
+
+console.log(1 + "1" - 1);
+
+console.log(typeof null)
+
+let a = 10;
+function test() {
+  console.log(a);
+  let a = 20;
+}
+test();
+
+
+
+
+

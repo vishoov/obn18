@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+
+</head>
+<body>
+    <!-- <h1>Hello developer! this is rendered through HTML</h1> -->
+     <div id="root"></div>
+
+    <script type="text/babel">
+
+
+        //functional component 
+        function App(){
+            const name1 = "noida"
+            const element =  <div>
+            
+            <h1>Hello mai gaya</h1>
+            <Another name={name1} />
+            </div>;
+
+            console.log("React functional component returns: ", element)
+
+            return element;
+            
+        }
+
+        function Another({name}){
+            return <h2>Aur bhai {name} kya haal</h2>
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+      
+    </script>
+
+    
+</body>
+</html>

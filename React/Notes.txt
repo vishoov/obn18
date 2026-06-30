@@ -1,0 +1,57 @@
+React
+
+- Why react exists?
+Ans: Before React, the user interfaces were built manually using dom querying and mutation of the DOM using vanilla js or jQuery, this was a cumbersome process, it was inefficient in terms of compute resources, a new paradigm was introduced i.e. SPA (single page applications), dynamic data, and keeping UI synchronized. 
+
+Any data change (even if small) that led to unpredictable UI changes, and spaghetti code and there were performance bottlenecks because of DOM repaints and reflows 
+
+react was created by facebook in 2011 
+
+-> Tooling : CRA -> create-react-app (webpack) 
+2020 Vite -> Native ES Models (ESM) -> browser inbuilt (Go) 
+2025 -> CRA was deprecated 
+
+Vite: a lightning fast build tool and development server that serves raw ES modules directly to the browser during development 
+
+
+
+JSX -> Javascript XML -> its a syntax extension for javascript that allows you to write HTML lilke markup inside JS files 
+
+
+developer code    -> Dev Server -> Browser (Runtime) -> App.jsx invoke 
+
+main.js, app.js     Vite           V8 Engine        React elements 
+components.jsx                                      return UI 
+
+
+
+Component: a reusable independant piece of UI 
+
+
+JSX rules: 
+
+1. return a single root element 
+2. use camelCase in attributes 
+3. always embed javascript inside using {} 
+
+
+PROPS 
+
+Props (short for Properties) -> 
+1. these solve the problem of component configuration and state synchronization 
+2. These allow a parent component to pass datal configuration, variables, event handlers, objects, function 
+
+Unidirectional Data Flow: this is a constraint that specifies that data can only move downwards from parent to its child 
+
+Internal Working 
+
+1. Parse props -> <UserDetails name={name1} />
+2. Object Compilation -> JSX transform -> internal object 
+
+_jsx(UserDetails, {name:"Noida"})
+
+3. Immutability Enforcement -> before passing this object to the component function, React seals the object in an object (Object.freeze(prop)), this prevents runtime assignments 
+
+4. Function execution 
+5. DOM generate -> the component that will be sent to the React Fiber ( UI )
+
