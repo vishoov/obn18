@@ -3,3 +3,52 @@ Package managers, executers and modular programming
 Package managers -> project -> dependancies -> express.js
 
 project / js 
+
+
+npm and npx
+
+npm -> node package manager 
+
+
+1. online reposity open sopurce nodejs project
+2. CLI tool -> Command Line Interface -> install, manage and share package along with versions etc in projects 
+
+
+
+
+package.json -> stores the properties of a project 
+node_modules/ -> helper files 
+package-lock.json -> contains the stable or current versions of the dependancies that youre using 
+
+npm init -> initialised a new project and creates a package.json
+npm install <package-name> -> installs a package with name package-name
+
+example 
+npm install express 
+npm install redux 
+npm install mongoose 
+
+npm uninstall express 
+npm run dev -> runs the script with name dev 
+
+npm list 
+
+
+npx -> Node package eXecutor 
+
+CLI tool bundled with npm since version 5.2, designed to make it easy tp execite node.js packages directly 
+
+npx -> 
+
+1. checks if the package is installed in project or globally 
+2. temporarily package download 
+3. execute 
+4. cleanup 
+
+Features
+1. no installation needed 
+2. always gets the latest version of any package 
+3. multiple packages  
+4. run github repos 
+
+deprecated -> npx create-react-app my-app 

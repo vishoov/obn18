@@ -4,7 +4,7 @@ console.log("A"); //sync
 setTimeout(() => {  //macrotask
   console.log("B");
 
-  Promise.resolve().then(() => console.log("C"));
+  Promise.resolve().then(() => console.log("C")); //microtask 
 }, 0);
 
 //async 

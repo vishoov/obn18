@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Helper</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    p.top-text {
+      margin-top: 0;
+      color: #4b5563;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    button:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .tool-section {
+      display: none;
+    }
+
+    .tool-section.active {
+      display: block;
+    }
+
+    .output {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 16px;
+      white-space: pre-wrap;
+    }
+
+    .output h3 {
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .error {
+      color: #b91c1c;
+      font-weight: bold;
+    }
+
+    .success-box {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Helper</h1>
+    <p class="top-text">Improve bullet points, rewrite summaries, and generate interview answers using Gemini.</p>
+
+    <div class="card">
+      <label>Gemini API Key</label>
+      <input type="password" id="apiKey" placeholder="Paste your Gemini API key" />
+      <p class="small">For demo use only. Do not expose API keys in production client apps.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="bullets">Improve Bullet Points</button>
+      <button class="tab-btn" data-tab="summary">Rewrite Summary</button>
+      <button class="tab-btn" data-tab="interview">Interview Answers</button>
+    </div>
+
+    <div class="card tool-section active" id="bullets">
+      <div class="success-box">
+        Paste rough resume bullet points and get stronger, achievement-focused versions.
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Job Title</label>
+          <input type="text" id="bulletJobTitle" placeholder="e.g. Frontend Developer" />
+
+          <label>Experience Level</label>
+          <select id="bulletLevel">
+            <option>Fresher</option>
+            <option>Junior</option>
+            <option>Mid-level</option>
+            <option>Senior</option>
+          </select>
+        </div>
+        <div>
+          <label>Target Tone</label>
+          <select id="bulletTone">
+            <option>Professional</option>
+            <option>Confident</option>
+            <option>ATS-friendly</option>
+            <option>Impact-focused</option>
+          </select>
+
+          <label>Target Role / Industry</label>
+          <input type="text" id="bulletTargetRole" placeholder="e.g. Product company, SaaS, Marketing" />
+        </div>
+      </div>
+
+      <label>Paste Bullet Points</label>
+      <textarea id="bulletInput" placeholder="- Worked on website
+- Fixed bugs
+- Helped team with UI tasks"></textarea>
+
+      <button id="bulletBtn">Improve Bullet Points</button>
+      <div class="output" id="bulletOutput">Your improved bullet points will appear here.</div>
+    </div>
+
+    <div class="card tool-section" id="summary">
+      <div class="success-box">
+        Turn messy experience details into a sharper professional summary.
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Current Role</label>
+          <input type="text" id="summaryRole" placeholder="e.g. Software Engineer" />
+
+          <label>Years of Experience</label>
+          <input type="text" id="summaryYears" placeholder="e.g. 2 years" />
+        </div>
+        <div>
+          <label>Target Job</label>
+          <input type="text" id="summaryTarget" placeholder="e.g. Frontend Developer" />
+
+          <label>Writing Style</label>
+          <select id="summaryTone">
+            <option>Professional</option>
+            <option>Concise</option>
+            <option>Confident</option>
+            <option>Executive</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Experience / Skills / Achievements</label>
+      <textarea id="summaryInput" placeholder="Worked on React apps, improved performance, collaborated with designers, built reusable components..."></textarea>
+
+      <button id="summaryBtn">Rewrite Summary</button>
+      <div class="output" id="summaryOutput">Your rewritten summary will appear here.</div>
+    </div>
+
+    <div class="card tool-section" id="interview">
+      <div class="success-box">
+        Generate interview answers tailored to your background and target role.
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Target Role</label>
+          <input type="text" id="interviewRole" placeholder="e.g. Frontend Developer" />
+
+          <label>Interview Question</label>
+          <input type="text" id="interviewQuestion" placeholder="e.g. Tell me about yourself" />
+        </div>
+        <div>
+          <label>Answer Style</label>
+          <select id="interviewTone">
+            <option>Natural</option>
+            <option>Professional</option>
+            <option>Confident</option>
+            <option>Short and crisp</option>
+          </select>
+
+          <label>Experience Level</label>
+          <select id="interviewLevel">
+            <option>Fresher</option>
+            <option>Junior</option>
+            <option>Mid-level</option>
+            <option>Senior</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Your Background</label>
+      <textarea id="interviewBackground" placeholder="I have worked on React projects, improved page speed, collaborated with backend teams, and enjoy building user-friendly interfaces."></textarea>
+
+      <button id="interviewBtn">Generate Answer</button>
+      <div class="output" id="interviewOutput">Your interview answer will appear here.</div>
+    </div>
+  </div>
+
+  <script>
+    const MODEL = "gemini-2.5-flash";
+
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const sections = document.querySelectorAll(".tool-section");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => b.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    async function callGemini(prompt, apiKey) {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [{ text: prompt }]
+              }
+            ],
+            generationConfig: {
+              response_mime_type: "application/json"
+            }
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error.message || "API request failed");
+      }
+
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!text) throw new Error("No response received from Gemini");
+
+      return JSON.parse(text);
+    }
+
+    function getApiKey() {
+      return document.getElementById("apiKey").value.trim();
+    }
+
+    function setLoading(button, outputEl, message) {
+      button.disabled = true;
+      outputEl.innerHTML = message;
+    }
+
+    function clearLoading(button) {
+      button.disabled = false;
+    }
+
+    document.getElementById("bulletBtn").addEventListener("click", async () => {
+      const apiKey = getApiKey();
+      const btn = document.getElementById("bulletBtn");
+      const output = document.getElementById("bulletOutput");
+
+      const jobTitle = document.getElementById("bulletJobTitle").value.trim();
+      const level = document.getElementById("bulletLevel").value;
+      const tone = document.getElementById("bulletTone").value;
+      const targetRole = document.getElementById("bulletTargetRole").value.trim();
+      const bulletInput = document.getElementById("bulletInput").value.trim();
+
+      if (!apiKey || !bulletInput) {
+        output.innerHTML = '<span class="error">Please enter API key and bullet points.</span>';
+        return;
+      }
+
+      setLoading(btn, output, "Improving bullet points...");
+
+      const prompt = `
+You are an expert resume writing assistant.
+
+Task:
+Improve the user's resume bullet points.
+
+Instructions:
+- Keep each bullet concise, strong, and ATS-friendly.
+- Start each bullet with an action verb.
+- Make the bullet points more measurable and achievement-focused.
+- Do not invent fake metrics, but you may say "helped improve", "contributed to", or "supported" if exact numbers are unknown.
+- Return valid JSON only.
+
+Return JSON in exactly this format:
+{
+  "improved_bullets": ["...", "...", "..."],
+  "tips": ["...", "...", "..."]
+}
+
+User details:
+Job Title: ${jobTitle}
+Experience Level: ${level}
+Tone: ${tone}
+Target Role / Industry: ${targetRole}
+
+Original bullet points:
+${bulletInput}
+`;
+
+      try {
+        const result = await callGemini(prompt, apiKey);
+
+        output.innerHTML = `
+          <h3>Improved Bullet Points</h3>
+          <ul>${(result.improved_bullets || []).map(item => `<li>${item}</li>`).join("")}</ul>
+          <h3>Tips</h3>
+          <ul>${(result.tips || []).map(item => `<li>${item}</li>`).join("")}</ul>
+        `;
+      } catch (err) {
+        output.innerHTML = `<span class="error">${err.message}</span>`;
+      } finally {
+        clearLoading(btn);
+      }
+    });
+
+    document.getElementById("summaryBtn").addEventListener("click", async () => {
+      const apiKey = getApiKey();
+      const btn = document.getElementById("summaryBtn");
+      const output = document.getElementById("summaryOutput");
+
+      const role = document.getElementById("summaryRole").value.trim();
+      const years = document.getElementById("summaryYears").value.trim();
+      const target = document.getElementById("summaryTarget").value.trim();
+      const tone = document.getElementById("summaryTone").value;
+      const summaryInput = document.getElementById("summaryInput").value.trim();
+
+      if (!apiKey || !summaryInput) {
+        output.innerHTML = '<span class="error">Please enter API key and experience details.</span>';
+        return;
+      }
+
+      setLoading(btn, output, "Rewriting summary...");
+
+      const prompt = `
+You are an expert resume writer.
+
+Task:
+Write a polished professional summary based on the user's background.
+
+Instructions:
+- Keep it clear, job-focused, and realistic.
+- Make it suitable for a resume top section.
+- Avoid buzzword stuffing.
+- Write 2 versions: short and stronger.
+- Return valid JSON only.
+
+Return JSON in exactly this format:
+{
+  "short_summary": "...",
+  "stronger_summary": "...",
+  "tips": ["...", "..."]
+}
+
+User details:
+Current Role: ${role}
+Years of Experience: ${years}
+Target Job: ${target}
+Writing Style: ${tone}
+
+Background details:
+${summaryInput}
+`;
+
+      try {
+        const result = await callGemini(prompt, apiKey);
+
+        output.innerHTML = `
+          <h3>Short Summary</h3>
+          <p>${result.short_summary || ""}</p>
+          <h3>Stronger Summary</h3>
+          <p>${result.stronger_summary || ""}</p>
+          <h3>Tips</h3>
+          <ul>${(result.tips || []).map(item => `<li>${item}</li>`).join("")}</ul>
+        `;
+      } catch (err) {
+        output.innerHTML = `<span class="error">${err.message}</span>`;
+      } finally {
+        clearLoading(btn);
+      }
+    });
+
+    document.getElementById("interviewBtn").addEventListener("click", async () => {
+      const apiKey = getApiKey();
+      const btn = document.getElementById("interviewBtn");
+      const output = document.getElementById("interviewOutput");
+
+      const role = document.getElementById("interviewRole").value.trim();
+      const question = document.getElementById("interviewQuestion").value.trim();
+      const tone = document.getElementById("interviewTone").value;
+      const level = document.getElementById("interviewLevel").value;
+      const background = document.getElementById("interviewBackground").value.trim();
+
+      if (!apiKey || !question || !background) {
+        output.innerHTML = '<span class="error">Please enter API key, question, and background.</span>';
+        return;
+      }
+
+      setLoading(btn, output, "Generating interview answer...");
+
+      const prompt = `
+You are an interview coach.
+
+Task:
+Generate a strong interview answer tailored to the user's background.
+
+Instructions:
+- Make the answer sound natural and human.
+- Keep it tailored to the target role.
+- Avoid sounding robotic.
+- Return one main answer, one shorter version, and 3 coaching tips.
+- Return valid JSON only.
+
+Return JSON in exactly this format:
+{
+  "main_answer": "...",
+  "short_answer": "...",
+  "coaching_tips": ["...", "...", "..."]
+}
+
+User details:
+Target Role: ${role}
+Question: ${question}
+Answer Style: ${tone}
+Experience Level: ${level}
+
+Background:
+${background}
+`;
+
+      try {
+        const result = await callGemini(prompt, apiKey);
+
+        output.innerHTML = `
+          <h3>Main Answer</h3>
+          <p>${result.main_answer || ""}</p>
+          <h3>Short Answer</h3>
+          <p>${result.short_answer || ""}</p>
+          <h3>Coaching Tips</h3>
+          <ul>${(result.coaching_tips || []).map(item => `<li>${item}</li>`).join("")}</ul>
+        `;
+      } catch (err) {
+        output.innerHTML = `<span class="error">${err.message}</span>`;
+      } finally {
+        clearLoading(btn);
+      }
+    });
+  </script>
+</body>
+</html>

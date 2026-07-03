@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Axios Usage</h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        // console.log(axios);
+
+        // async function getSomething(){
+        //     const response = await fetch('https://dummyjson.com/products/1');
+
+        //     const data = await response.json();
+
+        //     console.log(data);
+        // }
+
+        async function getSomething(){
+            const response = await axios.get('https://dummyjson.com/products/1');
+
+            console.log(response.data);
+
+
+        }
+
+        getSomething();
+    </script>
+</body>
+</html>

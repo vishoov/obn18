@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgba(215, 216, 250, 0.564);
+            display: flex;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+        .chat-container{
+            width: 100%;
+            max-width: 500px;
+            height: 70vh;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            /* padding: 20px; */
+            border-radius: 20px;
+            overflow-y: scroll;
+
+            
+        }
+
+
+        .chat-header{
+            background-color: rgb(0, 60, 255);
+            padding: 10px;
+            color: white;
+            font-size: larger;
+            font-family: Arial, Helvetica, sans-serif;
+
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            text-align: center;
+        }
+
+        .messages{
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+            background-color: white;
+            padding: 20px;
+            height: 90%;
+        }
+
+        .message{
+            padding: 10px;
+            border-radius: 20px;
+
+            width: fit-content;
+        }
+
+        .user{
+            background-color: rgb(197, 197, 197);
+            align-self: flex-end;
+        }
+
+        .bot{
+            background-color:rgb(143, 143, 252);
+            align-items: flex-start;
+        }
+        .chat-input{
+            display: flex;
+            padding: 10px;
+            justify-content: space-between;
+        }
+
+        .chat-input input{
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 15px;
+            width: 80%;
+        }
+
+        .chat-input button{
+            border-radius: 20px;
+            background-color: blue;
+            color: white;
+            width: 19%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gemini Integrated Chatbot</h1>
+    
+    <div class="chat-container">
+        <div class="chat-header">Gemini Bot is here for help!</div>
+
+        <div class="messages" id="chatMessages">
+        
+            <div class="bot message" id="botMessage">
+            Hey!, Ask me anything!
+        </div>
+        
+        <!-- <div class="user message"> -->
+            <!-- Hey whatsup -->
+        <!-- </div> -->
+    
+    
+    </div>
+
+
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        
+        function addMessage(text, sender){
+            const div = document.createElement('div');
+            div.className= `message ${sender}`;
+            div.textContent = text;
+            chatMessages.appendChild(div);
+        }
+        const api_key = "Enter your api key"
+
+        async function callGemini(message){
+            //main logic gemini api 
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
+
+            const response =  await fetch(url, {
+                method:"POST",
+                headers:{
+                    "x-goog-api-key":`${api_key}`,
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    contents: [
+                        {
+                        parts:[
+                            {
+                                text:message
+                            }
+                        ]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+            console.log(data);
+            if(!data){
+                console.log("Error agaya");
+            }
+            if(data.error){
+                const error = data.error;
+                console.log(error)
+                throw{
+                    code:error.code,
+                    message:error.message || "API Error"
+                }
+            }
+
+            const reply = data.candidates[0].content.parts[0].text
+            return reply;
+
+
+
+
+        }
+        
+        async function sendMessage(){
+            const userQuery = userInput.value.trim();
+            if(!userQuery){
+                return;
+            }
+
+            addMessage(userQuery, "user");
+
+            userInput.value = "";
+            sendBtn.disabled=true;
+
+            let reply;
+
+            try{
+                reply = await callGemini(userQuery);
+            }
+            catch(err){
+                reply = `Error Caught: ${err.message}`;
+            }
+
+            addMessage(reply, "bot");
+            sendBtn.disabled=false;
+            userInput.focus();
+
+        }
+        
+        sendBtn.addEventListener('click', sendMessage);
+    </script>
+</body>
+</html>
+
+<!-- Error from API -->
+<!-- {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+    "status": "UNAVAILABLE"
+} -->
+
+
+<!-- {
+    "candidates": [
+        {
+            "content": {
+                "parts": [
+                    {
+                        "text": "Imagine you teach a super-smart computer to **think and learn** almost like a human, but much, much faster and with huge amounts of information.\n\n**What can it do once it learns?**\n\n1.  **Understand You:** Like when you talk to Siri or Alexa, and they understand your questions and give you answers.\n2.  **Recognize Things:** It can look at pictures and tell you what's in them (like tagging your friends in photos) or spot patterns in data.\n3.  **Make Smart Guesses/Suggestions:** Like when Netflix recommends movies you might like, or an online store suggests products for you.\n4.  **Solve Problems:** It can help doctors diagnose illnesses, help scientists discover new drugs, or even play complex games like chess or Go better than any human.\n5.  **Drive Cars:** Self-driving cars use AI to see the road, understand traffic, and make decisions.\n6.  **Create New Things:** Some AI can now write stories, compose music, or even draw realistic pictures just from your description!\n7.  **Automate Tasks:** It can sort your emails, block spam, or help run factories more efficiently.\n\nIn short, AI helps computers become **clever helpers** that can do many different tasks that usually require human intelligence, but often on a much larger scale or with greater speed and accuracy."
+                    }
+                ],
+                "role": "model"
+            },
+            "finishReason": "STOP",
+            "index": 0
+        }
+    ],
+    "usageMetadata": {
+        "promptTokenCount": 9,
+        "candidatesTokenCount": 289,
+        "totalTokenCount": 1242,
+        "promptTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 9
+            }
+        ],
+        "thoughtsTokenCount": 944,
+        "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-2.5-flash",
+    "responseId": "vPw0aqjKNuqpjuMPno_kwAs"
+} -->
+
+
+<!-- 3 points, how you can improve this as a product -->
+ <!-- UI X  -->
