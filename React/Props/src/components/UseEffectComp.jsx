@@ -1,34 +1,65 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const UseEffectComp = () => {
   // Just when this component is mounted 
   // UI built or rendered
+  // let number = 10;
+
+  const [current, setCurrent] = useState(10);
+  const[counter, setCounter] = useState(0);
+
+  // const [currentValue, updaterFunction] = useState(intiialValue);
+
 
 
 // useEffect is a react hook that helps us in executing any code as a side effect in react (or simply put it helps us execute any code asynchronously with the UI building process)
   useEffect(()=>{
 
-    fetch('https://potterapi-fedeperin.vercel.app/en/books')
-    .then((response)=>response.json())
-    .then((data)=>{
-      console.log(data)
-    })
-    .catch((err)=>{
-      console.error("Error fetching data: ", err);
-    })
+    // fetch('https://potterapi-fedeperin.vercel.app/en/books')
+    // .then((response)=>response.json())
+    // .then((data)=>{
+    //   console.log(data)
+    // })
+    // .catch((err)=>{
+    //   console.error("Error fetching data: ", err);
+    // })
+    const timer = setInterval(()=>{
+      if(current<1){
+         clearInterval(timer);
+        console.log("Timer stopped")
+        return;
+      }
 
-    const timer = setInterval(()=>{console.log("Hello")}, 1000)
+      setCurrent(current-1);
+    }, 1000)
+
+
+    
     return ()=>{
       clearInterval(timer)
     }
 
-  }, [])
+  }, [current])
 
 
   return (
     <div>
       <h1>Hello guys my name is useEffect</h1>
-      <h2> UI Rendered at {Date.now()}</h2>
+    <h2>{current}</h2>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+    <p>{counter}</p>
+    <button onClick={()=>setCounter(counter+1)}>Count</button>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
     </div>
   )
 }
