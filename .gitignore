@@ -1,12 +1,26 @@
-.env
-.env.local
-*.key
-node_modules/
-<<<<<<< HEAD
-__pycache__/
-*.pyc
+# OS files
 .DS_Store
 Thumbs.db
 
-=======
->>>>>>> eb697c1 (Add .gitignore)
+# Logs
+logs/
+*.log
+
+# Dependency folders
+node_modules/
+vendor/
+
+# Build / dist output
+dist/
+build/
+out/
+
+# Environment / secrets
+.env
+.env.local
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
