@@ -1,14 +1,15 @@
 import React from 'react'
 import Timer from './components/Timer'
+import Stopwatch from './components/StopWatch'
+import HarryPotter from './components/HarryPotter'
 
 
 const App = () => {
   return (
     <div>
-      <Timer/>
-<<<<<<< HEAD
-=======
->>>>>>> e6511cc (hooks)
+      {/* <Timer/> */}
+    {/* <Stopwatch /> */}
+    <HarryPotter />
     </div>
   )
 }
