@@ -11,6 +11,11 @@ const App = () =>{
 
     <Counter count={count} handleCount={setCount} />
     <Display count={count}/>
+
+
+
+
+    
     </>
   )
 }
