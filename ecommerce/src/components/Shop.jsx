@@ -105,7 +105,11 @@ try{
 
             <div className="grid grid-cols-4 gap-2">
             {
+
+                
                 filteredProducts.map((prod)=>{
+                
+                
                     return <ProductCard  key={prod.id} product = {prod} />
                 })
             }
