@@ -1,0 +1,38 @@
+useRef -> that creates a mutable, persistent container for storing a value across component re-renders, without causing the component to re-render when that value changes.
+it returns a plain object with a single property called current which holds whatever value we have assigned to it 
+
+
+step 1: 
+const refContainer = useRef(initialValue);
+
+
+//this is how it looks
+refContainer = {
+    current: initialValue
+}
+
+//step 2
+<tag ref={refContainer}></tag>
+
+Use cases : 
+
+1. Direct DOM acces: focus on input, elements measurement or animation trigger 
+
+2. timers, intervals, or any kind of configuration, scroll values 
+3. tracking previous states 
+4. generally avoiding re-renders to improve performance 
+
+                    useRef                  usState
+
+triggers a          no                         yes 
+re-render?
+
+does it persist     yes                         yes
+value across r-r
+
+how to access       ref.current                state variable
+the value 
+
+When to be used?    non UI data                 for values that
+                                                change the UI
+

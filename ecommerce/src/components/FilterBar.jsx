@@ -7,7 +7,7 @@ const FilterBar = ({categories, category, setCategory}) => {
     <div className= 'border'> 
 
 
-
+    <h1>Filter bar</h1>
     
     <select
     value={category}
