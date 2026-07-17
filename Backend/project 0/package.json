@@ -1,0 +1,16 @@
+{
+  "name": "project-0",
+  "version": "1.0.0",
+  "description": "this is my first backend project",
+  "license": "ISC",
+  "author": "vishoo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

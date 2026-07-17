@@ -1,0 +1,25 @@
+Express.JS
+
+is a lightweight node.js web framework for turning HTTP requests into predictable application behaviour using routing, middleware execution, validation, database operations and http responses. 
+
+
+express is lightweight, minimal and unopinionated webframework for node.js that turns raw HTTP into a composable pipelins of middleware and route handlers. 
+
+lightweight
+minimal
+unopinionated 
+
+this sits somewhre in middle of browser and the application logic. 
+
+incoming request      -> handler Function -> response 
+GET /api/users 
+POST /api/tasks
+
+
+Usage:
+
+1. Routing: it matches a URL and transfers it to a handler function 
+2. Middlewares: they help in running certain functions in middle of the req-res cycle
+req -> secutity (middleware) -> route handler
+3. Error handling
+4. Composition: how does our server behave when we recieve any request
