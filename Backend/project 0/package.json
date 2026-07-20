@@ -4,11 +4,11 @@
   "description": "this is my first backend project",
   "license": "ISC",
   "author": "vishoo",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
-    "start": "node index.js"
+    "dev": "node app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "^5.2.1"

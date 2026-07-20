@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Doe | Software Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Inter,sans-serif;
+background:#06070A;
+color:white;
+overflow-x:hidden;
+
+}
+
+.background{
+
+position:fixed;
+width:100%;
+height:100%;
+
+background:
+
+radial-gradient(circle at 20% 20%,#6C63FF55,transparent 40%),
+radial-gradient(circle at 80% 30%,#00D4FF44,transparent 40%),
+radial-gradient(circle at 50% 80%,#FF4ECD33,transparent 35%),
+#06070A;
+
+filter:blur(40px);
+
+z-index:-1;
+
+}
+
+header{
+
+padding:40px 8%;
+
+}
+
+nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+nav h2{
+
+font-size:2rem;
+
+}
+
+nav ul{
+
+display:flex;
+gap:40px;
+list-style:none;
+
+}
+
+nav a{
+
+color:white;
+text-decoration:none;
+opacity:.7;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+opacity:1;
+
+}
+
+.hero{
+
+display:grid;
+grid-template-columns:1fr 450px;
+align-items:center;
+
+min-height:85vh;
+
+gap:80px;
+
+}
+
+.tag{
+
+display:inline-block;
+padding:10px 20px;
+
+border-radius:100px;
+
+background:#ffffff12;
+
+backdrop-filter:blur(20px);
+
+margin-bottom:25px;
+
+}
+
+.hero h1{
+
+font-size:5rem;
+font-weight:800;
+line-height:1.05;
+
+margin-bottom:30px;
+
+}
+
+.hero p{
+
+font-size:20px;
+line-height:1.8;
+opacity:.7;
+max-width:650px;
+
+}
+
+.buttons{
+
+display:flex;
+gap:20px;
+margin-top:40px;
+
+}
+
+.buttons a{
+
+padding:18px 34px;
+text-decoration:none;
+color:white;
+
+border-radius:14px;
+
+background:#ffffff12;
+
+backdrop-filter:blur(20px);
+
+transition:.35s;
+
+}
+
+.buttons a:hover{
+
+transform:translateY(-5px);
+
+background:white;
+color:black;
+
+}
+
+.profile-card{
+
+padding:45px;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,.1);
+
+text-align:center;
+
+box-shadow:0 40px 100px rgba(0,0,0,.4);
+
+}
+
+.avatar{
+
+width:140px;
+height:140px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#7B61FF,#00D5FF);
+
+margin-bottom:25px;
+
+}
+
+.stats{
+
+display:flex;
+justify-content:space-between;
+
+margin-top:35px;
+
+}
+
+.stats h2{
+
+font-size:2rem;
+
+}
+
+section{
+
+padding:120px 8%;
+
+}
+
+section h2{
+
+font-size:3rem;
+margin-bottom:30px;
+
+}
+
+.about p{
+
+max-width:800px;
+font-size:20px;
+line-height:1.8;
+opacity:.75;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+
+padding:35px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:20px;
+
+backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+
+text-align:center;
+
+font-weight:600;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+background:white;
+color:black;
+
+}
+
+.project-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:35px;
+
+}
+
+.project{
+
+padding:45px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+transition:.4s;
+
+}
+
+.project:hover{
+
+transform:translateY(-10px);
+
+}
+
+.line{
+
+border-left:2px solid rgba(255,255,255,.2);
+
+padding-left:40px;
+
+display:flex;
+flex-direction:column;
+gap:60px;
+
+}
+
+.item h3{
+
+font-size:1.5rem;
+margin-bottom:10px;
+
+}
+
+footer{
+
+padding:120px;
+
+text-align:center;
+
+}
+
+footer h2{
+
+font-size:3rem;
+
+margin-bottom:30px;
+
+}
+
+footer a{
+
+font-size:24px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.buttons{
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:3rem;
+
+}
+
+.profile-card{
+
+max-width:420px;
+margin:auto;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="background"></div>
+
+<header>
+
+<nav>
+
+<h2>John.</h2>
+
+<ul>
+
+<li><a href="#">About</a></li>
+<li><a href="#">Projects</a></li>
+<li><a href="#">Experience</a></li>
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span class="tag">
+Software Engineer
+</span>
+
+<h1>
+Building beautiful experiences<br>
+for the modern web.
+</h1>
+
+<p>
+
+I create scalable products, delightful interfaces,
+and meaningful digital experiences using modern technologies.
+
+</p>
+
+<div class="buttons">
+
+<a href="#">View Projects</a>
+<a href="#">Download Resume</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="profile-card">
+
+<div class="avatar"></div>
+
+<h3>John Doe</h3>
+
+<p>Full Stack Developer</p>
+
+<div class="stats">
+
+<div>
+<h2>5+</h2>
+<span>Years</span>
+</div>
+
+<div>
+<h2>40+</h2>
+<span>Projects</span>
+</div>
+
+<div>
+<h2>15</h2>
+<span>Clients</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</header>
+
+<section class="about">
+
+<h2>About Me</h2>
+
+<p>
+
+I'm passionate about creating products that people genuinely love.
+My expertise spans frontend engineering, backend architecture,
+cloud deployment, and UI/UX design.
+
+</p>
+
+</section>
+
+<section class="skills">
+
+<h2>Tech Stack</h2>
+
+<div class="grid">
+
+<div class="card">React</div>
+<div class="card">Next.js</div>
+<div class="card">Node.js</div>
+<div class="card">TypeScript</div>
+<div class="card">MongoDB</div>
+<div class="card">AWS</div>
+<div class="card">Docker</div>
+<div class="card">GraphQL</div>
+
+</div>
+
+</section>
+
+<section class="projects">
+
+<h2>Featured Projects</h2>
+
+<div class="project-grid">
+
+<div class="project">
+
+<h3>AI Dashboard</h3>
+
+<p>
+
+Analytics dashboard built using React, Node and AI models.
+
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>Developer Platform</h3>
+
+<p>
+
+Scalable SaaS platform serving thousands of users.
+
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>E-commerce</h3>
+
+<p>
+
+Luxury shopping experience with seamless checkout.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="timeline">
+
+<h2>Experience</h2>
+
+<div class="line">
+
+<div class="item">
+<h3>Senior Engineer</h3>
+<p>2023 — Present</p>
+</div>
+
+<div class="item">
+<h3>Frontend Developer</h3>
+<p>2021 — 2023</p>
+</div>
+
+<div class="item">
+<h3>Freelancer</h3>
+<p>2019 — 2021</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>Let's build something amazing.</h2>
+
+<a href="#">hello@email.com</a>
+
+</footer>
+
+</body>
+</html>
