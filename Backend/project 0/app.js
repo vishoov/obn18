@@ -81,19 +81,59 @@ const users = [
 
 
 // Route parameters 
-app.get("/parameters/:id", (req, res)=>{
-    const id = req.params.id;
-
+app.get("/parameters/:id/:name/:age", (req, res)=>{
+    const  { id, name, age } = req.params;
+    
     const data = users.filter(user=>user.id==id);
 
-    res.send(data)
+    res.send({data, name, age})
 })
 
-app.get("/parameters", (req, res)=>{
-    res.send("nothing here")
+// app.get("/parameters", (req, res)=>{
+//     res.send("nothing here")
+// })
+
+app.get("/search", (req, res)=>{
+    const { quer, a, b, c } = req.query;
+
+    res.send({
+        quer,
+        a,
+        b,
+        c
+    
+    
+})
 })
 
+// http://localhost:3000/search?quer=rohit_sharma
 
+// in memory array
+// const tasks = []
+
+
+// add a task
+// delete a task 
+// update a task 
+
+// code for this
+// what could be the problems using in memory storage 
+// how many routes are required. can you reduce them?
+
+const tasks = [];
+
+app.post("/task", (req, res)=>{
+    const { id, title, status ="pending" } = req.body;
+    tasks.push({
+        id, 
+        title,
+        status
+    })
+
+    res.send({
+        tasks
+    })
+})
 
 
 

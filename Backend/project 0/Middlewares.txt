@@ -1,0 +1,29 @@
+Middlewares are set of functions that sit between the request and the final response, and they can read or modify req and res objects, terminate the request or pass that request onto the nest function. 
+
+
+Uses:
+
+- logging 
+- authentication 
+- validation
+- analytics 
+
+NOTE: calling next() is important because it helps in forwarding the request to next function otherwise the request will keep hanging 
+
+function middleware(req, res, next){
+    //function logic
+    next(); 
+}
+
+The next() call is what moves the request forward in the stack. 
+
+
+Types of Middlewares
+
+1. Application Level Middleware -> this will attached to the app object app.use() or app.METHOD();
+
+2. Built-in Middleware- those mws which are built inside express 
+
+3. Error Handling Middleware -> if any route throws an error, it should be able to catch it 
+
+4. Router level middleware 
