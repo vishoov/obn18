@@ -1,0 +1,120 @@
+Relational Database -> Database
+SQL -> its a querying language 
+
+SQL is structured querying language used to store, retrieve, update or delete data in relational database management systems (RDBMS) 
+
+Components of a RDBMS
+
+-> Database -> structured collection of data stored in the tables with rows and columns 
+-> Tables: rows and columns that store data and apply rules of schema to keep it accurate and consistent. 
+-> Indexes -> ID, helps find the data fast 
+-> View: virtual tables created from SELECT queries for easy and repeated access 
+
+
+Basic Operations ->
+
+-> SELECT : retrieves data from a database 
+-> INSERT : add new data to a table 
+-> UPDATE : modify 
+-> DELETE : removal 
+-> CREATE : this is for creating tables and dbs 
+-> ALTER : modify the structure of the table 
+-> DROP : remove entire table or database 
+
+
+
+SQL Rules 
+
+1. every query ends with semicolon
+2. SQL is case in-sensitive ex SELECT, CREATE, INSERT
+3. keep adding whitespaces for better readability 
+
+
+SQL Basics 
+
+CREATE TABLE name(
+    //properties
+)
+
+Naming rules: 
+
+1. start with a letter 
+2. max 30 characters 
+3. only use letters, numbers or underscores 
+
+
+DATA TYPES
+
+1. Numerics
+
+    BIGINT -> Large integer number -2^63 to 2^63-1
+    INT -> Standard Integer -> -2^31 to 2^31
+    SMALLINT -> small integer -2^15 to 2^15-1
+    DECIMAL -> Exact double values  -> -10^38 + 1 to 18^38-1
+
+    
+    code: 
+            CREATE TABLE product_sales (
+                ProductId INT PRIMARY KEY,
+                Quantity SMALLINT,
+                Price DECIMAL(10, 2),
+                TotalAmount DECIMAL(10, 2)
+            )
+
+2. Characters and String Data Types 
+
+    CHAR -> characters with max of 8000 characters 
+    VARCHAR -> stores variable length of characters with max 8000 
+    VARCHAR(max) -> varchar with max size specified 
+    TEXT -> very very large (64kb in mysql, 1gb in sqlite)
+
+Example:
+
+    CREATE TABLE employee_data(
+        EmpId INT PRIMARY KEY,
+        FirstName VARCHAR(10),
+        LastName VARCHAR(20),
+        Bio TEXT
+    )
+
+3. DATE 
+
+    DATE -> (year, month, day) -> 3 bytes 
+    TIME -> (hour,  minute, second) -> 3 byte 
+    DATETIME -> (year, month, day, hour, minute, second) -> 8 byte 
+
+    Example: 
+
+        CREATE TABLE Orders(
+            OrderId INT PRIMARY KEY,
+            OrderDate DATE,
+            OrderTime TIME,
+            DeliveredAt DATETIME
+        )
+
+4. Boolean data 
+
+    - 1 means true
+    - 0 means false 
+
+    CREATE TABLE User_Online (
+        UserId INT PRIMARY KEY,
+        isActive INTEGER,
+        isVerified INTEGER 
+    )
+
+
+5. Binary Data 
+
+    Binary -> 8000 bytes -> fixed length
+    VARBINARY -> variable binary sequence 
+    Image -> VARBINARY(MAX)
+
+
+    CREATE TABLE Product_Image(
+        ImageId INT PRIMARY KEY,
+        ImageName VARCHAR(100),
+        ImageData VARBINARY(5000)
+    )
+
+

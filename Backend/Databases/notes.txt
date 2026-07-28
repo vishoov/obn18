@@ -1,0 +1,36 @@
+Relational vs non relational DBs
+
+- Relational DBs organize data into tables with fixed rows and columns connected through defined relationships 
+
+- non relational these store the data in the form of document objects, key value, columns, graphs etc without requiring a rigid schema
+
+
+Differences b/w rel and non rel
+
+
+Metric                  Relational (SQL)                    Non-Relational (NoSQL)
+
+Data Structure          Fixed Tables                        Flexible Schema         
+                        (rows and columns)                  (documents, key-value, graphs)
+
+Scalability             Vertical Scaling                    Horizontal Scaling 
+                        (add more CPU/RAM to                (distribute data across 
+                        the existing server)                multiple servers)
+
+Query Language          SQL - supports complex queries      Varies (mongodb -> mongoquery, redis js)
+                        and joins 
+
+Data Consistency        strong concistency using ACID       Eventual consistency, priority - speed and 
+                                                            availability 
+
+Format                  rows and columns,like spreadsheet   non-tabular, json documents, key-value etc
+
+
+
+Use Cases               FinTech, Banking, Payment Gateway,      high scale operation, rapdidly evolve,
+                        Loan, Reservation system, healthcare    real time, semi or unstructured data 
+
+
+
+HYBRID Reality 
+
