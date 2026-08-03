@@ -1,7 +1,11 @@
+import 'dotenv/config';
 
 
 import express from 'express';
 import userRoutes from './routes/user.routes.js'
+import connectDB from './db/mongo.js';
+
+
 
 
 const app = express();
@@ -9,10 +13,15 @@ const app = express();
 
 app.use(express.json());
 
+await connectDB();
+
+
 
 app.get("/", (req, res)=>{
     res.send("Welcome to the server")
 })
+
+
 
 
 app.use("/users", userRoutes)
