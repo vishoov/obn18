@@ -11,7 +11,10 @@ const connectDB = async ()=>{
         console.log("Trying to connect to DB");
         console.log(DBUri)
 
-        const connection = await mongoose.connect(DBUri);
+        const connection = await mongoose.connect(DBUri, {
+            dbName:"myapp",
+            serverSelectionTimeoutMS:5000
+        });
 
         console.log("MongoDB Connected");
 

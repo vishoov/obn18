@@ -1,16 +1,17 @@
 import express from 'express';
+import User from '../model/user.model.js';
 
 const router = express.Router();
 
 
-let users = [
-    {
-        id:1,
-        name:"roopansh",
-        email:"roopansh@gmail.com",
-        password:"hehehehehehehe"
-    }
-]
+// let users = [
+//     {
+//         id:1,
+//         name:"roopansh",
+//         email:"roopansh@gmail.com",
+//         password:"hehehehehehehe"
+//     }
+// ]
 
 
 
@@ -19,12 +20,27 @@ router.get("/", (req, res)=>{
 })
 
 
-router.post('/signup', (req, res)=>{
+router.post('/signup', async (req, res)=>{
+    try{
     const data = req.body;
     console.log(data);
-    users.push(data)
-    console.log("Users: ", users)
-    res.send("recieved the data")
+    // in memory data
+    // users.push(data)
+
+    // db data 
+    const user = await User.create(data);
+
+    if(!user){
+        res.status(500).json({
+            message:"User couldnt be created"
+        })
+    }
+
+    res.send("recieved the data", user)
+}
+catch(err){
+    res.status(500).send(err.message)
+}
 })
 
 router.post("/login", (req, res)=>{
