@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+
+// data validation 
 const userSchema = new mongoose.Schema(
     {
     name:{
@@ -7,7 +9,7 @@ const userSchema = new mongoose.Schema(
         required:[true, "Name is mandatory"],
         minLength:[2, "Name must contain atleast 3 alphabets"],
         maxLength:[20, 'Name cannot exceed 20 alphabets'],
-        // trim:true
+        trim:true
     },
     age:{
         type:Number,
@@ -42,25 +44,48 @@ const userSchema = new mongoose.Schema(
                 }
 
                 let hasUpperCase = false;
-
+                let hasSpecialChar = false;
+                let hasNumber = false;
                 for(let i=0; i<password.length; i++){
                     const code = password[i];
 
                     if(code>='A' && code<='Z'){
                         hasUpperCase=true;
-                        break;
+
                     }
 
+                    if(code =='@' || code=='#' || code=='$' || code=='%' || code=='&' || code=='*'){
+
+                        hasSpecialChar=true;
+                    } 
+                    else if (code>='0' && code<='9'){
+                        hasNumber=true;
+                    }
 
                 }
-                return hasUpperCase
+                return hasUpperCase && hasSpecialChar && hasNumber;
             },
             message:"Invalid Password"
         }
     }
+}, {
+    timestamps:true,
+    versionKey:false
 }
 )
 
+
+// pre to save event 
+userSchema.pre('save', function (){
+    const start = "thisisasecurestring___";
+    const end = "___thisstringendshere";
+
+    
+    this.password = start+this.password+end;
+
+});
+
+//this is where the data is being saved 
 const User = mongoose.model("User", userSchema);
 
 export default User;
