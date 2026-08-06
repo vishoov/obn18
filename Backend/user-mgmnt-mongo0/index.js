@@ -4,7 +4,7 @@ import 'dotenv/config';
 import express from 'express';
 import userRoutes from './routes/user.routes.js'
 import connectDB from './db/mongo.js';
-
+import productRoutes from './routes/product.routes.js'
 
 
 
@@ -25,6 +25,7 @@ app.get("/", (req, res)=>{
 
 
 app.use("/users", userRoutes)
+app.use("/products", productRoutes)
 
 
 

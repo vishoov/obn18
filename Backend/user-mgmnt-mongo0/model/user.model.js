@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+import bcrypt from 'bcrypt';
 
 // data validation 
 const userSchema = new mongoose.Schema(
@@ -22,9 +22,9 @@ const userSchema = new mongoose.Schema(
         type: String,
         required:true,
         lowercase:true,
-        unique:true,
         match:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-        trim:true
+        trim:true,
+        unique:true
     },
     role:{
         type:String,
@@ -74,16 +74,44 @@ const userSchema = new mongoose.Schema(
 }
 )
 
+userSchema.methods.comparePassword = async function(password){
+    console.log('checking password')
+    return await bcrypt.compare(password, this.password);
+}
+
+// password -> encrypt === db.password
+
+userSchema.pre('validate', function(){
+    console.log("This is the step before validation")
+})
+
+userSchema.post('validate', function(doc){
+    console.log("Document has been validated");
+    console.log("This is how the doc looks like ");
+    console.log(doc);
+})
+
 
 // pre to save event 
-userSchema.pre('save', function (){
-    const start = "thisisasecurestring___";
-    const end = "___thisstringendshere";
-
+userSchema.pre('save', async function(){
+    //BCRYPT -> HASH
+    // maggi -> maggi, salt, masala 
+    // password + salt -> n rounds of hashing 
+        // hashing logic
+        // password -> this.password;
+        // 1. generate the salt
+        const salt = await bcrypt.genSalt(10);
+        // 2. replace the password
+        const newPassword = await bcrypt.hash(this.password, salt);
+        this.password = newPassword;
     
-    this.password = start+this.password+end;
-
 });
+
+
+userSchema.post('save', function(){
+    console.log("final password after saving")
+    console.log(this.password)
+})
 
 //this is where the data is being saved 
 const User = mongoose.model("User", userSchema);
