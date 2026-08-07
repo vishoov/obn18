@@ -68,6 +68,16 @@ const userSchema = new mongoose.Schema(
             message:"Invalid Password"
         }
     }
+    // cart:[
+    //     {
+    //         productID:{
+
+    //         },
+    //         title:{
+                
+    //         }
+    //     }
+    // ]
 }, {
     timestamps:true,
     versionKey:false
