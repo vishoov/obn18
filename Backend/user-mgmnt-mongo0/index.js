@@ -6,10 +6,20 @@ import userRoutes from './routes/user.routes.js'
 import connectDB from './db/mongo.js';
 import productRoutes from './routes/product.routes.js'
 import cartRoutes from './routes/cart.routes.js'
+import orderRoutes from './routes/order.routes.js'
+
+import cors from 'cors';
+
+
+
 
 
 const app = express();
 
+
+app.use(cors({
+    origin:"*"
+}))
 
 app.use(express.json());
 
@@ -27,6 +37,7 @@ app.get("/", (req, res)=>{
 app.use("/users", userRoutes)
 app.use("/products", productRoutes)
 app.use("/cart", cartRoutes);
+app.use("/orders", orderRoutes);
 
 
 app.listen(3000, ()=>{
