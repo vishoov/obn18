@@ -30,18 +30,30 @@ router.post('/signup', async (req, res)=>{
     // db data 
     // const user = await User.create(data);
    
+    // if(typeof data.name !=="String"){
+    //     console.log("invalid name")
+    // }
 //    option:2
     // const user = await User.insertOne(data);
 //  option: 3
     const user = new User({
         name:data.name,
-        age:data.age,
+        age:Number(data.age),
         email:data.email,
         role:data.role || "User",
         password:data.password
     });
 
+
+
+
+    if(!user){
+        console.log("User didnt get created")
+    }
+
+
     const addedUser = await user.save();
+
 
 
     if(!addedUser){
@@ -49,13 +61,14 @@ router.post('/signup', async (req, res)=>{
             message:"User couldnt be created"
         })
     }
+    console.log("User created")
     res.status(200).json({
         message:"User created successfully",
         user:addedUser
     })
 }
 catch(err){
-    res.status(500).send(err.message)
+    res.status(500).json({message:err.message})
 }
 })
 
