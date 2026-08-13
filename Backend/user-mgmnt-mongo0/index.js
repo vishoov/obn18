@@ -9,7 +9,7 @@ import cartRoutes from './routes/cart.routes.js'
 import orderRoutes from './routes/order.routes.js'
 
 import cors from 'cors';
-
+import aggregateRoutes from './aggregation/user.aggregation.js'
 
 
 
@@ -38,6 +38,7 @@ app.use("/users", userRoutes)
 app.use("/products", productRoutes)
 app.use("/cart", cartRoutes);
 app.use("/orders", orderRoutes);
+app.use('/aggregate', aggregateRoutes);
 
 
 app.listen(3000, ()=>{

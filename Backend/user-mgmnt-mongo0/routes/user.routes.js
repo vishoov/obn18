@@ -213,4 +213,61 @@ router.get("/all", async (req, res)=>{
 })
 
 
+router.get("/roleWise", async(req, res)=>{
+    try{    
+        const data = await User.aggregate([
+            {
+                $group:{
+                    _id:"$role",
+                    count:{
+                        $sum:1
+                    }
+                }
+            },
+            {
+                $project:{
+                    role:"$_id",
+                    _id:0,
+                    count:1
+
+                }
+            }
+        ])
+
+        res.json({
+            data
+        })
+
+    }
+    catch(err){
+        res.send(err.message)
+    }
+}); 
+
+// 0, 18, 25, 35, 45, 55
+router.get("/ageGroups", async (req, res)=>{
+    try{
+        const result = await User.aggregate([
+            {
+            $bucket:{
+                groupBy:"$age",
+                boundaries:[0, 18, 25, 35, 45, 55],
+                output:{
+                    count:{
+                        $sum:1
+                    }
+                }
+            }
+        }
+        ]);
+
+        res.json({
+            result
+        })
+    }
+    catch(err){
+        res.send(err.message)
+    }
+})
+
 export default router;

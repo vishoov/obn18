@@ -1,0 +1,79 @@
+PRIMARY -> first 5 
+
+    Stage               Purpose  
+
+1. group:   groups the data by a key and it can calculate basic mathematical operations 
+            $sum, $avg, $max, $min, etc 
+    Example: get average age of users based in different cities 
+
+        {
+            name,
+            city, 
+            country, 
+            age,
+            phone 
+        }
+
+        User.aggregate([
+            {
+                $group:'$city',
+                avgAge:{
+                    $avg:"$age"
+                }
+            },{
+                $sort:{
+                    age:-1
+                }
+            }
+        ])
+
+2. project -> includes/excludes/adds a new field 
+
+        {
+            firstName,
+            lastName
+        }
+
+
+        ->{
+            fullName
+        }
+
+        Example:{
+            $project:{
+                fullName:{
+                    $concat:[
+                        '$firstName', ' ', '$lastName'
+                    ]
+                }
+            }
+        }
+
+3. $sort-> {
+    $sort:{
+        age:-1
+    }
+}
+
+4. $match -> find() = SPECIFIALLY USED FOR FILTERING THE DATA BEFORE THE OTHER STAGES 
+
+5. $limit/$skip -> 
+
+$limit:10, $skip:20
+
+COMPLEX 
+
+6. $lookup 
+
+{
+    $lookup:{
+        from:"users",
+        localField:"userId",
+        foreignField:"_id",
+        as:"UserDetails"
+    }
+}
+
+7. $unwind -> inputs an array and outputs elements seperately in objects 
+
+8. $bucket -> to group the data based on ranges 

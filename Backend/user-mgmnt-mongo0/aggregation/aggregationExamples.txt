@@ -1,0 +1,25 @@
+User= {
+    name, age, address, email, password, isActive, role
+}
+
+
+1. count number of users by their status 
+
+[
+    {
+        $match:{
+            exists:"$isActive"
+        }
+    },
+    {
+        $group:{
+            _id:"$isActive",
+            count:{
+                $sum:1
+            }
+        }
+    }
+]
+
+
+2. count users by role 
