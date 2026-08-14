@@ -153,6 +153,11 @@ router.get("/all", async (req, res)=>{
                     as:"userDetails"
 
                 }
+            },
+            {
+                $unwind:{
+                    path:"$userDetails"
+                }
             }
         ])
 
