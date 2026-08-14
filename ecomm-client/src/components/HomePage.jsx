@@ -1,8 +1,11 @@
 import React from 'react'
 
 const HomePage = () => {
+
+  const variable = "Hello bhai";
+
   return (
-    <div>HomePage</div>
+    <div>HomePage {variable}</div>
   )
 }
 

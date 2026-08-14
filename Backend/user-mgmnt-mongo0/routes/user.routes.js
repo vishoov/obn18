@@ -270,4 +270,13 @@ router.get("/ageGroups", async (req, res)=>{
     }
 })
 
+router.get("/:id", async(req, res)=>{
+    const id = req.params.id;
+    const user = await User.find({
+        _id:id
+    })
+
+    res.json({user});
+})
+
 export default router;

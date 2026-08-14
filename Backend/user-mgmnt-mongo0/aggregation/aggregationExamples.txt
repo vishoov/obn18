@@ -23,3 +23,58 @@ User= {
 
 
 2. count users by role 
+
+3. USER, ADMIN, SUPERADMIN -> CALCULATE AVERAGE AGE OF THESE THREE CATEGORIES, MIN AGE, MAX AGE 
+
+-> {
+    CATEGORY: USER, AVG:40.6, MIN:0, MAX:100
+}  
+
+const result = await User.aggregate([
+    {
+        optional///
+        $match:{
+            age:{
+                $exists:true
+            }
+        }
+    },
+    {
+        $group:{
+            _id:"$role",
+            avgAge:{
+                $avg:"$age"
+            },
+            minAge:{
+                $min:"$age"
+            },
+            maxAge:{
+                $max:"$age"
+            }
+        }
+    },
+    {
+        optional//
+        $project:{
+            _id:0,
+            role:_id,
+            avgAge:1,
+            minAge:1, 
+            maxAge:1
+        }
+    }
+])
+
+
+//1. signups by year -> how many people have signed up in which year
+
+
+const result = await User.aggregate([
+    {
+        $group:{
+            _id:{
+                year
+            }
+        }
+    }
+])

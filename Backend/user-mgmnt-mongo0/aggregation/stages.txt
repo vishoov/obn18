@@ -77,3 +77,14 @@ COMPLEX
 7. $unwind -> inputs an array and outputs elements seperately in objects 
 
 8. $bucket -> to group the data based on ranges 
+
+9. $addFields 
+
+$addFields:{
+    signUpYear: {
+        $year:"$createdAt"
+    },
+    signupMonth:{
+        $month:'$createdAt'
+    }
+}

@@ -134,7 +134,44 @@ router.patch("/update/:id", async (req, res)=>{
 })
 
 
-// get single order by id 
+// get single order by id with user details 
+
+router.get("/all", async (req, res)=>{
+
+    try{
+        // const {id} = req.params;
+        // console.log(id)
+
+        const orders = await Order.aggregate([
+         
+            {
+
+                $lookup:{
+                    from:"users",
+                    localField:"userId",
+                    foreignField:'_id',
+                    as:"userDetails"
+
+                }
+            }
+        ])
+
+
+        if(!orders){
+            res.json({
+                message:"Something's wrong"
+            })
+        }
+
+        res.json({
+            orders
+        })
+
+
+    }catch(err){
+        res.send(err.message)
+    }
+})
 
 
 
