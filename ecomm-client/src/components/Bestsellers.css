@@ -1,0 +1,49 @@
+.gridd{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:15px;
+    
+}
+
+.gridd a{
+    text-decoration: none
+}
+
+.gridd p{
+    color:white;
+    font-size: x-small;
+}
+
+
+.product_image{
+    width:100%;
+    height:120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product_card{
+    height:250px;
+    width:180px;
+    border:1px solid gray;
+    box-shadow: 4px 4px 5px grey;
+    padding:7px;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.product_cta{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_cta > button{
+    color:black;
+    background-color: white;
+    border-radius: 5px;
+
+}

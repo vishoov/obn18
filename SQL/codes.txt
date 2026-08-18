@@ -1,0 +1,89 @@
+1, CREATE TABLE mern(
+  student_id INT PRIMARY KEY,
+  student_name VARCHAR(50),
+  degree VARCHAR(50)
+);
+
+
+
+CREATE TABLE data(
+  student_id INT PRIMARY KEY,
+  student_name VARCHAR(50),
+  degree VARCHAR(50)
+);
+
+
+
+2. INSERT INTO Data(student_id, student_name, degree)
+VALUES
+(1, "Hardik", "Btech"),
+(2, "Ritik", "Btech"),
+(6, "Shubham", "Btech"),
+(7, "Elon", "BBA");
+
+
+3. SELECT student_id, student_name 
+FROM Mern
+    
+
+4. //UNION 
+//operation that combines results from both queries and removes duplicate rows 
+
+SELECT student_id, student_name 
+FROM Data
+
+UNION
+
+SELECT student_id, student_name 
+FROM Mern
+
+UNION ALL
+
+SELECT student_id, student_name 
+FROM Data
+
+UNION ALL
+
+SELECT student_id, student_name 
+FROM Mern
+
+When to use which 
+
+1. all the rows are meaningful
+2. when you want all the data, duplicacy removal doesnt matter
+3. we know duplicates cannot occur
+4. PErformance requirement (UNION takes more time)
+
+INTERSECT
+
+-> it returns only those rows that appear in both the query results.
+its the equivalent of finding common part of two sets 
+
+When to use :
+
+1. when a single user is taking multiple services 
+2. based on multiple requirements 
+
+EXCEPT
+
+returns rows from first query that do not occur in the second query. 
+
+Order matter -> first results minus second reslts 
+
+SELECT student_id, student_name 
+FROM Mern
+
+EXCEPT
+
+SELECT student_id, student_name 
+FROM Data
+
+Oracle uses MINUS for the same
+
+
+
+INNER JOIN 
+
+SELECT 
+* FROM customers AS c INNER JOIN orders as o 
+ON c.customer_id = o.customer_id

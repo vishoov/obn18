@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {useState} from 'react';
+import './SignupPage.css';
 
 const SignupPage = () => {
 
@@ -59,37 +60,44 @@ const SignupPage = () => {
     }
 
   return (
-    <div>
-        <h1>Create an Account</h1>
+    <div className='signup-wrap'>
+      <div className='signup-card'>
+        <h1 className='signup-title'>Create an Account</h1>
+        <p className='signup-sub'>Join obn18 and start shopping in seconds.</p>
 
-        {message && <p style={{color:'green'}}>{message}</p>}
-        {error && <p style={{color:"red"}}>{error}</p>}
+        {message && <p className='signup-alert success'>{message}</p>}
+        {error && <p className='signup-alert error'>{error}</p>}
 
-        <form onSubmit={handleSubmit}>
-            <div>
+        <form className='signup-form' onSubmit={handleSubmit}>
             {/* name */}
+            <div className='signup-field'>
             <label htmlFor='name'>Name</label>
-            <input 
+            <input
+            id='name'
             type='text'
             name='name'
             placeholder='Enter your name'
             onChange={(e)=>setName(e.target.value)}
             />
             </div>
+
             {/* email */}
-        <div>
-            <label>Email</label>
+        <div className='signup-field'>
+            <label htmlFor='email'>Email</label>
             <input
+            id='email'
             type='text'
             placeholder='Enter your email'
             onChange={(e)=>setEmail(e.target.value)}
             />
         </div>
 
+        <div className='signup-row'>
             {/* age */}
-            <div>
-                <label>Age</label>
-                <input 
+            <div className='signup-field'>
+                <label htmlFor='age'>Age</label>
+                <input
+                    id='age'
                     type='number'
                     placeholder='Enter your Age'
                     onChange={(e)=>setAge(e.target.value)}
@@ -97,29 +105,30 @@ const SignupPage = () => {
             </div>
 
             {/* role */}
-<div>
-    <label >Role</label>
-    <select onChange={(e)=>setRole(e.target.value)}>
-        <option value="User">User</option>
-        <option value="Admin">Admin</option>
-        <option value="SuperAdmin">SuperAdmin</option>
-    </select>
-</div>
-            {/* password */}
-            <div>
-                <label>
-                    Password
-                </label>
+            <div className='signup-field'>
+                <label htmlFor='role'>Role</label>
+                <select id='role' onChange={(e)=>setRole(e.target.value)}>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                    <option value="SuperAdmin">SuperAdmin</option>
+                </select>
+            </div>
+        </div>
 
-                <input 
+            {/* password */}
+            <div className='signup-field'>
+                <label htmlFor='password'>Password</label>
+                <input
+                id='password'
                 type="password"
                 placeholder='Enter your password'
                 onChange={(e)=>{setPassword(e.target.value)}}
                 />
             </div>
 
-            <button type='submit'>Sign up</button>
+            <button className='signup-submit' type='submit'>Sign up</button>
         </form>
+      </div>
     </div>
   )
 }

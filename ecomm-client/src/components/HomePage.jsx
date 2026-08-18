@@ -1,11 +1,14 @@
 import React from 'react'
+import BestSellers from './BestSellers';
 
 const HomePage = () => {
 
   const variable = "Hello bhai";
 
   return (
-    <div>HomePage {variable}</div>
+    <div>
+      <BestSellers />
+    </div>
   )
 }
 

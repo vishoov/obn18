@@ -17,7 +17,7 @@ const { id } = useParams();
       setProduct(data.product[0]);
   
     }
-    getProduct(id);
+    getProduct(id);    
     console.log(product);
   }, [])
 
