@@ -81,9 +81,89 @@ FROM Data
 Oracle uses MINUS for the same
 
 
+JOINS
+
+CROSS JOIN 
+
+
+SELECT * FROM Users u
+CROSS JOIN orders o ON u.user_id = o.user_id;
+
+
+cross join pairs every row of table A with every row of table B -> without any condition.
+total count of final output will be mXn (m= size of table A and n is size of table B)
+
+Production Problem: 
+
+1. when a cross join between two tables with around 10k rows each is performed, it produces 10M rows. Which is a production issue, in order to tackle this :
+ a. use EXPLAIN before the query which tells the query operation cost beforehand
+ b. use ON conditions to filter out irrelevant data 
+
+
+
+
 
 INNER JOIN 
+
+Inner join returns only rows where the join condition matches in both tables. If a user has no orders, that user disappears from the result, or if an order has no matching user that order disappears too 
+
+you can write INNER JOIN or only JOIN, both work the same way 
+
+
 
 SELECT 
 * FROM customers AS c INNER JOIN orders as o 
 ON c.customer_id = o.customer_id
+
+join key -> duplicates 
+
+
+LEFT JOIN (Left outer join)
+
+returns all rows from left table and from the right table only matched rows. Unmatched right-side columns come back as NULL;
+
+
+
+SELECT u.user_id, u.name, o.order_id
+FROM users u
+LEFT JOIN orders o 
+ON u.user_id = o.user_id
+
+
+Interview Questions -> find those users who havent ordered even once on the website 
+
+we only have to find the rows which are not matched from the right table 
+
+
+just add this query after left join 
+
+WHERE o.order_id IS NULL
+
+
+
+RIGHT JOIN 
+
+mirror opposite of left join, returns all rows from the right table plus matched rows from the left table. unmaytched left columns come back as NULL
+
+
+SELECT u.name, o.order_id
+FROM users u
+RIGHT JOIN orders o 
+ON u.user_id = o.user_id;
+
+
+FULL OUTER JOIN 
+
+returns all rows from both tables, matched where possible, NULL where no match 
+
+SELECT u.name, o.order_id
+FROM users u 
+LEFT JOIN orders o ON u.user_id = o.order_id
+
+
+UNION 
+
+SELECT u.name, o.order_id
+FROM orders o 
+LEFT JOIN users u ON u.user_id = o.order_id;
+
