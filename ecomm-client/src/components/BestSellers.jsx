@@ -1,10 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
+import ProductCard from './ProductCard'
 
-import './Bestsellers.css';
-
-
-// <Link to=`/products/${product.id}'><div>...</div></Link>
 const products = [
     {
         "_id": "6a757862ed973f12cd05d8ca",
@@ -75,30 +71,17 @@ const products = [
 
 const BestSellers = () => {
   return (
-    <div>
+    <section>
+      <div className="page-header">
         <h1>Recommended for you</h1>
-<div className='gridd'>
-        {products.map((prod)=>{
-            return <Link 
-                to={`/product/${prod._id}`}
-
-                >
-                    <div className='product_card'>
-                        <img className='product_image' src={prod.Images[0]} alt={prod.name} />
-                        <h2 className='product_title'>{prod.name}</h2>
-                        <p>{prod.description}</p>
-                        <div className="product_cta">
-                            ₹{prod.price}
-                            <button>Add to Cart</button>
-                        </div>
-                    </div>
-                    <br/>
-             </Link>
-        })}
-
-
-    </div>
-    </div>
+        <span className="page-subtitle">Picked for your cart</span>
+      </div>
+      <div className="gridd">
+        {products.map((prod) => (
+          <ProductCard key={prod._id} product={prod} />
+        ))}
+      </div>
+    </section>
   )
 }
 

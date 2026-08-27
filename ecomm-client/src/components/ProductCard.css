@@ -1,0 +1,98 @@
+.gridd {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 8px 0;
+  text-align: left;
+}
+
+.gridd a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product_card {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow);
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.product_card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-border);
+}
+
+.product_image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--code-bg);
+}
+
+.product_title {
+  font-size: 18px;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.product_card p {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 140%;
+  margin: 0;
+  flex: 1;
+}
+
+.product_cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.product_cta > button {
+  font: inherit;
+  font-size: 14px;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.product_cta > button:hover {
+  opacity: 0.85;
+}
+
+.product_cta > button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.card_skeleton {
+  height: 300px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elev);
+  animation: card_pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes card_pulse {
+  50% {
+    opacity: 0.45;
+  }
+}

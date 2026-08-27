@@ -47,8 +47,8 @@
 }
 
 .navbar-link.active {
-  color: var(--accent);
-  background: red
+  color: var(--text-h);
+  background: var(--accent-bg);
 }
 
 .navbar-cta {

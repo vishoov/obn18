@@ -1,0 +1,27 @@
+.not-found {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.not-found-code {
+  font-family: var(--mono);
+  font-size: 92px;
+  line-height: 1;
+  color: var(--text-h);
+  opacity: 0.25;
+}
+
+.not-found h1 {
+  font-size: 36px;
+  margin: 16px 0 8px;
+}
+
+.not-found-copy {
+  color: var(--text);
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
