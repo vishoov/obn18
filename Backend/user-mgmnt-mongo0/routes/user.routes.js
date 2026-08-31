@@ -76,8 +76,12 @@ router.post("/login", async (req, res)=>{
 
     try{
     // user must be existing in users array
+    console.log("Login request received ");
     const {email, password} =req.body;
-    
+        console.log(email, password)
+
+        console.log(req.headers.Authorization);
+        console.log(req.headers)
     // const user = users.find((user)=>user.email===email);
     let user =await User.find({email:email});
     user = user[0];
@@ -98,13 +102,13 @@ router.post("/login", async (req, res)=>{
         })
     }
 
-    res.status(200).json({
+    return res.status(200).json({
         message:"Login Successfull",
         user:user
     })
 }
 catch(err){
-    res.status(500).send("Internal Server Error")
+    return res.status(500).send("Internal Server Error")
 }
 })
 

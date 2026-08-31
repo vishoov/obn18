@@ -14,28 +14,30 @@ export function AuthProvider({ children }){
     // const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuth] = useState(false);
 
-    const login = (email, password)=>{
+    const login = async (email, password)=>{
         //returns a boolean value based on email and pass 
-        if(email===hardcoded_email && password=== hardcoded_pass){
-            const userData = {email, name:"Aman"};
-
-            setUser(userData);
-            
-            setIsAuth(true);
-            return {
-                sucess:true
-            }
-
-
+        const response = await fetch("http://localhost:3000/users/login", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":"bearer d0hf0yhf90hf9hf9h"
+            },
+            body:JSON.stringify({email, password})
+        })
+        if(!response.ok){
+            console.log(response);
         }
 
 
+        const state = await response.json();
+        setUser(state.user);
+        console.log(user);
 
-        return {
-            success:false,
-            error:"Invalid Credentials"
-        }
+        // console.log(state);
 
+        
+
+       
     }
 
     const logout = ()=>{

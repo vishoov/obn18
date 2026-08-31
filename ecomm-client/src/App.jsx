@@ -12,6 +12,9 @@ import MenDenims from './components/MenDenims'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer';
 import { AuthProvider } from './auth/AuthContext'
+import Dashboard from './components/Dashboard'
+import ProtectedRoute  from './components/ProtectedRoute.jsx';
+import Settings from './components/Settings.jsx'
 
 function App() {
   return (
@@ -26,6 +29,12 @@ function App() {
           <Route index element={<CollectionIndex />} />
           <Route path="mens-collection" element={<MenDenims />} />
         </Route>
+
+    <Route element={<ProtectedRoute />}>
+      <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/settings" element={<Settings />}/>
+    </Route>
+        // <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="signup" element={<SignupPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="*" element={<StarElement />} />
