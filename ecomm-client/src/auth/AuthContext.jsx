@@ -1,48 +1,84 @@
 import { createContext, useContext } from "react";
 import { useState } from "react";
-
+import toast from "react-hot-toast";
 
 const AuthContext = createContext(null);
 
+const API = "http://localhost:3000/users";
 
-const hardcoded_email = "aman@gmail.com";
-const hardcoded_pass = "coolaman";
+
+// const hardcoded_email = "aman@gmail.com";
+// const hardcoded_pass = "coolaman";
 
 export function AuthProvider({ children }){
 
-    const [user, setUser] = useState(null);
+    
     // const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuth] = useState(false);
 
+    const [user, setUser] = useState(()=>{
+        const extracted = localStorage.getItem("user");
+
+        if(extracted){
+            setIsAuth(true);
+            return JSON.parse(extracted);
+        }else{
+            return null
+        };
+    });
+
+    //returns a boolean: true when the login succeeded
     const login = async (email, password)=>{
-        //returns a boolean value based on email and pass 
-        const response = await fetch("http://localhost:3000/users/login", {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization":"bearer d0hf0yhf90hf9hf9h"
-            },
-            body:JSON.stringify({email, password})
-        })
-        if(!response.ok){
-            console.log(response);
+
+        let response;
+
+        try{
+            response = await fetch(`${API}/login`, {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({email, password})
+            })
+        }
+        catch(err){
+            //network failure - the server never answered
+            toast.error("Unable to connect to the server");
+            return false;
         }
 
+        // some routes still reply with plain text, so read once and try to parse
+        const raw = await response.text();
+        let data;
+        try{
+            data = JSON.parse(raw);
+        }
+        catch{
+            data = { message: raw };
+        }
 
-        const state = await response.json();
-        setUser(state.user);
-        console.log(user);
+        if(!response.ok){
+            //must be a string - passing the Response object crashes the toast
+            toast.error(data.message || "Login failed");
+            return false;
+        }
 
-        // console.log(state);
+        console.log(data)
 
-        
+        setUser(data.user);
 
-       
+        localStorage.setItem("user", JSON.stringify(data.user))
+
+        setIsAuth(true);
+        toast.success(data.message || "Logged in");
+
+        return true;
     }
 
     const logout = ()=>{
         setUser(null);
-        //logout 
+        setIsAuth(false);
+        localStorage.removeItem("user")
     }
     const value = {
         user, 

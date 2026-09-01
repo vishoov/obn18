@@ -78,17 +78,19 @@ router.post("/login", async (req, res)=>{
     // user must be existing in users array
     console.log("Login request received ");
     const {email, password} =req.body;
-        console.log(email, password)
+        console.log(email, password);
+
 
         console.log(req.headers.Authorization);
         console.log(req.headers)
     // const user = users.find((user)=>user.email===email);
-    let user =await User.find({email:email});
-    user = user[0];
+    const user = await User.findOne({email:email});
 
 
     if(!user){
-        res.status(404).send("User not found");
+        return res.status(404).json({
+            message:"User not found"
+        });
     }
 
 
@@ -108,7 +110,9 @@ router.post("/login", async (req, res)=>{
     })
 }
 catch(err){
-    return res.status(500).send("Internal Server Error")
+    return res.status(500).json({
+        message:"Internal Server Error"
+    })
 }
 })
 

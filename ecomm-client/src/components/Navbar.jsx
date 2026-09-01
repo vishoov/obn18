@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router'
 import './Navbar.css'
-
+import {useAuth} from '../auth/AuthContext';
 const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/shopAll', label: 'Shop All' },
@@ -9,6 +9,14 @@ const links = [
 ]
 
 const Navbar = () => {
+  const { logout } = useAuth();
+  const handleLogout= (e)=>{
+    e.preventDefault();
+    logout();
+  }
+
+  const {user} = useAuth();
+
   return (
     <nav className="navbar">
       <NavLink to="/" className="navbar-brand">
@@ -29,18 +37,26 @@ const Navbar = () => {
           </NavLink>
         ))}
 
+
+
         <NavLink
           to="/login"
           className={({ isActive }) =>
             isActive ? 'navbar-link active' : 'navbar-link'
           }
         >
-          Log in
+           {user!==null?"Hello" + user.name:"Login"}
         </NavLink>
 
-        <NavLink to="/signup" className="navbar-cta">
-          Sign up
-        </NavLink>
+
+          {user!==null ?(
+            <button onClick={handleLogout} >Logout</button>
+          ):(
+            <NavLink to="/signup" className="navbar-cta">
+              Sign up
+            </NavLink>
+          )}
+
       </div>
     </nav>
   )

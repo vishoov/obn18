@@ -34,25 +34,24 @@ useEffect(()=>{
 }, [])
 
 async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
+    const errors = validate()
+    setFieldErrors(errors)
+    if (Object.keys(errors).length > 0) return
 
-  const status = login(email, password);
+    setLoading(true)
+    try {
+      const status = await login(email, password);
 
-  console.log(status)
-
-  if(status){
-    navigate("/dashboard", {
-      replace:true
-    })
-  }
-
-
-    // const errors = validate()
-    // setFieldErrors(errors)
-    // if (Object.keys(errors).length > 0) return
-
-    // sendData({ email, password })
+      if (status) {
+        navigate("/dashboard", {
+          replace: true
+        })
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
 
