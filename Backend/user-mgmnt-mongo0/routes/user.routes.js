@@ -1,5 +1,6 @@
 import express from 'express';
 import User from '../model/user.model.js';
+import { signToken, verifyToken } from '../auth/jwt.js';
 
 const router = express.Router();
 
@@ -81,8 +82,7 @@ router.post("/login", async (req, res)=>{
         console.log(email, password);
 
 
-        console.log(req.headers.Authorization);
-        console.log(req.headers)
+
     // const user = users.find((user)=>user.email===email);
     const user = await User.findOne({email:email});
 
@@ -104,9 +104,17 @@ router.post("/login", async (req, res)=>{
         })
     }
 
+
+    // token generation
+    const token = signToken({
+        email:user.email,
+        role:user.role
+    })
+
     return res.status(200).json({
         message:"Login Successfull",
-        user:user
+        user:user,
+        token
     })
 }
 catch(err){
@@ -171,14 +179,38 @@ router.delete('/deleteUser/:id', async (req, res)=>{
     })
 });
 
+function authMW(req, res, next){
+    const authHeader = req.headers.authorization;
+    // Bearer <token>
+    const token = authHeader.split(" ")[1];
 
-router.put('/updateUser/:id', async (req, res)=>{
+    if(!token){
+        return res.status(401).json({
+            error:"No token provided"
+        })
+    }
+
+    try{
+        const decoded = verifyToken(token);
+        req.user=decoded;
+
+        console.log(req.user)
+        next();
+    }catch(err){
+        return res.status(401).json({
+            error:"Invalid or expired token"
+        })
+    }
+}
+
+router.put('/updateUser/:id', authMW, async (req, res)=>{
     const { id } = req.params;
 
     const {
         name, 
         email,
-        age
+        age,
+        role
     } = req.body;
 // userfimd
     // if(name){
@@ -188,7 +220,8 @@ router.put('/updateUser/:id', async (req, res)=>{
     const user = await User.findByIdAndUpdate(id, {
         name, 
         email, 
-        age
+        age,
+        role
     }, 
 {
     //if the user doesnt exist, but you need to create the user 
@@ -213,7 +246,23 @@ res.status(200).json({
 
 })
 
-router.get("/all", async (req, res)=>{
+function roleMW(req, res, next){
+    if(!req.user){
+        return res.status(401).json({
+            error:"Not authenticated"
+        })
+    }
+
+    if(req.user.role!=="Admin"){
+        return res.status(401).json({
+            error:"Forbidden Route: Insufficient Permissions"
+        })
+    }
+
+    next();
+}
+
+router.get("/all", authMW, roleMW, async (req, res)=>{
     const users = await User.find({});
     res.json({
         users
