@@ -1,8 +1,16 @@
 import express from 'express';
 import User from '../model/user.model.js';
 import { signToken, verifyToken } from '../auth/jwt.js';
+import { cookieLogin } from '../controller/user.controller.js';
+
 
 const router = express.Router();
+
+
+
+
+
+router.post("/login_with_cookies", cookieLogin)
 
 
 // let users = [
@@ -123,6 +131,14 @@ catch(err){
     })
 }
 })
+
+
+
+
+
+
+
+
 
 router.patch('/changePassword/:id', async (req, res)=>{
         let { id } = req.params;
