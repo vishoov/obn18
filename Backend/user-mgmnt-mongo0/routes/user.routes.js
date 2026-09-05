@@ -119,11 +119,15 @@ router.post("/login", async (req, res)=>{
         role:user.role
     })
 
+
+
     return res.status(200).json({
         message:"Login Successfull",
         user:user,
         token
     })
+
+
 }
 catch(err){
     return res.status(500).json({
@@ -196,9 +200,14 @@ router.delete('/deleteUser/:id', async (req, res)=>{
 });
 
 function authMW(req, res, next){
-    const authHeader = req.headers.authorization;
+    
     // Bearer <token>
-    const token = authHeader.split(" ")[1];
+    // const token = authHeader.split(" ")[1];
+    // console.log(token)
+
+    const token =  req.cookies?.accessToken;
+    console.log(req.cookies);
+
 
     if(!token){
         return res.status(401).json({
@@ -208,7 +217,8 @@ function authMW(req, res, next){
 
     try{
         const decoded = verifyToken(token);
-        req.user=decoded;
+        console.log(decoded)
+        req.user=decoded; // user -> following routes 
 
         console.log(req.user)
         next();
@@ -232,6 +242,10 @@ router.put('/updateUser/:id', authMW, async (req, res)=>{
     // if(name){
         // user.name = name;
     // }
+
+    console.log(id);
+    console.log(name, email, age);
+
 
     const user = await User.findByIdAndUpdate(id, {
         name, 

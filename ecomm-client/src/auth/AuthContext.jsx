@@ -16,6 +16,8 @@ export function AuthProvider({ children }){
     // const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuth] = useState(false);
 
+
+
     const [user, setUser] = useState(()=>{
         const extracted = localStorage.getItem("user");
 
@@ -27,14 +29,20 @@ export function AuthProvider({ children }){
         };
     });
 
+    const updateUser = (user)=>{
+        setUser(user)
+    }
+
     //returns a boolean: true when the login succeeded
     const login = async (email, password)=>{
 
         let response;
 
         try{
-            response = await fetch(`${API}/login`, {
+            response = await fetch(`${API}/login_with_cookies`, {
                 method:"POST",
+                // include credentials for cookies
+                credentials:"include",
                 headers:{
                     "Content-Type":"application/json"
                 },
@@ -52,6 +60,7 @@ export function AuthProvider({ children }){
         let data;
         try{
             data = JSON.parse(raw);
+            console.log(data)
         }
         catch{
             data = { message: raw };
@@ -66,6 +75,9 @@ export function AuthProvider({ children }){
         console.log(data)
 
         setUser(data.user);
+
+        localStorage.setItem("token", data.token)
+
 
         localStorage.setItem("user", JSON.stringify(data.user))
 
@@ -85,7 +97,8 @@ export function AuthProvider({ children }){
         //flag 
         isAuthenticated,
         login,
-        logout
+        logout,
+        updateUser
         // loading
 
     }

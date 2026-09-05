@@ -1,0 +1,106 @@
+.dash-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.dash-avatar {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--heading);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent-fg);
+  background: var(--accent);
+}
+
+.dash-hero-text {
+  min-width: 0;
+}
+
+.dash-hero-text h2 {
+  margin: 0 0 4px;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--text-h);
+}
+
+.dash-hero-text p {
+  margin: 0;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.dash-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.dash-card {
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.dash-card dt {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.dash-card dd {
+  margin: 0;
+  font-size: 17px;
+  color: var(--text-h);
+  overflow-wrap: anywhere;
+}
+
+.dash-card dd.mono {
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.dash-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.dash-actions .link-btn {
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .dash-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+}

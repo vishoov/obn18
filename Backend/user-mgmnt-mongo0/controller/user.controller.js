@@ -35,7 +35,6 @@ const cookieLogin = async (req, res)=>{
 
         res.cookie('accessToken', token, {
             httpOnly:true,
-            secure:true, //httpS 
             sameSite:"strict", ///same -> strict or none
             maxAge: 15*60*1000 //15 minutes
         })
@@ -43,8 +42,7 @@ const cookieLogin = async (req, res)=>{
 
         return res.status(200).json({
             message:"User logged in successfully",
-            id:user._id,
-            name:user.name
+            user
         })
 
     }

@@ -1,0 +1,73 @@
+JWT Implementation handbook
+
+Backend Side
+1. when a user logs in, after verifying their details, create a TOKEN for them 
+
+token ->
+
+header    -> algorithm, options
+payload   -> user specific details
+signature  -> secret key
+
+
+/auth/jwt.js -> createtoken, verifytoken
+
+
+jwt.sign(payload, secret, {
+    options  
+})
+
+
+2. Jwt.verify -> MW 
+
+jwt is stored in Authorization header with Bearer <token> format 
+
+{
+    header:{
+        Authorization:"Bearer eyhd9t96d.dodh9y96e.dbgd9ty"
+    },
+    body:{
+
+    }
+}
+
+A. extract the token 
+
+authorization -> string -> split -> [1] index word 
+
+
+
+Front end Side 
+
+1. add authorization header in the fetch for protected routes 
+2. localStorage.setItem("token", token);
+
+
+
+
+
+
+
+cookie logic
+
+
+backend 
+
+1. npm i cookie-parser, app.use(cookie-parser);
+2. inside login -> 
+
+
+        res.cookie('accessToken', token, {
+            httpOnly:true,
+            sameSite:"strict", ///same -> strict or none
+            maxAge: 15*60*1000 //15 minutes
+        })
+
+3. authMW -> const token =  req.cookies?.accessToken;
+
+
+Front end 
+
+1. fetch -> login, updateUser -> headers:{}, body:{}, credentials:"include" 
+
+this will tell the browser to include the cookies which are not accessible by the js 

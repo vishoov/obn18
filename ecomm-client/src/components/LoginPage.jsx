@@ -68,8 +68,9 @@ async function handleSubmit(e) {
     setMessage('')
     setError('')
     try {
-      const response = await fetch(`${API}/login`, {
+      const response = await fetch(`${API}/login_with_cookies`, {
         method: 'POST',
+        credentials:"include",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(object),
       })
