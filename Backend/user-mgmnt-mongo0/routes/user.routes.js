@@ -276,6 +276,21 @@ res.status(200).json({
 
 })
 
+
+router.post("/logout", (req, res)=>{
+    res.clearCookie(
+        'accessToken',
+        {
+            httpOnly:true,
+            sameSite:'strict'
+        }
+    )
+
+    res.status(200).json({
+        status:"success"
+    })
+})
+
 function roleMW(req, res, next){
     if(!req.user){
         return res.status(401).json({

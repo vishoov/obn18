@@ -88,6 +88,9 @@ export function AuthProvider({ children }){
     }
 
     const logout = ()=>{
+        //logout route 
+
+
         setUser(null);
         setIsAuth(false);
         localStorage.removeItem("user")

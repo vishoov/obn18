@@ -4,6 +4,9 @@ import BestSellers from './BestSellers'
 import heroImg from '../assets/hero.png'
 import './Page.css'
 import './HomePage.css'
+import UseReducerExample from './useReducerExample'
+import MemoExample from '../../../complex hooks/MemoExample'
+
 
 const categories = [
   {
@@ -67,18 +70,26 @@ const reviews = [
 ]
 
 const HomePage = () => {
+
+  
+  
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-
+  
   const handleSubscribe = (e) => {
     e.preventDefault()
     if (!email.trim()) return
     setSubscribed(true)
     setEmail('')
   }
-
+  
   return (
     <div className="page">
+
+      <MemoExample />
+
+    <UseReducerExample />
+
       <section className="hero-band">
         <div className="hero-copy">
           <h1>Everyday things, done right.</h1>
